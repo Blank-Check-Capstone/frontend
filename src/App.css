@@ -5,7 +5,11 @@
   font-family: "Pretendard", "Inter";
 }
 
-html {
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* html {
   font-size: 100%;
 }
 
@@ -19,4 +23,4 @@ html {
   html {
     font-size: 40%;
   }
-}
+} */

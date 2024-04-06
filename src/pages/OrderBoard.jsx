@@ -4,7 +4,7 @@ import KoreanFlag from "../assets/images/KoreanFlag.png";
 const OrderBoard = () => {
     return (
         <div className="flex w-full h-screen">
-            <div className="w-[14%] h-full bg-[#D9D9D9]">
+            <div className="fixed top-0 w-[14%] h-full bg-[#D9D9D9]">
                 <div className="w-[100%] h-[30%] bg-[#000] flex flex-col gap-3 items-center justify-center">
                     <div className="w-[60%] h-[60%] rounded-[30%] bg-white"></div>
                     <div className="text-white text-3xl font-semibold">선불1</div>

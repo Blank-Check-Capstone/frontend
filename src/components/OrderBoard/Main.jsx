@@ -1,8 +1,8 @@
 import gifts_image from "../../assets/images/gifts_image.png";
 
 const Main = () => {
-    return <div className="w-[86%] h-full">
-        <div className="flex w-full h-[10%] border-b-4 border-[#F1F1F1] bg-white">
+    return <div className="w-[86%] h-full ml-[14%]">
+        <div className="fixed top-0 flex w-[86%] h-[10%] border-b-4 border-[#F1F1F1] bg-white">
             <div className="w-[7%] h-full bg-white items-center justify-center flex">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-[40px] h-[40px] fill-[#F1F1F1]" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
                 <path d="M16.041,24,6.534,14.48a3.507,3.507,0,0,1,0-4.948L16.052,0,18.17,2.121,8.652,11.652a.5.5,0,0,0,0,.707l9.506,9.52Z"/>
@@ -30,12 +30,29 @@ const Main = () => {
         </div>
 
         <div className="w-full h-[80%]">
-            <div className="">
+            <div className="w-full h-[10%] bg-[#D9D9D9] flex items-center text-[25px] p-5 mt-[10%]">
+                면류
+            </div>
+            <div className="flex justify-center gap-5 mt-[2%]">
+                <div className="h-[300px] w-[31%] bg-[#D9D9D9] flex justify-center">
+                    <div className="w-[90%] h-[60%] bg-white mt-[5%]">
+                    </div>
+                </div>
+                <div className="h-[300px] w-[31%] bg-[#D9D9D9]"></div>
+                <div className="h-[300px] w-[31%] bg-[#D9D9D9]"></div>
+            </div>
 
+            <div className="flex justify-center gap-5 mt-[5%]">
+                <div className="h-[300px] w-[31%] bg-[#D9D9D9] flex justify-center">
+                    <div className="w-[90%] h-[60%] bg-white mt-[5%]">
+                    </div>
+                </div>
+                <div className="h-[300px] w-[31%] bg-[#D9D9D9]"></div>
+                <div className="h-[300px] w-[31%] bg-[#D9D9D9]"></div>
             </div>
         </div>
 
-        <div className="w-full h-[10%] border-t-4 border-[#F1F1F1] bg-white flex items-center px-[1%] gap-3">
+        <div className="fixed bottom-0 w-[86%] h-[10%] border-t-4 border-[#F1F1F1] bg-white flex items-center px-[1%] gap-3">
             <div className="w-[15%] h-[75%] border-2 border-[#DBDBDB]  bg-white rounded-[10px] flex items-center justify-center gap-2 ">
                 <img src={gifts_image} alt="선물하기 사진" className="w-[29px] h-[31px]"/>
                 <div className="text-[#DFDFDF] text-[20px] font-bold">기프티콘</div>

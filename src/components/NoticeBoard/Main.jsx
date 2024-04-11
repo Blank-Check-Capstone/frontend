@@ -7,7 +7,7 @@ const Main = () => {
   ];
 
   return (
-    <main className="w-full min-h-screen bg-black text-white px-8 py-5 grid grid-cols-2 auto-rows-[minmax(15rem,_auto)] gap-5">
+    <main className="w-full min-h-screen bg-black text-white px-8 py-5 grid grid-cols-3 auto-rows-[minmax(15rem,_auto)] gap-5">
       <Table tableNo={1} orderNo={5} payType={1} menu={mok} />
       <Table tableNo={1} orderNo={5} payType={1} menu={mok} />
       <Table tableNo={1} orderNo={5} payType={1} menu={mok} />

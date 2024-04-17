@@ -4,7 +4,7 @@ const Header = () => {
   const categorys = ["면류", "밥류", "음료"];
 
   return (
-    <div className="fixed w-[85vw] top-0 left-[15vw] flex h-[8vw] max-h-[6vw] border-b-4 border-[#F1F1F1] bg-white">
+    <div className="fixed w-[85vw] top-0 left-[15vw] flex h-[8vw] border-b-1 border-[#F1F1F1] bg-white">
       <div className="w-[7%] h-full bg-white items-center justify-center flex">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -22,10 +22,10 @@ const Menus = ({ title }) => {
 
   return (
     <div>
-      <div className="w-full h-[10%] bg-[#D9D9D9] flex items-center text-2xl p-5">
+      <div className="w-full h-[5vw] bg-[#D9D9D9] flex items-center text-[2vw] pl-[2vw]">
         면류
       </div>
-      <div className="grid grid-cols-3 px-5 auto-rows-[minmax(23vw,_auto)] justify-center gap-8 mt-[2%] bg-[#f7f7f7]">
+      <div className="grid grid-cols-3 px-[2vw] auto-rows-[minmax(23vw,_auto)] justify-center items-center gap-8 mt-[2%] bg-[#f7f7f7]">
         {menuList.map((menu) => (
           <Menu name={menu.name} price={menu.price} image={menu.image} />
         ))}

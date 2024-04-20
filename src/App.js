@@ -4,6 +4,7 @@ import "./App.css";
 import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
 import OrderLog from "./components/OrderBoard/OrderLog";
+import Chatting from "./components/OrderBoard/Chatting";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/alert" element={<NoticeBoard />} />
         <Route path="/" element={<OrderBoard />} />
         <Route path="/ordelog" element={<OrderLog />} />
+        <Route path="/chatting" element={<Chatting />} />
       </Routes>
     </BrowserRouter>
   );

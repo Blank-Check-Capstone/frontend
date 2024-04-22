@@ -10,8 +10,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/alert" element={<NoticeBoard />} />
+        <Route path="/log " element={<OrderLog />} />
         <Route path="/" element={<OrderBoard />} />
-        <Route path="/ordelog" element={<OrderLog />} />
       </Routes>
     </BrowserRouter>
   );

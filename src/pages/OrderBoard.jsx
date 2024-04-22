@@ -2,8 +2,7 @@ import Main from "../components/OrderBoard/Main";
 import Menu from "../components/OrderBoard/Side/Menu";
 import KoreanFlag from "../assets/images/KoreanFlag.png";
 import MenuOrderIcon from "../assets/images/menuOrder.svg";
-import Shopping from "../components/OrderBoard/Modal/Shopping";
-import Call from "../components/OrderBoard/Modal/Call";
+import MenuDetail from "../components/OrderBoard/Modal/MenuDetail";
 
 const menuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon, selected: true },
@@ -14,7 +13,7 @@ const menuList = [
 const OrderBoard = () => {
   return (
     <div className="flex w-full h-screen">
-      {/* <MenuDetail /> */}
+      <MenuDetail />
 
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">

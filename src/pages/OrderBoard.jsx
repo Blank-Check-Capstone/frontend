@@ -14,8 +14,6 @@ const menuList = [
 const OrderBoard = () => {
   return (
     <div className="flex w-full h-screen">
-      {/* <MenuDetail /> */}
-
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>
@@ -23,9 +21,6 @@ const OrderBoard = () => {
         </div>
         <div className="flex-1 flex flex-col justify-between">
           <div className="h-full flex flex-col overflow-auto">
-            {/* <Menu title="메뉴주문" icon={<MenuOrderIcon />} selected={true} />
-            <Menu title="FUN" icon={<img src={KoreanFlag} alt="태극기" className="h-[5vw] w-[5vw]" />} selected={false} />
-            <Menu title="LANG" icon={<img src={KoreanFlag} alt="태극기" className="h-[5vw] w-[5vw]" />} selected={false} /> */}
             {menuList.map((menu) => (
               <Menu
                 key={menu.id}
@@ -47,6 +42,7 @@ const OrderBoard = () => {
           </div>
         </div>
       </div>
+      <Shopping />
       <Main />
     </div>
   );

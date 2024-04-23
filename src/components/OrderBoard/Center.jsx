@@ -1,4 +1,5 @@
 import Menus from "./Center/Menus";
+import Shopping from "./Modal/Shopping";
 
 const Center = () => {
   return (

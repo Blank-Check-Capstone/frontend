@@ -3,6 +3,7 @@ import Menu from "../components/OrderBoard/Side/Menu";
 import KoreanFlag from "../assets/images/KoreanFlag.png";
 import MenuOrderIcon from "../assets/images/menuOrder.svg";
 import MenuDetail from "../components/OrderBoard/Modal/MenuDetail";
+import Shopping from "../components/OrderBoard/Modal/Shopping";
 
 const menuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon, selected: true },

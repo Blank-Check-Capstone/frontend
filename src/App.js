@@ -5,6 +5,7 @@ import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Chatting from "./components/OrderBoard/Chatting";
+import ChatSelection from "./components/OrderBoard/ChatSelection";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/log " element={<OrderLog />} />
         <Route path="/" element={<OrderBoard />} />
         <Route path="/chatting" element={<Chatting />} />
+        <Route path="/chatSelection" element={<ChatSelection />} />
       </Routes>
     </BrowserRouter>
   );

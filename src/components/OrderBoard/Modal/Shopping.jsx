@@ -1,4 +1,6 @@
 import CancelIcon from "../../CancelIcon";
+import MinusIcon from "../../MinusIcon";
+import PlusIcon from "../../PlusIcon";
 import CheckIcon from "../../CheckIcon";
 
 const Shopping = () => {
@@ -23,10 +25,25 @@ const Shopping = () => {
 
         <div className="w-full h-[55%]">
           <div className="w-full h-[37%] border-b border-[#E2E2E2] border-solid">
-            <div className="font-bold text-2xl p-[1.5vw]">짜장면</div>
-            <div>
-              <div></div>
-              <div></div>
+            <div className="p-[1.5vw] flex flex-col gap-[2vw]">
+              <div className="font-bold text-2xl">짜장면</div>
+              <div className="flex justify-between">
+                <div className="flex gap-6 items-center">
+                  <div className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer">
+                    <MinusIcon />
+                  </div>
+                  <p className="text-2xl">1</p>
+                  <div className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer">
+                    <PlusIcon />
+                  </div>
+                </div>
+                <div className="flex gap-4 items-end">
+                  <p className="text-2xl text-[#6D6D6D] ">7,000원</p>
+                  <div className="w-[2.7vw] h-[2.7vw] bg-[#D9D9D9] rounded-3xl hover: cursor-pointer">
+                    <CancelIcon />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="w-full h-[37%]">
@@ -44,8 +61,10 @@ const Shopping = () => {
         </div>
 
         <div className="bg-[#DEDEDE] w-full h-[7%] flex">
-          <div className="flex items-center ml-5 gap-4">
-            <CheckIcon />
+          <div className="flex items-center ml-5 gap-4 ">
+            <div className="hover: cursor-pointer">
+              <CheckIcon />
+            </div>
             <p className="font-bold text-[#5F5F5F]">상품 할인권 사용</p>
           </div>
         </div>
@@ -59,13 +78,13 @@ const Shopping = () => {
         </div>
 
         <div className="bg-blue-300 w-full h-[14%] flex text-white">
-          <div className="bg-[#505050] w-[25%] h-full flex items-center justify-center text-3xl">
+          <div className="bg-[#505050] w-[25%] h-full flex items-center justify-center text-3xl hover: cursor-pointer">
             <p>선물</p>
           </div>
-          <div className="bg-black w-[25%] h-full flex items-center justify-center text-3xl">
+          <div className="bg-black w-[25%] h-full flex items-center justify-center text-3xl hover: cursor-pointer">
             포장
           </div>
-          <div className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-3xl">
+          <div className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-3xl hover: cursor-pointer">
             주문하기
           </div>
         </div>

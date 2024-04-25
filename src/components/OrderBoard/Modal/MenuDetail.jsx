@@ -1,3 +1,4 @@
+import CancelIcon from "../../CancelIcon";
 import MenuInfo from "./Detail/MenuInfo";
 import MenuOptionList from "./Detail/MenuOptionList";
 
@@ -11,7 +12,9 @@ const MenuDetail = () => {
             <div className="w-[0.1vw] h-full bg-[#E2E2E2]"></div>
             <MenuOptionList />
           </div>
-          <div className="w-[4vw] bg-red-200"></div>
+          <div className="w-[4vw] flex justify-center">
+            <CancelIcon className="stroke-[1] w-[3.3vw] h-[3.3vw]" />
+          </div>
         </div>
         <div className="w-full h-[7vw] px-[0.5vw] border-t-[0.1vw] border-t-[#E2E2E2]">
           <div className="h-full float-right flex items-center gap-[2vw]">

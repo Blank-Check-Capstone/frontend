@@ -5,7 +5,6 @@ import MenuOrderIcon from "../assets/images/menuOrder.svg";
 import Shopping from "../components/OrderBoard/Modal/Shopping";
 import { useState } from "react";
 import Call from "../components/OrderBoard/Modal/Call";
-import Shopping from "../components/OrderBoard/Modal/Shopping";
 
 const menuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon, selected: true },

@@ -26,7 +26,6 @@ const OrderBoard = () => {
   return (
     <div className="flex w-full h-screen">
       {isOpenCallModal && <Call closeCallModal={closeCallModal} />}
-      <Shopping />
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>

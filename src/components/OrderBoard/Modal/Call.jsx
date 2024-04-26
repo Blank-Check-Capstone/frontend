@@ -4,8 +4,8 @@ const Call = ({ closeCallModal }) => {
   return (
     <div className="w-full h-full fixed z-10 flex justify-center items-center">
       <div className="w-[90%] h-[90%]  bg-white relative z-[2]">
-        <div className="w-full h-[10%] bg-[#222222] flex items-center justify-between">
-          <div className="text-2xl text-white flex">
+        <div className="w-full h-[10%] bg-[#222222] flex items-center justify-between px-[2vw]">
+          <div className="text-2xl text-white flex items-center">
             <svg
               className="w-[2vw] h-[2.8vw] mx-3"
               width="56"

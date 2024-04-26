@@ -3,7 +3,7 @@ import MinusIcon from "../../MinusIcon";
 import PlusIcon from "../../PlusIcon";
 import CheckIcon from "../../CheckIcon";
 
-const Shopping = () => {
+const Shopping = ({ closeShoppingModal }) => {
   return (
     <div className="w-full h-full fixed z-10">
       <div className="w-[45vw] h-full bg-white absolute top-0 right-0 z-[2]">
@@ -17,7 +17,10 @@ const Shopping = () => {
             <div className="w-[90%] h-[70%] bg-[#D9D9D9] text-[#929292] rounded-3xl font-light leading-[3vw] text-center px-3 hover: cursor-pointer">
               장바구니 비우기
             </div>
-            <div className="hover: cursor-pointer w-[4vw] h-[4vw] flex mr-[10px]">
+            <div
+              className="hover: cursor-pointer w-[4vw] h-[4vw] flex mr-[10px]"
+              onClick={closeShoppingModal}
+            >
               <CancelIcon />
             </div>
           </div>

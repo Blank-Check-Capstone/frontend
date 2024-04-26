@@ -10,14 +10,14 @@ const OrderLog = () => {
   return (
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-black text-white">
-        <div className="w-[15%] h-full bg-[#393939] text-3xl font-bold flex items-center justify-center">
+        <div className="w-[15%] h-full bg-[#393939] text-[2vw] font-bold flex items-center justify-center">
           Table 중식당
         </div>
-        <div className="w-[85%] h-full flex items-center justify-between px-5">
-          <div className=" text-2xl font-bold">결제 대기중입니다.</div>
+        <div className="w-[85%] h-full flex items-center justify-between px-[1vw]">
+          <div className="text-[2vw] font-bold">결제 대기중입니다.</div>
           <div onClick={pageBack}>
             <svg
-              className="w-[3vw] h-[3vw] fill-[#F1F1F1] mx-2"
+              className="w-[3vw] h-[3vw] fill-[#F1F1F1] mx-2 cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="50px"
@@ -29,7 +29,7 @@ const OrderLog = () => {
         </div>
       </div>
       <div className="flex w-full h-[90%] items-center justify-center">
-        <div className="text-black text-5xl mb-[10%] font-bold">
+        <div className="text-black text-[4vw] mb-[10%] font-bold">
           주문내역이 없습니다.
         </div>
       </div>

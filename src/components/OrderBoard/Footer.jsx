@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import gifts_image from "../../assets/images/gifts_image.png";
 
-const Footer = () => {
+const Footer = ({ openShoppingModal }) => {
   return (
     <div className="fixed w-[85vw] bottom-0 left-[15vw] flex h-[8vw] border-t-2 border-t-[#F1F1F1] bg-white items-center justify-between px-[1vw]">
       <div className="w-[15vw] h-[75%] border-[0.2vw] border-[#DBDBDB] bg-white rounded-lg flex items-center justify-center gap-[1vw]">
@@ -30,7 +30,10 @@ const Footer = () => {
           </div>
         </Link>
 
-        <div className="w-[15vw] h-[75%] bg-[#27CACA] rounded-lg flex items-center justify-center gap-[1vw]">
+        <div
+          className="w-[15vw] h-[75%] bg-[#27CACA] rounded-lg flex items-center justify-center gap-[1vw]"
+          onClick={openShoppingModal}
+        >
           <div className="text-white text-[2.3vw] font-semibold">주문하기</div>
           <div className="w-[2.5vw] h-[2.5vw] bg-white rounded-full flex items-center justify-center text-[#27CACA]">
             0

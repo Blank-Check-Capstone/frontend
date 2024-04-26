@@ -20,7 +20,7 @@ const Footer = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 34 34"
               fill="none"
-              className="w-5 h-5"
+              className="w-[2vw] h-[2vw]"
             >
               <rect y="6.10352e-05" width="34" height="6" fill="#D9D9D9" />
               <rect y="14.0001" width="34" height="6" fill="#D9D9D9" />
@@ -32,7 +32,7 @@ const Footer = () => {
 
         <div className="w-[15vw] h-[75%] bg-[#27CACA] rounded-lg flex items-center justify-center gap-[1vw]">
           <div className="text-white text-[2.3vw] font-semibold">주문하기</div>
-          <div className="w-[2.5vw] h-[2.5vw] bg-white rounded-full flex items-center justify-center text-[#27CACA]">
+          <div className="w-[2.5vw] h-[2.5vw] bg-white rounded-full flex items-center justify-center text-[#27CACA] text-[1.8vw]">
             0
           </div>
         </div>

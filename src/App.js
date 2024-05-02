@@ -6,6 +6,7 @@ import OrderBoard from "./pages/OrderBoard";
 import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
+import Gifticon from "./components/OrderBoard/Gifticon";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/log" element={<OrderLog />} />
         <Route path="/chatting" element={<Chatting />} />
         <Route path="/chatSelection" element={<ChatSelection />} />
+        <Route path="/gifticon" element={<Gifticon />} />
         <Route path="/" element={<OrderBoard />} />
       </Routes>
     </BrowserRouter>

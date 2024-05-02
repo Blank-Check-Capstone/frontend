@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import blackNooles from "../../assets/images/blackNooles.jpg";
 const OrderLog = () => {
   const navigate = useNavigate();
 
@@ -9,7 +9,7 @@ const OrderLog = () => {
 
   return (
     <div className="w-full h-screen">
-      <div className="flex w-full h-[10%] bg-black text-white">
+      <div className="flex w-full h-[10%] bg-black text-white fixed">
         <div className="w-[15%] h-full bg-[#393939] text-[2vw] font-bold flex items-center justify-center">
           Table 중식당
         </div>
@@ -28,9 +28,34 @@ const OrderLog = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full h-[90%] items-center justify-center">
-        <div className="text-black text-[4vw] mb-[10%] font-bold">
+
+      {/* <div className="flex w-full h-[90%] items-center justify-center">
+        <div className="text-black text-[4vw] font-bold">
           주문내역이 없습니다.
+        </div>
+      </div> */}
+      <div className="text-black text-[4vw] my-[5%] font-bold fixed w-full h-[20%] bg-white">
+        <div className="w-full h-full flex items-center justify-center">
+          직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요.
+        </div>
+      </div>
+      <div className="flex w-full pt-[20%] items-center flex-col ">
+        <div className="w-[85%] h-full grid grid-cols-4 font-bold gap-5">
+          <div>
+            <img
+              src={blackNooles}
+              className="h-[18vw] w-[18vw] rounded-xl mb-2"
+            />
+            <div className="text-[1.5vw] font-bold">
+              짜장면 <br />
+              100원
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full h-[10%] bg-black bottom-0 flex items-center justify-center text-[2vw] fixed">
+        <div className="text-white flex">
+          Total<div className="text-[#40d7e1]">&ensp;100</div>원
         </div>
       </div>
     </div>

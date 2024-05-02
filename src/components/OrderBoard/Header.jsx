@@ -1,8 +1,6 @@
 import Category from "./Header/Category";
 
-const Header = () => {
-  const categorys = ["면류", "밥류", "음료"];
-
+const Header = ({ categoryList, selectedCategory, scrollSelectCategory }) => {
   return (
     <div className="fixed w-[85vw] top-0 left-[15vw] flex h-[8vw] border-b-1 border-[#F1F1F1] bg-white">
       <div className="w-[7%] h-full bg-white items-center justify-center flex">
@@ -17,8 +15,13 @@ const Header = () => {
         </svg>
       </div>
       <div className="flex-1 flex flex-nowrap overflow-x-scroll whitespace-nowrap">
-        {categorys.map((category) => (
-          <Category title={category} />
+        {categoryList.map((category) => (
+          <Category
+            key={category.id}
+            title={category.title}
+            selected={category.id == selectedCategory}
+            onClick={() => scrollSelectCategory(category.id)}
+          />
         ))}
       </div>
       <div className="w-[7%] h-full bg-white items-center justify-center flex">

@@ -3,18 +3,96 @@ import Menu from "../components/OrderBoard/Side/Menu";
 import KoreanFlag from "../assets/images/KoreanFlag.png";
 import MenuOrderIcon from "../assets/images/menuOrder.svg";
 import Shopping from "../components/OrderBoard/Modal/Shopping";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Call from "../components/OrderBoard/Modal/Call";
+import blackNoodles from "../assets/images/blackNooles.jpg";
 
-const menuList = [
+const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon, selected: true },
   { id: 2, title: "FUN", icon: KoreanFlag, selected: false },
   { id: 3, title: "LANG", icon: KoreanFlag, selected: false },
 ];
 
+const categoryList = [
+  {
+    id: 1,
+    title: "면류",
+    menus: [
+      {
+        id: 1,
+        name: "짜장면",
+        price: 7000,
+        image: blackNoodles,
+      },
+      {
+        id: 2,
+        name: "짬뽕",
+        price: 8000,
+        image: blackNoodles,
+      },
+      {
+        id: 3,
+        name: "간짜장",
+        price: 8000,
+        image: blackNoodles,
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "밥류",
+    menus: [
+      {
+        id: 1,
+        name: "볶음밥",
+        price: 7000,
+        image: blackNoodles,
+      },
+      {
+        id: 2,
+        name: "짜장밥",
+        price: 7000,
+        image: blackNoodles,
+      },
+      {
+        id: 3,
+        name: "짬뽕밥",
+        price: 7000,
+        image: blackNoodles,
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "음료",
+    menus: [
+      {
+        id: 1,
+        name: "콜라",
+        price: 1000,
+        image: blackNoodles,
+      },
+      {
+        id: 2,
+        name: "사이다",
+        price: 1000,
+        image: blackNoodles,
+      },
+      {
+        id: 3,
+        name: "환타",
+        price: 1000,
+        image: blackNoodles,
+      },
+    ],
+  },
+];
+
 const OrderBoard = () => {
   const [isOpenCallModal, setIsOpenCallModal] = useState(false);
   const [isOpenShoppingModal, setIsOpenShoppingModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(categoryList[0].id);
+  const categoryRefs = useRef([]);
 
   const openCallModal = () => {
     setIsOpenCallModal(true);
@@ -32,6 +110,18 @@ const OrderBoard = () => {
     setIsOpenShoppingModal(false);
   };
 
+  const changeSelectedCategory = (categoryId) => {
+    setSelectedCategory(categoryId);
+
+    // if (isScroll) scrollSelectCategory(categoryId);
+  };
+
+  const scrollSelectCategory = (categoryId) => {
+    categoryRefs.current[categoryId].scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="flex w-full h-screen">
       {isOpenCallModal && <Call closeCallModal={closeCallModal} />}
@@ -45,7 +135,7 @@ const OrderBoard = () => {
         </div>
         <div className="flex-1 flex flex-col justify-between">
           <div className="h-full flex flex-col overflow-auto">
-            {menuList.map((menu) => (
+            {sideMenuList.map((menu) => (
               <Menu
                 key={menu.id}
                 id={menu.id}
@@ -69,7 +159,14 @@ const OrderBoard = () => {
           </div>
         </div>
       </div>
-      <Main openShoppingModal={openShoppingModal} />
+      <Main
+        categoryList={categoryList}
+        selectedCategory={selectedCategory}
+        scrollSelectCategory={scrollSelectCategory}
+        changeSelectedCategory={changeSelectedCategory}
+        openShoppingModal={openShoppingModal}
+        ref={categoryRefs}
+      />
     </div>
   );
 };

@@ -1,6 +1,9 @@
-const Menu = ({ name, price, image }) => {
+const Menu = ({ id, name, price, image, addChoiceMenu }) => {
   return (
-    <div className="bg-white p-3 border border-gray-300 rounded-l">
+    <div
+      className="bg-white p-3 border border-gray-300 rounded-l"
+      onClick={addChoiceMenu}
+    >
       <div className="w-full h-[12vw] overflow-hidden flex justify-center items-center">
         <img src={image} alt={name} />
       </div>

@@ -3,7 +3,11 @@ import MinusIcon from "../../MinusIcon";
 import PlusIcon from "../../PlusIcon";
 import CheckIcon from "../../CheckIcon";
 
-const Shopping = ({ closeShoppingModal }) => {
+const Shopping = ({
+  closeShoppingModal,
+  choiceMenus,
+  getMenuByCategoryIdAndMenuId,
+}) => {
   return (
     <div className="w-full h-full fixed z-10">
       <div className="w-[45vw] h-full bg-white absolute top-0 right-0 z-[2]">
@@ -27,40 +31,41 @@ const Shopping = ({ closeShoppingModal }) => {
         </div>
 
         <div className="w-full h-[55%]">
-          <div className="w-full h-[37%] border-b border-[#E2E2E2] border-solid">
-            <div className="p-[1.5vw] flex flex-col gap-[2vw]">
-              <div className="font-bold text-2xl">짜장면</div>
-              <div className="flex justify-between">
-                <div className="flex gap-6 items-center">
-                  <div className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer">
-                    <MinusIcon />
-                  </div>
-                  <p className="text-2xl">1</p>
-                  <div className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer">
-                    <PlusIcon />
-                  </div>
-                </div>
-                <div className="flex gap-4 items-end">
-                  <p className="text-2xl text-[#6D6D6D] ">7,000원</p>
-                  <div className="w-[2.7vw] h-[2.7vw] bg-[#D9D9D9] rounded-3xl hover: cursor-pointer">
-                    <CancelIcon />
+          {choiceMenus.map((_menu) => {
+            console.log(_menu);
+
+            const menu = getMenuByCategoryIdAndMenuId(
+              _menu.categoryId,
+              _menu.menuId
+            );
+
+            return (
+              <div className="w-full h-[37%] border-b border-[#E2E2E2] border-solid">
+                <div className="p-[1.5vw] flex flex-col gap-[2vw]">
+                  <div className="font-bold text-2xl">{menu.name}</div>
+                  <div className="flex justify-between">
+                    <div className="flex gap-6 items-center">
+                      <div className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer">
+                        <MinusIcon />
+                      </div>
+                      <p className="text-2xl">1</p>
+                      <div className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer">
+                        <PlusIcon />
+                      </div>
+                    </div>
+                    <div className="flex gap-4 items-end">
+                      <p className="text-2xl text-[#6D6D6D] ">
+                        {menu.price.toLocaleString()}원
+                      </p>
+                      <div className="w-[2.7vw] h-[2.7vw] bg-[#D9D9D9] rounded-3xl hover: cursor-pointer">
+                        <CancelIcon />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="w-full h-[37%]">
-            <div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <div className="w-full h-[37%]">
-            <div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
         <div className="bg-[#DEDEDE] w-full h-[7%] flex">

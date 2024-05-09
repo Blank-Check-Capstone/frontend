@@ -10,6 +10,8 @@ const Main = forwardRef(
       selectedCategory,
       scrollSelectCategory,
       changeSelectedCategory,
+      addChoiceMenu,
+      choiceMenus,
       openShoppingModal,
     },
     ref
@@ -24,9 +26,13 @@ const Main = forwardRef(
         <Center
           categoryList={categoryList}
           changeSelectedCategory={changeSelectedCategory}
+          addChoiceMenu={addChoiceMenu}
           ref={ref}
         />
-        <Footer openShoppingModal={openShoppingModal} />
+        <Footer
+          openShoppingModal={openShoppingModal}
+          choiceMenus={choiceMenus}
+        />
       </div>
     );
   }

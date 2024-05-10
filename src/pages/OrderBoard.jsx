@@ -6,6 +6,7 @@ import Shopping from "../components/OrderBoard/Modal/Shopping";
 import { useEffect, useRef, useState } from "react";
 import Call from "../components/OrderBoard/Modal/Call";
 import blackNoodles from "../assets/images/blackNooles.jpg";
+import FunList from "../components/OrderBoard/Side/FunList";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon, selected: true },
@@ -92,6 +93,7 @@ const OrderBoard = () => {
   const [isOpenCallModal, setIsOpenCallModal] = useState(false);
   const [isOpenShoppingModal, setIsOpenShoppingModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(categoryList[0].id);
+  const [selectedSideMenu, setSelectedSideMenu] = useState(1);
   const [choiceMenus, setChoiceMenus] = useState([]);
   const categoryRefs = useRef([]);
 
@@ -147,6 +149,7 @@ const OrderBoard = () => {
           getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
         />
       )}
+      {selectedSideMenu == 2 && <FunList />}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>

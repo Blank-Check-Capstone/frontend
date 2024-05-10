@@ -1,12 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import Gifticonimg from "../../assets/images/Gifticon.png";
 const Gifticon = () => {
+  const navigate = useNavigate();
+
+  const pageBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-[#ffd745] ">
         <div className="h-full w-[95%] ml-[5%] text-white text-[2vw] flex items-center justify-center">
           상품 활용권 사용
         </div>
-        <div className="h-full w-[5%] flex items-center justify-center">
+        <div
+          className="h-full w-[5%] flex items-center justify-center"
+          onClick={pageBack}
+        >
           <svg
             className="w-[3vw] h-[3vw] fill-[#F1F1F1] cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"

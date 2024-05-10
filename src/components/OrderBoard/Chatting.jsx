@@ -137,7 +137,6 @@ const Chatting = () => {
             </div>
           </div>
         </div>
-        {/* <div className="h-full w-[30%] bg-[#6FA0FF]"></div> */}
       </div>
     </div>
   );

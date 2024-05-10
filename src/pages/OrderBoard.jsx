@@ -92,7 +92,24 @@ const OrderBoard = () => {
   const [isOpenCallModal, setIsOpenCallModal] = useState(false);
   const [isOpenShoppingModal, setIsOpenShoppingModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(categoryList[0].id);
+  const [choiceMenus, setChoiceMenus] = useState([]);
   const categoryRefs = useRef([]);
+
+  const getMenuByCategoryIdAndMenuId = (categoryId, menuId) => {
+    const { menus } = categoryList.find(
+      (category) => category.id === categoryId
+    );
+
+    console.log(menus);
+
+    const menu = menus.find((_menus) => _menus.id === menuId);
+
+    return menu;
+  };
+
+  const addChoiceMenu = (categoryId, menuId) => {
+    setChoiceMenus([...choiceMenus, { categoryId, menuId }]);
+  };
 
   const openCallModal = () => {
     setIsOpenCallModal(true);
@@ -112,8 +129,6 @@ const OrderBoard = () => {
 
   const changeSelectedCategory = (categoryId) => {
     setSelectedCategory(categoryId);
-
-    // if (isScroll) scrollSelectCategory(categoryId);
   };
 
   const scrollSelectCategory = (categoryId) => {
@@ -126,7 +141,11 @@ const OrderBoard = () => {
     <div className="flex w-full h-screen">
       {isOpenCallModal && <Call closeCallModal={closeCallModal} />}
       {isOpenShoppingModal && (
-        <Shopping closeShoppingModal={closeShoppingModal} />
+        <Shopping
+          closeShoppingModal={closeShoppingModal}
+          choiceMenus={choiceMenus}
+          getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
+        />
       )}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
@@ -165,6 +184,8 @@ const OrderBoard = () => {
         scrollSelectCategory={scrollSelectCategory}
         changeSelectedCategory={changeSelectedCategory}
         openShoppingModal={openShoppingModal}
+        addChoiceMenu={addChoiceMenu}
+        choiceMenus={choiceMenus}
         ref={categoryRefs}
       />
     </div>

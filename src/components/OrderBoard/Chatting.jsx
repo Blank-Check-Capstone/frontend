@@ -1,8 +1,41 @@
-const Chatting = () => {
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
+const Chatting = ({ type, getChatroom }) => {
+  const [chatInfo, setChatInfo] = useState({ id: 0, name: "단체 채팅" });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { chatId } = useParams();
+
+  const roomInit = async (id) => {
+    const room = await getChatroom(id);
+
+    setChatInfo(room);
+  };
+
+  useEffect(() => {
+    try {
+      if (type == 1) {
+        return;
+      }
+
+      roomInit(chatId);
+    } finally {
+      setIsLoading(true);
+    }
+  }, [chatId]);
+
+  if (!isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-white">
-        <div className="h-full w-[10%] flex text-2xl items-center justify-center">
+        <Link
+          to="/chatSelection"
+          className="h-full w-[10%] flex text-2xl items-center justify-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-[2vw] h-[2vw] fill-[#D9D9D9] mr-2"
@@ -13,9 +46,9 @@ const Chatting = () => {
             <path d="M16.041,24,6.534,14.48a3.507,3.507,0,0,1,0-4.948L16.052,0,18.17,2.121,8.652,11.652a.5.5,0,0,0,0,.707l9.506,9.52Z" />
           </svg>
           이전
-        </div>
+        </Link>
         <div className="h-full w-[80%] text-2xl font-bold flex items-center justify-center">
-          단체 채팅
+          {chatInfo.name}
         </div>
       </div>
       <div className="w-full h-[90%] flex">

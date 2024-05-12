@@ -36,7 +36,7 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
         </Link>
 
         <div
-          className="w-[15vw] h-[75%] bg-[#27CACA] rounded-lg flex items-center justify-center gap-[1vw]"
+          className="w-[15vw] h-[75%] bg-[#27CACA] rounded-lg flex items-center justify-center gap-[1vw] hover: cursor-pointer"
           onClick={openShoppingModal}
         >
           <div className="text-white text-[2.3vw] font-semibold">주문하기</div>

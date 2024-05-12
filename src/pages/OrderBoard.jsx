@@ -3,15 +3,15 @@ import Menu from "../components/OrderBoard/Side/Menu";
 import KoreanFlag from "../assets/images/KoreanFlag.png";
 import MenuOrderIcon from "../assets/images/menuOrder.svg";
 import Shopping from "../components/OrderBoard/Modal/Shopping";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Call from "../components/OrderBoard/Modal/Call";
 import blackNoodles from "../assets/images/blackNooles.jpg";
 import FunList from "../components/OrderBoard/Side/FunList";
 
 const sideMenuList = [
-  { id: 1, title: "메뉴주문", icon: MenuOrderIcon, selected: true },
-  { id: 2, title: "FUN", icon: KoreanFlag, selected: false },
-  { id: 3, title: "LANG", icon: KoreanFlag, selected: false },
+  { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
+  { id: 2, title: "FUN", icon: KoreanFlag },
+  { id: 3, title: "LANG", icon: KoreanFlag },
 ];
 
 const categoryList = [
@@ -149,7 +149,7 @@ const OrderBoard = () => {
           getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
         />
       )}
-      {selectedSideMenu == 2 && <FunList />}
+      {selectedSideMenu === 2 && <FunList />}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>
@@ -163,7 +163,10 @@ const OrderBoard = () => {
                 id={menu.id}
                 title={menu.title}
                 icon={menu.icon}
-                selected={menu.selected}
+                selected={selectedSideMenu === menu.id}
+                onClick={() => {
+                  setSelectedSideMenu(menu.id);
+                }}
               />
             ))}
           </div>

@@ -41,7 +41,10 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
         >
           <div className="text-white text-[2.3vw] font-semibold">주문하기</div>
           <div className="w-[2.5vw] h-[2.5vw] bg-white rounded-full flex items-center justify-center text-[#27CACA] text-[1.8vw]">
-            {choiceMenus.length}
+            {choiceMenus.reduce(
+              (total, choiceMenu) => total + choiceMenu.amount,
+              0
+            )}
           </div>
         </div>
       </div>

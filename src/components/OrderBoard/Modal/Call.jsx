@@ -1,6 +1,61 @@
+import { useState } from "react";
 import CancelIcon from "../../CancelIcon";
+import SelectedSide from "./Call/SelectedSide";
+import UnSelectedSide from "./Call/UnSelectedSide";
+
+const callMenus = [
+  {
+    id: 1,
+    name: "티슈 주세요",
+  },
+  {
+    id: 2,
+    name: "테이블정리해주세요 제발",
+  },
+  {
+    id: 3,
+    name: "물 주세요",
+  },
+  {
+    id: 4,
+    name: "직원 호출",
+  },
+  {
+    id: 5,
+    name: "티슈",
+  },
+];
 
 const Call = ({ closeCallModal }) => {
+  const [selectedCalls, setSelectedCalls] = useState([
+    {
+      id: 1,
+      amount: 9,
+    },
+  ]);
+
+  const getCallById = (id) => {
+    return callMenus.find((callMenu) => callMenu.id == id);
+  };
+
+  const addSelectedCall = (id) => {
+    const hasCall = selectedCalls.findIndex((_menu) => _menu.id == id);
+
+    if (hasCall < 0) {
+      setSelectedCalls([...selectedCalls, { id, amount: 1 }]);
+
+      return;
+    }
+
+    if (selectedCalls[hasCall].amount >= 9) return;
+
+    const _selectedCalls = [...selectedCalls];
+
+    _selectedCalls[hasCall].amount++;
+
+    setSelectedCalls(_selectedCalls);
+  };
+
   return (
     <div className="w-full h-full fixed z-10 flex justify-center items-center">
       <div className="w-[90%] h-[90%]  bg-white relative z-[2]">
@@ -46,60 +101,51 @@ const Call = ({ closeCallModal }) => {
         <div className="w-full h-[90%] flex">
           <div className="bg-[#D9D9D9] w-[70%] flex justify-center items-center">
             <div className="w-full grid grid-cols-3 auto-rows-[10vw] p-5">
-              <div className="relative w-full h-full bg-white border-2 border-[#27CACA] flex justify-center items-center text-2xl text-[#27CACA]">
-                티슈 주세요
-                <div className="flex absolute bottom-0 right-0 m-2">x1</div>
-              </div>
-              <div className="w-full h-full bg-white border-2 border-[#919191] flex justify-center items-center text-2xl text-[#575757]">
-                티슈 주세요
-              </div>
+              {callMenus.map((callMenu) => {
+                const findCall = selectedCalls.find(
+                  (_call) => _call.id == callMenu.id
+                );
+
+                if (findCall) {
+                  return (
+                    <div
+                      className="relative w-full h-full bg-white border-2 border-[#27CACA] flex justify-center items-center text-2xl text-[#27CACA]"
+                      onClick={() => addSelectedCall(callMenu.id)}
+                    >
+                      {callMenu.name}
+                      <div className="flex absolute bottom-0 right-0 m-2">
+                        x{findCall.amount}
+                      </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div
+                    className="w-full h-full bg-white border-2 border-[#919191] flex justify-center items-center text-2xl text-[#575757]"
+                    onClick={() => addSelectedCall(callMenu.id)}
+                  >
+                    {callMenu.name}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          <div className="bg-white w-[30%] h-full">
-            <div className="w-full h-[20%] bg-white border-b-2 border-[#D9D9D9]">
-              <div className="w-[90%] h-[30%] bg-white flex justify-between mx-3 my-1 items-center">
-                <div className="text-2xl">티슈 주세요</div>
-                <div className="w-[20%] h-[80%] bg-[#B5B5B5] flex justify-center items-center border-2 border-[#929292] text-white rounded-full">
-                  삭제
-                </div>
-              </div>
-              <div className="flex mx-3 w-[30%] h-[30%] bg-white my-5">
-                <div className="w-[35%] h-full text-2xl bg-black flex justify-center items-center text-white">
-                  -
-                </div>
-                <div className="w-[40%] h-full bg-white flex justify-center items-center">
-                  1
-                </div>
-                <div className="w-[35%] h-full bg-black flex justify-center items-center text-white">
-                  +
-                </div>
-              </div>
-            </div>
-
-            <div className="w-[30%] h-[10%] bg-white flex absolute bottom-0">
-              <div className="h-full w-[40%] bg-[#A9A9A9] flex justify-center items-center text-white text-2xl">
-                전체삭제
-              </div>
-              <div className="h-full w-[60%] bg-[#6DDDDD] flex justify-center items-center text-white text-2xl">
-                요청하기
-              </div>
-            </div>
-          </div>
-
-          {/* <div className="bg-white w-[30%] h-full flex justify-center items-center">
-            <div className="text-center text-2xl font-bold">
-              <span className="text-black">왼쪽에서</span>
-              <br />
-              <span className="text-[#FF8F0C]">요청하실 항목을</span>
-              <br />
-              <span className="text-[#FF8F0C]">선택</span>
-              <span className="text-black">해주세요.</span>
-            </div>
-          </div> */}
+          {selectedCalls.length > 0 ? (
+            <SelectedSide
+              selectedCalls={selectedCalls}
+              getCallById={getCallById}
+            />
+          ) : (
+            <UnSelectedSide />
+          )}
         </div>
       </div>
-      <div className="w-full h-full bg-black opacity-30 absolute top-0 left-0 z-[1]"></div>
+      <div
+        className="w-full h-full bg-black opacity-30 absolute top-0 left-0 z-[1]"
+        onClick={closeCallModal}
+      ></div>
     </div>
   );
 };

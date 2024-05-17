@@ -5,7 +5,7 @@ const Menu = ({ id, name, price, image, addChoiceMenu }) => {
       onClick={addChoiceMenu}
     >
       <div className="w-full h-[12vw] overflow-hidden flex justify-center items-center">
-        <img src={image} alt={name} />
+        <img src={image} alt={name} className="object-cover w-full h-full" />
       </div>
       <div className="pl-2">
         <div className="text-[2.2vw] font-normal">{name}</div>

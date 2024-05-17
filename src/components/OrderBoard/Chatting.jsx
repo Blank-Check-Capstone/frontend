@@ -33,7 +33,7 @@ const Chatting = ({ type, getChatroom }) => {
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-white">
         <Link
-          to="/chatSelection"
+          to={`${type == 1 ? "/" : "/chatSelection"}`}
           className="h-full w-[10%] flex text-2xl items-center justify-center"
         >
           <svg

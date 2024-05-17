@@ -1,7 +1,7 @@
 const Menu = ({ id, title, icon, selected, onClick }) => {
   return (
     <div
-      className={`flex h-[7vw] w-[100%] items-center pl-[2vw] border-b-[0.1vw] border-b-[#343434] ${
+      className={`flex h-[7vw] w-[100%] items-center pl-[2vw] border-b-[0.1vw] border-b-[#343434] cursor-pointer ${
         selected
           ? "gap-[1.2vw] border-l-[0.5vw] border-l-[#46B0AE] bg-[#3d3d3d]"
           : "gap-[1vw]"
@@ -9,7 +9,11 @@ const Menu = ({ id, title, icon, selected, onClick }) => {
       onClick={onClick}
     >
       <img
-        className={`${id === 1 ? "w-[2vw] h-[2vw]" : "w-[3vw] h-[3vw]"}`}
+        className={`${id === 1 ? "w-[2vw] h-[2vw]" : "w-[3vw] h-[3vw]"} ${
+          selected || id === 3
+            ? ""
+            : "invert-[78%] sepia-[10%] saturate-[324%] hue-rotate-[179deg] brightness-[83%] contrast-[87%]"
+        }`}
         src={icon}
         alt={title}
       />

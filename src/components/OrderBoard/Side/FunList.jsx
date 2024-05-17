@@ -6,7 +6,7 @@ const FunElements = [
   { id: 3, title: "단체채팅", uri: "/chatting" },
 ];
 
-const FunList = () => {
+const FunList = ({ closeFunList }) => {
   return (
     <div className="w-[85vw] h-full fixed left-[15vw] z-10">
       <div className="w-[15vw] top-[27vw] left-0 absolute z-[2]">
@@ -18,7 +18,10 @@ const FunList = () => {
           />
         ))}
       </div>
-      <div className="w-full h-full bg-black opacity-30 absolute top-0 left-0 z-[1]"></div>
+      <div
+        className="w-full h-full bg-black opacity-30 absolute top-0 left-0 z-[1]"
+        onClick={closeFunList}
+      ></div>
     </div>
   );
 };

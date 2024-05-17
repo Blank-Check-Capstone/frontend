@@ -6,11 +6,19 @@ import Shopping from "../components/OrderBoard/Modal/Shopping";
 import { useRef, useState } from "react";
 import Call from "../components/OrderBoard/Modal/Call";
 import blackNoodles from "../assets/images/blackNooles.jpg";
+import ganblackNoodles from "../assets/images/ganBlackNoodles.jpg";
+import jambong from "../assets/images/jambong.jpg";
+import friedRice from "../assets/images/friedRice.png";
+import jajangRice from "../assets/images/jajangRice.jpg";
+import coke from "../assets/images/coke.png";
+import cider from "../assets/images/cider.png";
+import fanta from "../assets/images/fanta.png";
 import FunList from "../components/OrderBoard/Side/FunList";
+import FunIcon from "../assets/images/FunIcon.svg";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
-  { id: 2, title: "FUN", icon: KoreanFlag },
+  { id: 2, title: "FUN", icon: FunIcon },
   { id: 3, title: "LANG", icon: KoreanFlag },
 ];
 
@@ -29,13 +37,13 @@ const categoryList = [
         id: 2,
         name: "짬뽕",
         price: 8000,
-        image: blackNoodles,
+        image: jambong,
       },
       {
         id: 3,
         name: "간짜장",
         price: 8000,
-        image: blackNoodles,
+        image: ganblackNoodles,
       },
     ],
   },
@@ -47,13 +55,13 @@ const categoryList = [
         id: 1,
         name: "볶음밥",
         price: 7000,
-        image: blackNoodles,
+        image: friedRice,
       },
       {
         id: 2,
         name: "짜장밥",
         price: 7000,
-        image: blackNoodles,
+        image: jajangRice,
       },
       {
         id: 3,
@@ -71,19 +79,19 @@ const categoryList = [
         id: 1,
         name: "콜라",
         price: 1000,
-        image: blackNoodles,
+        image: coke,
       },
       {
         id: 2,
         name: "사이다",
         price: 1000,
-        image: blackNoodles,
+        image: cider,
       },
       {
         id: 3,
         name: "환타",
         price: 1000,
-        image: blackNoodles,
+        image: fanta,
       },
     ],
   },
@@ -102,15 +110,27 @@ const OrderBoard = () => {
       (category) => category.id === categoryId
     );
 
-    console.log(menus);
-
     const menu = menus.find((_menus) => _menus.id === menuId);
 
     return menu;
   };
 
   const addChoiceMenu = (categoryId, menuId) => {
-    setChoiceMenus([...choiceMenus, { categoryId, menuId }]);
+    const hasMenu = choiceMenus.findIndex(
+      (menu) => menu.categoryId == categoryId && menu.menuId == menuId
+    );
+
+    if (hasMenu < 0) {
+      setChoiceMenus([...choiceMenus, { categoryId, menuId, amount: 1 }]);
+
+      return;
+    }
+
+    const _choiceMenus = [...choiceMenus];
+
+    _choiceMenus[hasMenu].amount++;
+
+    setChoiceMenus(_choiceMenus);
   };
 
   const openCallModal = () => {
@@ -129,8 +149,16 @@ const OrderBoard = () => {
     setIsOpenShoppingModal(false);
   };
 
+  const closeFunList = () => {
+    setSelectedSideMenu(1);
+  };
+
   const changeSelectedCategory = (categoryId) => {
     setSelectedCategory(categoryId);
+  };
+
+  const emptyShopping = () => {
+    setChoiceMenus([]);
   };
 
   const scrollSelectCategory = (categoryId) => {
@@ -147,9 +175,11 @@ const OrderBoard = () => {
           closeShoppingModal={closeShoppingModal}
           choiceMenus={choiceMenus}
           getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
+          emptyShopping={emptyShopping}
+          addChoiceMenu={addChoiceMenu}
         />
       )}
-      {selectedSideMenu === 2 && <FunList />}
+      {selectedSideMenu === 2 && <FunList closeFunList={closeFunList} />}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>

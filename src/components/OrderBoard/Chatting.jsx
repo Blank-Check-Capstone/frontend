@@ -7,6 +7,12 @@ const Chatting = ({ type, getChatroom }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [inputContent, setInputContent] = useState([]);
   const [beforeInput, setBeforeInput] = useState("");
+  const [chats, setChats] = useState([
+    {
+      time: new Date(),
+      content: "hello world!",
+    },
+  ]);
 
   const { chatId } = useParams();
 
@@ -27,6 +33,15 @@ const Chatting = ({ type, getChatroom }) => {
       setIsLoading(true);
     }
   }, [chatId]);
+
+  const addChat = () => {
+    if (inputContent == "") return;
+
+    setChats([...chats, { time: new Date(), content: inputContent }]);
+
+    setInputContent("");
+    setBeforeInput("");
+  };
 
   const changeInputContent = (e) => {
     setBeforeInput("");
@@ -336,11 +351,25 @@ const Chatting = ({ type, getChatroom }) => {
               2. 앱을 통해서 충분히 대화를 나누고 난뒤 연락처 주고 받으시기
               바랍니다.
             </div>
-            <div className="flex h-[10%] w-full justify-end pr-2">
-              <div className="flex-shrink-0 mt-auto mr-2 flex">am 11:02</div>
-              <div className="bg-[#FFF500] flex items-center justify-center px-3 rounded-xl text-2xl">
-                hello world!
-              </div>
+            <div className="w-full h-full flex flex-col gap-[1vw]">
+              {chats.map((chat) => {
+                const isAmPm = chat.time.getHours() < 12 ? "AM" : "PM";
+                const hour =
+                  chat.time.getHours() > 12
+                    ? chat.time.getHours() - 12
+                    : chat.time.getHours();
+
+                return (
+                  <div className="flex h-[10%] w-full justify-end pr-2">
+                    <div className="flex-shrink-0 mt-auto mr-2 flex">
+                      {`${isAmPm} ${hour}:${chat.time.getMinutes()}`}
+                    </div>
+                    <div className="bg-[#FFF500] flex items-center justify-center px-3 rounded-xl text-2xl">
+                      {Hangul.assemble(chat.content)}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -367,7 +396,10 @@ const Chatting = ({ type, getChatroom }) => {
                 onChange={changeInputContent}
               />
             </div>
-            <div className="h-[70%] w-[15%] bg-[#E6E6E6] border-[#7B7B7B] border mx-3 flex items-center justify-center rounded-xl text-2xl font-bold">
+            <div
+              className="h-[70%] w-[15%] bg-[#E6E6E6] border-[#7B7B7B] border mx-3 flex items-center justify-center rounded-xl text-2xl font-bold"
+              onClick={addChat}
+            >
               전송
             </div>
           </div>
@@ -383,7 +415,10 @@ const Chatting = ({ type, getChatroom }) => {
                 disabled
               />
             </div>
-            <div className="w-[25%] h-[80%] border-[#7B7B7B] border flex items-center justify-center text-[#7B7B7B] bg-[#C9CDD0] rounded-xl">
+            <div
+              className="w-[25%] h-[80%] border-[#7B7B7B] border flex items-center justify-center text-[#7B7B7B] bg-[#C9CDD0] rounded-xl"
+              onClick={addChat}
+            >
               전송
             </div>
           </div>

@@ -9,7 +9,7 @@ const FunElements = [
 const FunList = ({ closeFunList }) => {
   return (
     <div className="w-[85vw] h-full fixed left-[15vw] z-10">
-      <div className="w-[15vw] top-[27vw] left-0 absolute z-[2]">
+      <div className="w-[20vw] top-[27vw] left-0 absolute z-[2]">
         {FunElements.map((funElement) => (
           <FunElement
             key={funElement.id}

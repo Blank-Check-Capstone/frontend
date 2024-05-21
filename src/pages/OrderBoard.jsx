@@ -181,7 +181,7 @@ const OrderBoard = () => {
       )}
       {selectedSideMenu === 2 && <FunList closeFunList={closeFunList} />}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
-        <div className="w-[100%] h-[20vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
+        <div className="w-[100%] h-[18vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>
           <div className="text-white text-[2.5vw] font-semibold">중식당</div>
         </div>

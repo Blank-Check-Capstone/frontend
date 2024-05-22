@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 const Menu = ({ id, title, icon, selected, onClick }) => {
   return (
     <div
@@ -13,16 +15,20 @@ const Menu = ({ id, title, icon, selected, onClick }) => {
           selected || id === 3
             ? ""
             : "invert-[78%] sepia-[10%] saturate-[324%] hue-rotate-[179deg] brightness-[83%] contrast-[87%]"
-        }`}
+        } ${id === 3 && "rounded-full object-cover"}`}
         src={icon}
         alt={title}
       />
       <div
-        className={`text-[2vw] font-medium ${
+        className={`text-[2vw] font-medium break-words ${
           selected ? "text-white" : "text-gray-400"
         }`}
       >
-        {title}
+        {id == 1
+          ? t("menuOrder")
+              .split("\n")
+              .map((line) => <div>{line}</div>)
+          : title}
       </div>
     </div>
   );

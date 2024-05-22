@@ -5,7 +5,7 @@ import CheckIcon from "../../CheckIcon";
 import Menu from "./Shopping/Menu";
 
 const Shopping = ({
-  closeShoppingModal,
+  closeModal,
   choiceMenus,
   getMenuByCategoryIdAndMenuId,
   emptyShopping,
@@ -29,7 +29,7 @@ const Shopping = ({
             </div>
             <div
               className="hover: cursor-pointer w-[4vw] h-[4vw] flex mr-[10px]"
-              onClick={closeShoppingModal}
+              onClick={closeModal}
             >
               <CancelIcon />
             </div>
@@ -99,7 +99,7 @@ const Shopping = ({
       </div>
       <div
         className="w-full h-full bg-black opacity-30 absolute top-0 left-0 z-[1]"
-        onClick={closeShoppingModal}
+        onClick={closeModal}
       ></div>
     </div>
   );

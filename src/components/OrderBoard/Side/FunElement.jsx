@@ -9,7 +9,7 @@ const FunElement = ({ icon, title, uri }) => {
       >
         <div className="flex items-center gap-[0.5vw]">
           <div className="w-[2.5vw] h-[2.5vw] bg-red-200"></div>
-          <div>{title}</div>
+          <div className="text-[1.5vw]">{title}</div>
         </div>
         <div className="w-[2.5vw] h-[2.5vw] bg-[#f1f1f1] flex items-center justify-center rounded-full">
           <svg

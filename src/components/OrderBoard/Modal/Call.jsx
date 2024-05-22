@@ -27,12 +27,7 @@ const callMenus = [
 ];
 
 const Call = ({ closeCallModal }) => {
-  const [selectedCalls, setSelectedCalls] = useState([
-    {
-      id: 1,
-      amount: 9,
-    },
-  ]);
+  const [selectedCalls, setSelectedCalls] = useState([]);
 
   const getCallById = (id) => {
     return callMenus.find((callMenu) => callMenu.id == id);

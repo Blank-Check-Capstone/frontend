@@ -7,6 +7,7 @@ import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Gifticon from "./components/OrderBoard/Gifticon";
+import AdminLogin from "./components/OrderBoard/AdminLogin";
 
 const chatrooms = [
   {
@@ -49,6 +50,7 @@ const App = () => {
       <Routes>
         <Route path="/alert" element={<NoticeBoard />} />
         <Route path="/log" element={<OrderLog />} />
+        <Route path="/admin" element={<AdminLogin />} />
         <Route path="/chatting" element={<Chatting type={1} />} />
         <Route
           path="/chatting/:chatId"

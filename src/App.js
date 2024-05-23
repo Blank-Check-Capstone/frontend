@@ -7,6 +7,7 @@ import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Gifticon from "./components/OrderBoard/Gifticon";
+import ChoicePayment from "./components/OrderBoard/Modal/ChoicePayment";
 
 const chatrooms = [
   {

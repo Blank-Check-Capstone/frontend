@@ -9,6 +9,8 @@ const Shopping = ({
   emptyShopping,
   addChoiceMenu,
   removeChoiceMenu,
+  openPaymentModal,
+  closePaymentModal,
 }) => {
   return (
     <div className="w-full h-full fixed z-10">
@@ -95,7 +97,10 @@ const Shopping = ({
           <div className="bg-black w-[25%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer">
             포장
           </div>
-          <div className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer">
+          <div
+            className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer"
+            onClick={openPaymentModal}
+          >
             주문하기
           </div>
         </div>

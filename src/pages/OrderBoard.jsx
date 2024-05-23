@@ -17,7 +17,8 @@ import FunList from "../components/OrderBoard/Side/FunList";
 import FunIcon from "../assets/images/FunIcon.svg";
 import Lang from "../components/OrderBoard/Modal/Lang";
 import { t } from "i18next";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import Payment from "../components/OrderBoard/Modal/Payment";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
@@ -30,6 +31,7 @@ const OrderBoard = ({ langList }) => {
   const [selectedSideMenu, setSelectedSideMenu] = useState(1);
   const [choiceMenus, setChoiceMenus] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
   const categoryRefs = useRef([]);
   const [searchParams, setSeratchParams] = useSearchParams();
 
@@ -209,6 +211,14 @@ const OrderBoard = ({ langList }) => {
     }
   }, [selectedSideMenu]);
 
+  const openPaymentModal = () => {
+    setIsOpenPaymentModal(true);
+  };
+
+  const closePaymentModal = () => {
+    setIsOpenPaymentModal(false);
+  };
+
   const modalList = [
     {
       id: 1,
@@ -224,6 +234,7 @@ const OrderBoard = ({ langList }) => {
           emptyShopping={emptyShopping}
           addChoiceMenu={addChoiceMenu}
           removeChoiceMenu={removeChoiceMenu}
+          openPaymentModal={openPaymentModal}
         />
       ),
     },
@@ -239,11 +250,14 @@ const OrderBoard = ({ langList }) => {
 
   return (
     <div className="flex w-full h-screen">
+      {isOpenPaymentModal && <Payment closePaymentModal={closePaymentModal} />}
       {modalList.find((modal) => modal.id == nowShowModal)?.modal}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[18vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>
-          <div className="text-white text-[2.5vw] font-semibold">1번</div>
+          <Link to={"/admin"} className="text-white text-[2.5vw] font-semibold">
+            1번
+          </Link>
         </div>
         <div className="flex-1 flex flex-col justify-between">
           <div className="h-full flex flex-col overflow-auto">

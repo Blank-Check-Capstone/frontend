@@ -85,7 +85,7 @@ const OrderBoard = ({ langList }) => {
     },
     {
       id: 3,
-      title: t("drinks"),
+      title: t("beverage"),
       menus: [
         {
           id: 1,

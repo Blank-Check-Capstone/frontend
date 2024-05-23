@@ -1,0 +1,23 @@
+{
+  "menuOrder": "메뉴주문",
+  "employeeCall": "직원호출",
+  "game": "게임",
+  "chatting.p": "1:1채팅",
+  "chatting.a": "단체채팅",
+  "giftcard": "기프티콘",
+  "orderHistory": "주문내역",
+  "order": "주문하기",
+  "won": "원",
+  "noodles": "면류",
+  "rice": "밥류",
+  "beverage": "음료",
+  "blackNoodles": "짜장면",
+  "spicySeafoodNoodles": "짬뽕",
+  "spicyBlackNoodles": "간짜장",
+  "friedRice": "볶음밥",
+  "blackRice": "짜장밥",
+  "spicySeafoodRice": "짬뽕밥",
+  "cola": "코카콜라",
+  "cider": "칠성사이다",
+  "fanta": "환타"
+}

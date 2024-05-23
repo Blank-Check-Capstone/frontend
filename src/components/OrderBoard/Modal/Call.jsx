@@ -10,7 +10,7 @@ const callMenus = [
   },
   {
     id: 2,
-    name: "테이블정리해주세요 제발",
+    name: "테이블정리해주세요",
   },
   {
     id: 3,
@@ -26,13 +26,8 @@ const callMenus = [
   },
 ];
 
-const Call = ({ closeCallModal }) => {
-  const [selectedCalls, setSelectedCalls] = useState([
-    {
-      id: 1,
-      amount: 9,
-    },
-  ]);
+const Call = ({ closeModal }) => {
+  const [selectedCalls, setSelectedCalls] = useState([]);
 
   const getCallById = (id) => {
     return callMenus.find((callMenu) => callMenu.id == id);
@@ -82,7 +77,7 @@ const Call = ({ closeCallModal }) => {
           </div>
           <div
             className="flex items-center cursor-pointer gap-[1vw]"
-            onClick={closeCallModal}
+            onClick={closeModal}
           >
             <div>
               <CancelIcon
@@ -109,7 +104,7 @@ const Call = ({ closeCallModal }) => {
                 if (findCall) {
                   return (
                     <div
-                      className="relative w-full h-full bg-white border-2 border-[#27CACA] flex justify-center items-center text-2xl text-[#27CACA]"
+                      className="relative w-full h-full bg-white border-2 border-[#27CACA] flex justify-center items-center p-[1vw] text-[2vw] text-[#27CACA]"
                       onClick={() => addSelectedCall(callMenu.id)}
                     >
                       {callMenu.name}
@@ -122,7 +117,7 @@ const Call = ({ closeCallModal }) => {
 
                 return (
                   <div
-                    className="w-full h-full bg-white border-2 border-[#919191] flex justify-center items-center text-2xl text-[#575757]"
+                    className="w-full h-full bg-white border-2 border-[#919191] flex justify-center items-center p-[1vw] text-[2vw] text-[#575757]"
                     onClick={() => addSelectedCall(callMenu.id)}
                   >
                     {callMenu.name}
@@ -144,7 +139,7 @@ const Call = ({ closeCallModal }) => {
       </div>
       <div
         className="w-full h-full bg-black opacity-30 absolute top-0 left-0 z-[1]"
-        onClick={closeCallModal}
+        onClick={closeModal}
       ></div>
     </div>
   );

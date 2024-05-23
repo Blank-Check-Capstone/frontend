@@ -1,0 +1,23 @@
+{
+  "menuOrder": "Menu\nOrder",
+  "employeeCall": "employeecall",
+  "game": "game",
+  "chatting.p": "1:1 chat",
+  "chatting.a": "Group chat",
+  "giftcard": "gift card",
+  "orderHistory": "Order History",
+  "order": "Order",
+  "won": "won",
+  "noodles": "Noodles",
+  "rice": "Rice",
+  "beverage": "beverage",
+  "blackNoodles": "Black Bean Sauce Noodles",
+  "spicySeafoodNoodles": "Spicy Seafood Noodle Soup",
+  "spicyBlackNoodles": "Spicy Black Bean Sauce Noodles",
+  "friedRice": "FriedRice",
+  "blackRice": "Black Bean Sauce Rice",
+  "spicySeafoodRice": "Spicy Seafood Soup Rice",
+  "cola": "Coca Cola",
+  "cider": "Chilsung Cider",
+  "fanta": "Fanta"
+}

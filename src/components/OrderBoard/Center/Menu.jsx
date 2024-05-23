@@ -1,16 +1,21 @@
+import { t } from "i18next";
+
 const Menu = ({ id, name, price, image, addChoiceMenu }) => {
   return (
     <div
-      className="bg-white p-3 border border-gray-300 rounded-l"
+      className="bg-white p-[1vw] border border-gray-300 rounded-l"
       onClick={addChoiceMenu}
     >
       <div className="w-full h-[12vw] overflow-hidden flex justify-center items-center">
         <img src={image} alt={name} className="object-cover w-full h-full" />
       </div>
-      <div className="pl-2">
-        <div className="text-[2.2vw] font-normal">{name}</div>
+      <div className="px-[0.5vw]">
+        <div className="text-[2.2vw] font-normal overflow-hidden text-ellipsis whitespace-nowrap">
+          {name}
+        </div>
         <div className="text-[2vw] font-bold tracking-tighter">
-          {price.toLocaleString()}원
+          {price.toLocaleString()}
+          {t("won")}
         </div>
       </div>
       <div className="w-[5vw] h-[3vw] bg-[#000] flex items-center justify-center rounded-lg text-white text-[1.5vw] float-right">

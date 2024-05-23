@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import gifts_image from "../../assets/images/gifts_image.png";
+import { t } from "i18next";
 
 const Footer = ({ openShoppingModal, choiceMenus }) => {
   return (
@@ -11,10 +12,10 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
         >
           <img
             src={gifts_image}
-            alt="선물하기 사진"
+            alt={t("giftcard")}
             className="w-[3vw] h-[3vw]"
           />
-          <div className="text-[#b0b0b0] text-[2.3vw]">기프티콘</div>
+          <div className="text-[#b0b0b0] text-[2.3vw]">{t("giftcard")}</div>
         </Link>
       </div>
 
@@ -31,7 +32,9 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
               <rect y="14.0001" width="34" height="6" fill="#D9D9D9" />
               <rect y="28.0001" width="34" height="6" fill="#D9D9D9" />
             </svg>
-            <div className="text-[#b0b0b0] text-[2.3vw]">주문내역</div>
+            <div className="max-h-full text-[#b0b0b0] text-[2.3vw] leading-[2vw]">
+              {t("orderHistory")}
+            </div>
           </div>
         </Link>
 
@@ -39,7 +42,9 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
           className="w-[15vw] h-[75%] bg-[#27CACA] rounded-lg flex items-center justify-center gap-[1vw] hover: cursor-pointer"
           onClick={openShoppingModal}
         >
-          <div className="text-white text-[2.3vw] font-semibold">주문하기</div>
+          <div className="text-white text-[2.3vw] font-semibold">
+            {t("order")}
+          </div>
           <div className="w-[2.5vw] h-[2.5vw] bg-white rounded-full flex items-center justify-center text-[#27CACA] text-[1.8vw]">
             {choiceMenus.reduce(
               (total, choiceMenu) => total + choiceMenu.amount,

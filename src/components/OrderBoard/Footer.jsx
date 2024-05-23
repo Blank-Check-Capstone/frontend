@@ -21,7 +21,7 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
 
       <div className="flex h-full items-center gap-2">
         <Link to="/log" className="h-full flex items-center">
-          <div className="w-[15vw] h-[75%] border-[0.2vw] border-[#DBDBDB] bg-white rounded-lg flex items-center justify-center gap-[1vw]">
+          <div className="w-[15vw] h-[75%] border-[0.2vw] border-[#DBDBDB] bg-white rounded-lg flex items-center justify-center gap-[1vw] px-[1vw]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 34 34"
@@ -32,7 +32,7 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
               <rect y="14.0001" width="34" height="6" fill="#D9D9D9" />
               <rect y="28.0001" width="34" height="6" fill="#D9D9D9" />
             </svg>
-            <div className="max-h-full text-[#b0b0b0] text-[2.3vw] leading-[2vw]">
+            <div className="max-h-full text-[#b0b0b0] text-[2.1vw] leading-[2vw]">
               {t("orderHistory")}
             </div>
           </div>

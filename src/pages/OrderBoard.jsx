@@ -29,7 +29,6 @@ const OrderBoard = ({ langList }) => {
   const [nowShowModal, setNowShowModal] = useState(null);
   const [selectedSideMenu, setSelectedSideMenu] = useState(1);
   const [choiceMenus, setChoiceMenus] = useState([]);
-  const [modalList, setModalList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
   const categoryRefs = useRef([]);
   const [searchParams, setSeratchParams] = useSearchParams();
@@ -139,6 +138,24 @@ const OrderBoard = ({ langList }) => {
     setChoiceMenus(_choiceMenus);
   };
 
+  const removeChoiceMenu = (categoryId, menuId) => {
+    const hasMenu = choiceMenus.findIndex(
+      (menu) => menu.categoryId == categoryId && menu.menuId == menuId
+    );
+
+    if (hasMenu < 0) {
+      return;
+    }
+
+    const _choiceMenus = [...choiceMenus];
+
+    if (_choiceMenus[hasMenu].amount <= 1) return;
+
+    _choiceMenus[hasMenu].amount--;
+
+    setChoiceMenus(_choiceMenus);
+  };
+
   const openCallModal = () => {
     setNowShowModal(1);
   };
@@ -192,34 +209,33 @@ const OrderBoard = ({ langList }) => {
     }
   }, [selectedSideMenu]);
 
-  useEffect(() => {
-    setModalList([
-      {
-        id: 1,
-        modal: <Call closeModal={closeModal} />,
-      },
-      {
-        id: 2,
-        modal: (
-          <Shopping
-            closeModal={closeModal}
-            choiceMenus={choiceMenus}
-            getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
-            emptyShopping={emptyShopping}
-            addChoiceMenu={addChoiceMenu}
-          />
-        ),
-      },
-      {
-        id: 3,
-        modal: <FunList closeModal={closeSideMenuModal} />,
-      },
-      {
-        id: 4,
-        modal: <Lang closeModal={closeSideMenuModal} langList={langList} />,
-      },
-    ]);
-  }, []);
+  const modalList = [
+    {
+      id: 1,
+      modal: <Call closeModal={closeModal} />,
+    },
+    {
+      id: 2,
+      modal: (
+        <Shopping
+          closeModal={closeModal}
+          choiceMenus={choiceMenus}
+          getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
+          emptyShopping={emptyShopping}
+          addChoiceMenu={addChoiceMenu}
+          removeChoiceMenu={removeChoiceMenu}
+        />
+      ),
+    },
+    {
+      id: 3,
+      modal: <FunList closeModal={closeSideMenuModal} />,
+    },
+    {
+      id: 4,
+      modal: <Lang closeModal={closeSideMenuModal} langList={langList} />,
+    },
+  ];
 
   return (
     <div className="flex w-full h-screen">

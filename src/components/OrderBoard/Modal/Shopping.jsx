@@ -1,6 +1,4 @@
 import CancelIcon from "../../CancelIcon";
-import MinusIcon from "../../MinusIcon";
-import PlusIcon from "../../PlusIcon";
 import CheckIcon from "../../CheckIcon";
 import Menu from "./Shopping/Menu";
 
@@ -10,6 +8,7 @@ const Shopping = ({
   getMenuByCategoryIdAndMenuId,
   emptyShopping,
   addChoiceMenu,
+  removeChoiceMenu,
 }) => {
   return (
     <div className="w-full h-full fixed z-10">
@@ -38,6 +37,8 @@ const Shopping = ({
 
         <div className="w-full h-[55%] overflow-auto">
           {choiceMenus.map((menu) => {
+            console.log(menu);
+
             const menuInfo = getMenuByCategoryIdAndMenuId(
               menu.categoryId,
               menu.menuId
@@ -45,9 +46,11 @@ const Shopping = ({
 
             return (
               <Menu
+                key={`${menu.categoryId}-${menu.menuId}`}
                 menu={menu}
                 menuInfo={menuInfo}
                 addChoiceMenu={addChoiceMenu}
+                removeChoiceMenu={removeChoiceMenu}
               />
             );
           })}

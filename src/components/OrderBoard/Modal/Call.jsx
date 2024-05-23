@@ -51,6 +51,36 @@ const Call = ({ closeModal }) => {
     setSelectedCalls(_selectedCalls);
   };
 
+  const removeSelectedCall = (id) => {
+    const hasCall = selectedCalls.findIndex((_menu) => _menu.id == id);
+
+    if (hasCall < 0) {
+      return;
+    }
+
+    if (selectedCalls[hasCall].amount <= 1) return;
+
+    const _selectedCalls = [...selectedCalls];
+
+    _selectedCalls[hasCall].amount--;
+
+    setSelectedCalls(_selectedCalls);
+  };
+
+  const deleteSelectedCall = (id) => {
+    const hasCall = selectedCalls.findIndex((_menu) => _menu.id == id);
+
+    if (hasCall < 0) {
+      return;
+    }
+
+    const _selectedCalls = [...selectedCalls];
+
+    _selectedCalls.splice(hasCall, 1);
+
+    setSelectedCalls(_selectedCalls);
+  };
+
   return (
     <div className="w-full h-full fixed z-10 flex justify-center items-center">
       <div className="w-[90%] h-[90%]  bg-white relative z-[2]">
@@ -130,6 +160,9 @@ const Call = ({ closeModal }) => {
           {selectedCalls.length > 0 ? (
             <SelectedSide
               selectedCalls={selectedCalls}
+              addSelectedCall={addSelectedCall}
+              removeSelectedCall={removeSelectedCall}
+              deleteSelectedCall={deleteSelectedCall}
               getCallById={getCallById}
             />
           ) : (

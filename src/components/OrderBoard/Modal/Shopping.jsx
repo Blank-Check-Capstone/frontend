@@ -10,7 +10,6 @@ const Shopping = ({
   addChoiceMenu,
   removeChoiceMenu,
   openPaymentModal,
-  closePaymentModal,
 }) => {
   return (
     <div className="w-full h-full fixed z-10">
@@ -18,7 +17,15 @@ const Shopping = ({
         <div className="h-[10%] flex items-center justify-between border-b border-[#E2E2E2] border-solid ">
           <div>
             <div className="flex p-[1.2vw] ml-[0.25vw] text-[1.7vw] text-[#B0B0B0]">
-              장바구니(<div>0</div>)
+              장바구니(
+              <div>
+                {choiceMenus
+                  .reduce((total, choiceMenu) => {
+                    return total + choiceMenu.amount;
+                  }, 0)
+                  .toLocaleString()}
+              </div>
+              )
             </div>
           </div>
           <div className="flex items-center gap-[2vw]">

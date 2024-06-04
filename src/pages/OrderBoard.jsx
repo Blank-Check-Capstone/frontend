@@ -32,6 +32,7 @@ const OrderBoard = ({ langList }) => {
   const [choiceMenus, setChoiceMenus] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
+  const [purchasedMenus, setPurchasedMenus] = useState([]);
   const categoryRefs = useRef([]);
   const [searchParams, setSeratchParams] = useSearchParams();
 
@@ -156,6 +157,10 @@ const OrderBoard = ({ langList }) => {
     _choiceMenus[hasMenu].amount--;
 
     setChoiceMenus(_choiceMenus);
+  };
+
+  const changePurchasedMenus = (menus) => {
+    setPurchasedMenus(menus);
   };
 
   const openCallModal = () => {
@@ -290,7 +295,11 @@ const OrderBoard = ({ langList }) => {
               onClick={openCallModal}
             >
               <div className="w-full text-center text-[1.8vw] break-words">
-                {t("employeeCall")}
+                {t("employeeCall")
+                  .split("\n")
+                  .map((line) => (
+                    <div>{line}</div>
+                  ))}
               </div>
             </div>
           </div>

@@ -18,6 +18,7 @@ import FunIcon from "../assets/images/FunIcon.svg";
 import Lang from "../components/OrderBoard/Modal/Lang";
 import { t } from "i18next";
 import { useSearchParams } from "react-router-dom";
+import YesNoModal from "../components/OrderBoard/Modal/YesNoModal";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
@@ -223,6 +224,9 @@ const OrderBoard = ({ langList }) => {
 
   return (
     <div className="flex w-full h-screen">
+
+      <YesNoModal />
+
       {modalList.find((modal) => modal.id == nowShowModal)?.modal}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[18vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">

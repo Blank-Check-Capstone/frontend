@@ -19,6 +19,8 @@ import Lang from "../components/OrderBoard/Modal/Lang";
 import { t } from "i18next";
 import { useSearchParams } from "react-router-dom";
 import YesNoModal from "../components/OrderBoard/Modal/YesNoModal";
+import { Link, useSearchParams } from "react-router-dom";
+import Payment from "../components/OrderBoard/Modal/Payment";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
@@ -30,8 +32,9 @@ const OrderBoard = ({ langList }) => {
   const [nowShowModal, setNowShowModal] = useState(null);
   const [selectedSideMenu, setSelectedSideMenu] = useState(1);
   const [choiceMenus, setChoiceMenus] = useState([]);
-  const [modalList, setModalList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
+  const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
+  const [purchasedMenus, setPurchasedMenus] = useState([]);
   const categoryRefs = useRef([]);
   const [searchParams, setSeratchParams] = useSearchParams();
 
@@ -140,6 +143,28 @@ const OrderBoard = ({ langList }) => {
     setChoiceMenus(_choiceMenus);
   };
 
+  const removeChoiceMenu = (categoryId, menuId) => {
+    const hasMenu = choiceMenus.findIndex(
+      (menu) => menu.categoryId == categoryId && menu.menuId == menuId
+    );
+
+    if (hasMenu < 0) {
+      return;
+    }
+
+    const _choiceMenus = [...choiceMenus];
+
+    if (_choiceMenus[hasMenu].amount <= 1) return;
+
+    _choiceMenus[hasMenu].amount--;
+
+    setChoiceMenus(_choiceMenus);
+  };
+
+  const changePurchasedMenus = (menus) => {
+    setPurchasedMenus(menus);
+  };
+
   const openCallModal = () => {
     setNowShowModal(1);
   };
@@ -193,45 +218,53 @@ const OrderBoard = ({ langList }) => {
     }
   }, [selectedSideMenu]);
 
-  useEffect(() => {
-    setModalList([
-      {
-        id: 1,
-        modal: <Call closeModal={closeModal} />,
-      },
-      {
-        id: 2,
-        modal: (
-          <Shopping
-            closeModal={closeModal}
-            choiceMenus={choiceMenus}
-            getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
-            emptyShopping={emptyShopping}
-            addChoiceMenu={addChoiceMenu}
-          />
-        ),
-      },
-      {
-        id: 3,
-        modal: <FunList closeModal={closeSideMenuModal} />,
-      },
-      {
-        id: 4,
-        modal: <Lang closeModal={closeSideMenuModal} langList={langList} />,
-      },
-    ]);
-  }, []);
+  const openPaymentModal = () => {
+    setIsOpenPaymentModal(true);
+  };
+
+  const closePaymentModal = () => {
+    setIsOpenPaymentModal(false);
+  };
+
+  const modalList = [
+    {
+      id: 1,
+      modal: <Call closeModal={closeModal} />,
+    },
+    {
+      id: 2,
+      modal: (
+        <Shopping
+          closeModal={closeModal}
+          choiceMenus={choiceMenus}
+          getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
+          emptyShopping={emptyShopping}
+          addChoiceMenu={addChoiceMenu}
+          removeChoiceMenu={removeChoiceMenu}
+          openPaymentModal={openPaymentModal}
+        />
+      ),
+    },
+    {
+      id: 3,
+      modal: <FunList closeModal={closeSideMenuModal} />,
+    },
+    {
+      id: 4,
+      modal: <Lang closeModal={closeSideMenuModal} langList={langList} />,
+    },
+  ];
 
   return (
     <div className="flex w-full h-screen">
-
-      <YesNoModal />
-
+      {isOpenPaymentModal && <Payment closePaymentModal={closePaymentModal} />}
       {modalList.find((modal) => modal.id == nowShowModal)?.modal}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[18vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white"></div>
-          <div className="text-white text-[2.5vw] font-semibold">1번</div>
+          <Link to={"/admin"} className="text-white text-[2.5vw] font-semibold">
+            1번
+          </Link>
         </div>
         <div className="flex-1 flex flex-col justify-between">
           <div className="h-full flex flex-col overflow-auto">
@@ -264,7 +297,11 @@ const OrderBoard = ({ langList }) => {
               onClick={openCallModal}
             >
               <div className="w-full text-center text-[1.8vw] break-words">
-                {t("employeeCall")}
+                {t("employeeCall")
+                  .split("\n")
+                  .map((line) => (
+                    <div>{line}</div>
+                  ))}
               </div>
             </div>
           </div>

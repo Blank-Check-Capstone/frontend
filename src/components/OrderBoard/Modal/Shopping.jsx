@@ -1,6 +1,4 @@
 import CancelIcon from "../../CancelIcon";
-import MinusIcon from "../../MinusIcon";
-import PlusIcon from "../../PlusIcon";
 import CheckIcon from "../../CheckIcon";
 import Menu from "./Shopping/Menu";
 
@@ -10,6 +8,8 @@ const Shopping = ({
   getMenuByCategoryIdAndMenuId,
   emptyShopping,
   addChoiceMenu,
+  removeChoiceMenu,
+  openPaymentModal,
 }) => {
   return (
     <div className="w-full h-full fixed z-10">
@@ -17,7 +17,15 @@ const Shopping = ({
         <div className="h-[10%] flex items-center justify-between border-b border-[#E2E2E2] border-solid ">
           <div>
             <div className="flex p-[1.2vw] ml-[0.25vw] text-[1.7vw] text-[#B0B0B0]">
-              장바구니(<div>0</div>)
+              장바구니(
+              <div>
+                {choiceMenus
+                  .reduce((total, choiceMenu) => {
+                    return total + choiceMenu.amount;
+                  }, 0)
+                  .toLocaleString()}
+              </div>
+              )
             </div>
           </div>
           <div className="flex items-center gap-[2vw]">
@@ -38,6 +46,8 @@ const Shopping = ({
 
         <div className="w-full h-[55%] overflow-auto">
           {choiceMenus.map((menu) => {
+            console.log(menu);
+
             const menuInfo = getMenuByCategoryIdAndMenuId(
               menu.categoryId,
               menu.menuId
@@ -45,9 +55,11 @@ const Shopping = ({
 
             return (
               <Menu
+                key={`${menu.categoryId}-${menu.menuId}`}
                 menu={menu}
                 menuInfo={menuInfo}
                 addChoiceMenu={addChoiceMenu}
+                removeChoiceMenu={removeChoiceMenu}
               />
             );
           })}
@@ -92,7 +104,10 @@ const Shopping = ({
           <div className="bg-black w-[25%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer">
             포장
           </div>
-          <div className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer">
+          <div
+            className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer"
+            onClick={openPaymentModal}
+          >
             주문하기
           </div>
         </div>

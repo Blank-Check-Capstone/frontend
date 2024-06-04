@@ -19,4 +19,3 @@ const CancelIcon = ({ width, height, stokeWidth, color }) => {
 };
 
 export default CancelIcon;
- 

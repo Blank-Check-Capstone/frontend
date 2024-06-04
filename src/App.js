@@ -138,7 +138,7 @@ const App = () => {
           element={<Chatting type={2} getChatroom={getChatroom} />}
         />
         <Route
-          path="/chatSelection"
+          path="/chatselection"
           element={<ChatSelection chatrooms={chatrooms} />}
         />
         <Route path="/gifticon" element={<Gifticon />} />

@@ -3,7 +3,6 @@ import MoneyIcon from "../../../assets/images/moneyPaymentIcon.png";
 import DutchPayIcon from "../../../assets/images/DutchPayIcon.png";
 import PaymentOption from "./PaymentOption";
 import CancelIcon from "../../CancelIcon";
-import OrderCheck from "./OrderCheck";
 
 const paymentList = [
   { image: cardPayment, label: "카드결제" },
@@ -14,9 +13,9 @@ const paymentList = [
 const Payment = ({ closePaymentModal }) => {
   return (
     <div className="w-full h-full fixed flex justify-center items-center z-20">
-      <div className="w-[80%] h-[75%] flex flex-col rounded-lg bg-white relative z-[2]">
+      <div className="w-[80%] h-[75%] flex flex-col justify-center gap-[2vw] rounded-lg bg-white relative z-[2] p-[4vw]">
         {/* 제목 (헤더라인) */}
-        <div className="flex justify-center items-center mt-[2.2vw] relative">
+        <div className="flex justify-center items-center relative">
           <div className="flex gap-[1.5vw] items-center">
             <div className="text-[2vw] font-bold">주문</div>
             <div className="border-[0.11vw] border-black h-[2vw]"></div>
@@ -33,7 +32,7 @@ const Payment = ({ closePaymentModal }) => {
         </div>
 
         {/* 결제류 */}
-        <div className="flex justify-center items-center gap-[2vw] mt-[4vw]">
+        <div className="flex h-full justify-center items-center gap-[2vw]">
           {paymentList.map((payment, index) => (
             <PaymentOption
               key={index}
@@ -42,8 +41,6 @@ const Payment = ({ closePaymentModal }) => {
             />
           ))}
         </div>
-
-        <OrderCheck />
       </div>
       <div
         className="w-full h-full bg-black opacity-40 absolute top-0 left-0 z-[1]"

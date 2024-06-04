@@ -359,10 +359,15 @@ const Chatting = ({ type, getChatroom }) => {
                     ? chat.time.getHours() - 12
                     : chat.time.getHours();
 
+                const min =
+                  chat.time.getMinutes() < 10
+                    ? `0${chat.time.getMinutes()}`
+                    : `${chat.time.getMinutes()}`;
+
                 return (
                   <div className="flex h-[10%] w-full justify-end pr-2">
                     <div className="flex-shrink-0 mt-auto mr-2 flex">
-                      {`${isAmPm} ${hour}:${chat.time.getMinutes()}`}
+                      {`${isAmPm} ${hour}:${min }`}
                     </div>
                     <div className="bg-[#FFF500] flex items-center justify-center px-3 rounded-xl text-2xl">
                       {Hangul.assemble(chat.content)}

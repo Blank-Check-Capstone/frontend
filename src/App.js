@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
+import ChoiceGame from "./pages/ChoiceGame";
 import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
@@ -133,6 +134,7 @@ const App = () => {
         <Route path="/alert" element={<NoticeBoard />} />
         <Route path="/log" element={<OrderLog />} />
         <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/game" element={<ChoiceGame />} />
         <Route path="/chatting" element={<Chatting type={1} />} />
         <Route
           path="/chatting/:chatId"

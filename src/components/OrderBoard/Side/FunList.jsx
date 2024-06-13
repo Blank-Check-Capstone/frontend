@@ -1,11 +1,14 @@
 import { t } from "i18next";
 import FunElement from "./FunElement";
+import FunIcon from "../../../assets/images/mint-FunIcon.svg";
+import ChatsIcon from "../../../assets/images/mint-messages-square.svg";
+import ChatIcon from "../../../assets/images/mint-message-circle.svg";
 
 const FunList = ({ closeModal }) => {
   const FunElements = [
-    { id: 1, title: t("game"), uri: "/game" },
-    { id: 2, title: t("chatting.p"), uri: "/chatSelection" },
-    { id: 3, title: t("chatting.a"), uri: "/chatting" },
+    { id: 1, title: t("game"), uri: "/game", icon: FunIcon },
+    { id: 2, title: t("chatting.p"), uri: "/chatselection", icon: ChatsIcon },
+    { id: 3, title: t("chatting.a"), uri: "/chatting", icon: ChatIcon },
   ];
 
   return (
@@ -16,6 +19,7 @@ const FunList = ({ closeModal }) => {
             key={funElement.id}
             title={funElement.title}
             uri={funElement.uri}
+            icon={funElement.icon}
           />
         ))}
       </div>

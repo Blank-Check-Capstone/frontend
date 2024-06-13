@@ -17,7 +17,6 @@ import FunList from "../components/OrderBoard/Side/FunList";
 import FunIcon from "../assets/images/FunIcon.svg";
 import Lang from "../components/OrderBoard/Modal/Lang";
 import { t } from "i18next";
-import { useSearchParams } from "react-router-dom";
 import YesNoModal from "../components/OrderBoard/Modal/YesNoModal";
 import { Link, useSearchParams } from "react-router-dom";
 import Payment from "../components/OrderBoard/Modal/Payment";

@@ -3,7 +3,6 @@ import MoneyIcon from "../../../assets/images/moneyPaymentIcon.png";
 import DutchPayIcon from "../../../assets/images/DutchPayIcon.png";
 import PaymentOption from "./PaymentOption";
 import CancelIcon from "../../CancelIcon";
-import OrderCheck from "./OrderCheck";
 
 const paymentList = [
   { image: cardPayment, label: "카드결제" },
@@ -43,7 +42,6 @@ const Payment = ({ closePaymentModal }) => {
           ))}
         </div>
 
-        <OrderCheck />
       </div>
       <div
         className="w-full h-full bg-black opacity-40 absolute top-0 left-0 z-[1]"

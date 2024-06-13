@@ -7,6 +7,7 @@ import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Gifticon from "./components/OrderBoard/Gifticon";
+import DutchPay from "./pages/DutchPay";
 import AdminLogin from "./components/OrderBoard/AdminLogin";
 import KoreanFlag from "../src/assets/images/KoreanFlag.png";
 import USAFlag from "../src/assets/images/USAFlag.svg";
@@ -142,6 +143,7 @@ const App = () => {
           element={<ChatSelection chatrooms={chatrooms} />}
         />
         <Route path="/gifticon" element={<Gifticon />} />
+        <Route path="/dutchpay" element={<DutchPay />} />
         <Route path="/" element={<OrderBoard langList={langList} />} />
       </Routes>
     </BrowserRouter>

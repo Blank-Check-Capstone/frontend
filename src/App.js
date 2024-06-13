@@ -8,10 +8,12 @@ import {
 import "./App.css";
 import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
+import ChoiceGame from "./pages/ChoiceGame";
 import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Gifticon from "./components/OrderBoard/Gifticon";
+import DutchPay from "./pages/DutchPay";
 import AdminLogin from "./components/OrderBoard/AdminLogin";
 import KoreanFlag from "./assets/images/KoreanFlag.png";
 import USAFlag from "./assets/images/USAFlag.svg";
@@ -486,16 +488,18 @@ const App = () => {
           }
         />
         <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/game" element={<ChoiceGame />} />
         <Route path="/chatting" element={<Chatting type={1} />} />
         <Route
           path="/chatting/:chatId"
           element={<Chatting type={2} getChatroom={getChatroom} />}
         />
         <Route
-          path="/chatselection"
+          path="/chatSelection"
           element={<ChatSelection chatrooms={chatrooms} />}
         />
         <Route path="/gifticon" element={<Gifticon />} />
+        <Route path="/dutchpay" element={<DutchPay />} />
         <Route
           path="/"
           element={

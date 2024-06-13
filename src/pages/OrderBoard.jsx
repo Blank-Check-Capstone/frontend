@@ -5,22 +5,13 @@ import MenuOrderIcon from "../assets/images/menuOrder.svg";
 import Shopping from "../components/OrderBoard/Modal/Shopping";
 import { useEffect, useRef, useState } from "react";
 import Call from "../components/OrderBoard/Modal/Call";
-import blackNoodles from "../assets/images/blackNooles.jpg";
-import ganblackNoodles from "../assets/images/ganBlackNoodles.jpg";
-import jambong from "../assets/images/jambong.jpg";
-import friedRice from "../assets/images/friedRice.png";
-import jajangRice from "../assets/images/jajangRice.jpg";
-import coke from "../assets/images/coke.png";
-import cider from "../assets/images/cider.png";
-import fanta from "../assets/images/fanta.png";
 import FunList from "../components/OrderBoard/Side/FunList";
 import FunIcon from "../assets/images/FunIcon.svg";
 import Lang from "../components/OrderBoard/Modal/Lang";
 import { t } from "i18next";
-import { useSearchParams } from "react-router-dom";
-import YesNoModal from "../components/OrderBoard/Modal/YesNoModal";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Payment from "../components/OrderBoard/Modal/Payment";
+import MessageBox from "../components/OrderBoard/Modal/MessageBox";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
@@ -28,102 +19,25 @@ const sideMenuList = [
   { id: 3, title: "LANG", icon: KoreanFlag },
 ];
 
-const OrderBoard = ({ langList }) => {
+const OrderBoard = ({
+  langList,
+  setPurchasedMenus,
+  getMenuByCategoryIdAndMenuId,
+  changeType,
+  categoryList,
+}) => {
   const [nowShowModal, setNowShowModal] = useState(null);
   const [selectedSideMenu, setSelectedSideMenu] = useState(1);
   const [choiceMenus, setChoiceMenus] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(1);
   const [isOpenPaymentModal, setIsOpenPaymentModal] = useState(false);
-  const [purchasedMenus, setPurchasedMenus] = useState([]);
+  const [isShowNoChoiceMessageBox, setIsShowNoChoiceMessageBox] =
+    useState(false);
   const categoryRefs = useRef([]);
   const [searchParams, setSeratchParams] = useSearchParams();
-
-  const categoryList = [
-    {
-      id: 1,
-      title: t("noodles"),
-      menus: [
-        {
-          id: 1,
-          name: t("blackNoodles"),
-          price: 7000,
-          image: blackNoodles,
-        },
-        {
-          id: 2,
-          name: t("spicySeafoodNoodles"),
-          price: 8000,
-          image: jambong,
-        },
-        {
-          id: 3,
-          name: t("spicyBlackNoodles"),
-          price: 8000,
-          image: ganblackNoodles,
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: t("rice"),
-      menus: [
-        {
-          id: 1,
-          name: t("friedRice"),
-          price: 7000,
-          image: friedRice,
-        },
-        {
-          id: 2,
-          name: t("blackRice"),
-          price: 7000,
-          image: jajangRice,
-        },
-        {
-          id: 3,
-          name: t("spicySeafoodRice"),
-          price: 7000,
-          image: blackNoodles,
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: t("beverage"),
-      menus: [
-        {
-          id: 1,
-          name: t("cola"),
-          price: 1000,
-          image: coke,
-        },
-        {
-          id: 2,
-          name: t("cider"),
-          price: 1000,
-          image: cider,
-        },
-        {
-          id: 3,
-          name: t("fanta"),
-          price: 1000,
-          image: fanta,
-        },
-      ],
-    },
-  ];
+  const navigate = useNavigate();
 
   const nowLang = searchParams.get("lang");
-
-  const getMenuByCategoryIdAndMenuId = (categoryId, menuId) => {
-    const { menus } = categoryList.find(
-      (category) => category.id === categoryId
-    );
-
-    const menu = menus.find((_menus) => _menus.id === menuId);
-
-    return menu;
-  };
 
   const addChoiceMenu = (categoryId, menuId) => {
     const hasMenu = choiceMenus.findIndex(
@@ -161,8 +75,9 @@ const OrderBoard = ({ langList }) => {
     setChoiceMenus(_choiceMenus);
   };
 
-  const changePurchasedMenus = (menus) => {
-    setPurchasedMenus(menus);
+  const purchase = () => {
+    setPurchasedMenus(choiceMenus);
+    navigate("/log", { replace: true });
   };
 
   const openCallModal = () => {
@@ -171,6 +86,14 @@ const OrderBoard = ({ langList }) => {
 
   const openShoppingModal = () => {
     setNowShowModal(2);
+  };
+
+  const openNoChoiceMessageBox = () => {
+    setIsShowNoChoiceMessageBox(true);
+  };
+
+  const closeNoChoiceMessageBox = () => {
+    setIsShowNoChoiceMessageBox(false);
   };
 
   const openFunModal = () => {
@@ -205,6 +128,12 @@ const OrderBoard = ({ langList }) => {
   };
 
   useEffect(() => {
+    changeType(
+      searchParams.get("type") ? parseInt(searchParams.get("type")) : 1
+    );
+  }, []);
+
+  useEffect(() => {
     if (selectedSideMenu == 2) {
       openFunModal();
 
@@ -216,9 +145,17 @@ const OrderBoard = ({ langList }) => {
 
       return;
     }
+
+    setNowShowModal(null);
   }, [selectedSideMenu]);
 
   const openPaymentModal = () => {
+    if (choiceMenus.length == 0) {
+      openNoChoiceMessageBox();
+
+      return;
+    }
+
     setIsOpenPaymentModal(true);
   };
 
@@ -257,7 +194,16 @@ const OrderBoard = ({ langList }) => {
 
   return (
     <div className="flex w-full h-screen">
-      {isOpenPaymentModal && <Payment closePaymentModal={closePaymentModal} />}
+      {isShowNoChoiceMessageBox && (
+        <MessageBox
+          title="장바구니에 상품이 없습니다."
+          content="상품을 추가해 주세요."
+          closeModal={closeNoChoiceMessageBox}
+        />
+      )}
+      {isOpenPaymentModal && (
+        <Payment closePaymentModal={closePaymentModal} purchase={purchase} />
+      )}
       {modalList.find((modal) => modal.id == nowShowModal)?.modal}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[18vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">

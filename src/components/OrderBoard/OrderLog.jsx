@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import blackNooles from "../../assets/images/blackNooles.jpg";
-const OrderLog = () => {
+
+const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
   const navigate = useNavigate();
 
   const pageBack = () => {
-    navigate(-1);
+    navigate("/", { replace: true });
   };
 
   return (
-    <div className="w-full h-screen pt-[5vw]">
+    <div className="w-full pt-[15vw] pb-[8vw] px-[5vw]">
       <div className="flex items-center w-full h-[5vw] bg-black text-white fixed top-0 left-0">
         <div className="flex w-full h-full items-center">
           <div className="w-[15%] h-full bg-[#393939] text-[2vw] font-bold flex items-center justify-center">
@@ -30,34 +30,55 @@ const OrderLog = () => {
           </svg>
         </div>
       </div>
-
-      {/* <div className="flex w-full h-[90%] items-center justify-center">
-        <div className="text-black text-[4vw] font-bold">
-          주문내역이 없습니다.
-        </div>
-      </div> */}
-      <div className="text-black text-[4vw] font-bold fixed w-full py-[5vw] bg-white">
+      <div className="text-black text-[4vw] font-bold w-full h-[10vw] bg-white fixed top-[5vw] left-0">
         <div className="w-full h-full flex items-center justify-center">
-          직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요.
+          {purchasedMenus.length === 0
+            ? "주문내역이 없습니다."
+            : "직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요."}
         </div>
       </div>
-      <div className="flex w-full h-full items-center flex-col ">
-        <div className="w-[85%] grid grid-cols-4 font-bold gap-5">
-          <div>
-            <img
-              src={blackNooles}
-              className="h-[5vw] w-[5vw] rounded-xl mb-2"
-            />
-            <div className="text-[1.5vw] font-bold">
-              <div>짜장면</div>
-              <div>8,000원</div>
-            </div>
-          </div>
+      <div className="flex w-full h-full items-center flex-col py-[1vw]">
+        <div className="w-full grid grid-cols-4 font-bold gap-[5vw]">
+          {purchasedMenus.map((menu) => {
+            const menuInfo = getMenuByCategoryIdAndMenuId(
+              menu.categoryId,
+              menu.menuId
+            );
+
+            return (
+              <div>
+                <img
+                  src={menuInfo.image}
+                  className="w-full aspect-square object-cover rounded-xl mb-2"
+                />
+                <div className="text-[1.5vw] font-bold">
+                  <div>
+                    {menuInfo.name} X{menu.amount}
+                  </div>
+                  <div>{(menuInfo.price * menu.amount).toLocaleString()}원</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className="w-full h-[10%] bg-black bottom-0 flex items-center justify-center text-[2vw] fixed">
+      <div className="w-full h-[8vw] bg-black bottom-0 flex items-center justify-center text-[2vw] fixed left-0 bottom-0">
         <div className="text-white flex">
-          Total<div className="text-[#40d7e1]">&ensp;100</div>원
+          Total
+          <div className="text-[#40d7e1]">
+            &ensp;
+            {purchasedMenus
+              .reduce((total, purchasedMenu) => {
+                const menu = getMenuByCategoryIdAndMenuId(
+                  purchasedMenu.categoryId,
+                  purchasedMenu.menuId
+                );
+
+                return total + purchasedMenu.amount * menu.price;
+              }, 0)
+              .toLocaleString()}
+          </div>
+          원
         </div>
       </div>
     </div>

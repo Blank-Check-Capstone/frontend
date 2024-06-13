@@ -3,16 +3,66 @@ import MoneyIcon from "../../../assets/images/moneyPaymentIcon.png";
 import DutchPayIcon from "../../../assets/images/DutchPayIcon.png";
 import PaymentOption from "./PaymentOption";
 import CancelIcon from "../../CancelIcon";
+import YesNoModal from "./YesNoModal";
+import { useState } from "react";
 
-const paymentList = [
-  { image: cardPayment, label: "카드결제" },
-  { image: MoneyIcon, label: "현금결제" },
-  { image: DutchPayIcon, label: "더치페이" },
-];
+const Payment = ({ closePaymentModal, purchase }) => {
+  const [isCardConfirmModalShow, setIsCardConfirmModalShow] = useState(false);
+  const [isCashConfirmModalShow, setIsCashConfirmModalShow] = useState(false);
+  const [isDutchConfirmModalShow, setIsDutchConfirmModalShow] = useState(false);
 
-const Payment = ({ closePaymentModal }) => {
+  const showCardConfirmModal = () => {
+    setIsCardConfirmModalShow(true);
+  };
+
+  const closeCardConfirmModal = () => {
+    setIsCardConfirmModalShow(false);
+  };
+
+  const showCashConfirmModal = () => {
+    setIsCashConfirmModalShow(true);
+  };
+
+  const closeCashConfirmModal = () => {
+    setIsCashConfirmModalShow(false);
+  };
+
+  const showDutchPayModal = () => {
+    setIsDutchConfirmModalShow(true);
+  };
+
+  const closeDutchPayModal = () => {
+    setIsDutchConfirmModalShow(false);
+  };
+
+  const paymentList = [
+    {
+      image: cardPayment,
+      label: "카드결제",
+      onClick: showCardConfirmModal,
+    },
+    { image: MoneyIcon, label: "현금결제", onClick: showCashConfirmModal },
+    { image: DutchPayIcon, label: "더치페이", onClick: showDutchPayModal },
+  ];
+
   return (
     <div className="w-full h-full fixed flex justify-center items-center z-20">
+      {isCardConfirmModalShow && (
+        <YesNoModal
+          title="카드결제 후 주문변경 및 카드변경/취소 불가합니다."
+          content="계속 진행하시겠습니까?"
+          onYesClick={purchase}
+          closeModal={closeCardConfirmModal}
+        />
+      )}
+      {isCashConfirmModalShow && (
+        <YesNoModal
+          title="주문 하시겠습니까?"
+          content="직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요."
+          onYesClick={purchase}
+          closeModal={closeCashConfirmModal}
+        />
+      )}
       <div className="w-[80%] h-[75%] flex flex-col justify-center gap-[2vw] rounded-lg bg-white relative z-[2] p-[4vw]">
         {/* 제목 (헤더라인) */}
         <div className="flex justify-center items-center relative">
@@ -38,6 +88,7 @@ const Payment = ({ closePaymentModal }) => {
               key={index}
               src={payment.image}
               label={payment.label}
+              onClick={payment.onClick}
             />
           ))}
         </div>

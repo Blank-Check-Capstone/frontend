@@ -1,5 +1,10 @@
 import "./assets/fonts/NotoSansKR.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useSearchParams,
+} from "react-router-dom";
 import "./App.css";
 import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
@@ -8,19 +13,30 @@ import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Gifticon from "./components/OrderBoard/Gifticon";
 import AdminLogin from "./components/OrderBoard/AdminLogin";
-import KoreanFlag from "../src/assets/images/KoreanFlag.png";
-import USAFlag from "../src/assets/images/USAFlag.svg";
-import JPNFlag from "../src/assets/images/JPNFlag.svg";
-import CHNFlag from "../src/assets/images/CHNFlag.svg";
-import RUSFlag from "../src/assets/images/RUSFlag.svg";
-import DEUFlag from "../src/assets/images/DEUFlag.svg";
-import VIRFlag from "../src/assets/images/VIRFlag.svg";
-import SLVFlag from "../src/assets/images/SLVFlag.svg";
-import ESPFlag from "../src/assets/images/ESPFlag.svg";
-import ITAFlag from "../src/assets/images/ITAFlag.png";
-import TURFlag from "../src/assets/images/TURFlag.svg";
-import FRAFlag from "../src/assets/images/FRAFlag.webp";
-import NLDFlag from "../src/assets/images/NLDFlag.svg";
+import KoreanFlag from "./assets/images/KoreanFlag.png";
+import USAFlag from "./assets/images/USAFlag.svg";
+import JPNFlag from "./assets/images/JPNFlag.svg";
+import CHNFlag from "./assets/images/CHNFlag.svg";
+import RUSFlag from "./assets/images/RUSFlag.svg";
+import DEUFlag from "./assets/images/DEUFlag.svg";
+import VIRFlag from "./assets/images/VIRFlag.svg";
+import SLVFlag from "./assets/images/SLVFlag.svg";
+import ESPFlag from "./assets/images/ESPFlag.svg";
+import ITAFlag from "./assets/images/ITAFlag.png";
+import TURFlag from "./assets/images/TURFlag.svg";
+import FRAFlag from "./assets/images/FRAFlag.webp";
+import NLDFlag from "./assets/images/NLDFlag.svg";
+import blackNoodles from "./assets/images/blackNooles.jpg";
+import ganblackNoodles from "./assets/images/ganBlackNoodles.jpg";
+import jambong from "./assets/images/jambong.jpg";
+import friedRice from "./assets/images/friedRice.png";
+import jajangRice from "./assets/images/jajangRice.jpg";
+import jambongRice from "./assets/images/jambongRice.webp";
+import coke from "./assets/images/coke.png";
+import cider from "./assets/images/cider.png";
+import fanta from "./assets/images/fanta.png";
+import { useEffect, useState } from "react";
+import { t } from "i18next";
 
 const chatrooms = [
   {
@@ -121,16 +137,354 @@ const langList = [
   },
 ];
 
+const _categoryList = [
+  {
+    id: 1,
+    categorys: [
+      {
+        id: 1,
+        title: t("noodles"),
+        menus: [
+          {
+            id: 1,
+            name: t("blackNoodles"),
+            price: 7000,
+            image: blackNoodles,
+          },
+          {
+            id: 2,
+            name: t("spicySeafoodNoodles"),
+            price: 8000,
+            image: jambong,
+          },
+          {
+            id: 3,
+            name: t("spicyBlackNoodles"),
+            price: 8000,
+            image: ganblackNoodles,
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: t("rice"),
+        menus: [
+          {
+            id: 1,
+            name: t("friedRice"),
+            price: 7000,
+            image: friedRice,
+          },
+          {
+            id: 2,
+            name: t("blackRice"),
+            price: 7000,
+            image: jajangRice,
+          },
+          {
+            id: 3,
+            name: t("spicySeafoodRice"),
+            price: 7000,
+            image: jambongRice,
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: t("beverage"),
+        menus: [
+          {
+            id: 1,
+            name: t("cola"),
+            price: 1000,
+            image: coke,
+          },
+          {
+            id: 2,
+            name: t("cider"),
+            price: 1000,
+            image: cider,
+          },
+          {
+            id: 3,
+            name: t("fanta"),
+            price: 1000,
+            image: fanta,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    categorys: [
+      {
+        id: 1,
+        title: t("noodles"),
+        menus: [
+          {
+            id: 1,
+            name: "헤헤헤",
+            price: 7000,
+            image: blackNoodles,
+          },
+          {
+            id: 2,
+            name: t("spicySeafoodNoodles"),
+            price: 8000,
+            image: jambong,
+          },
+          {
+            id: 3,
+            name: t("spicyBlackNoodles"),
+            price: 8000,
+            image: ganblackNoodles,
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: t("rice"),
+        menus: [
+          {
+            id: 1,
+            name: t("friedRice"),
+            price: 7000,
+            image: friedRice,
+          },
+          {
+            id: 2,
+            name: t("blackRice"),
+            price: 7000,
+            image: jajangRice,
+          },
+          {
+            id: 3,
+            name: t("spicySeafoodRice"),
+            price: 7000,
+            image: jambongRice,
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: t("beverage"),
+        menus: [
+          {
+            id: 1,
+            name: t("cola"),
+            price: 1000,
+            image: coke,
+          },
+          {
+            id: 2,
+            name: t("cider"),
+            price: 1000,
+            image: cider,
+          },
+          {
+            id: 3,
+            name: t("fanta"),
+            price: 1000,
+            image: fanta,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    categorys: [
+      {
+        id: 1,
+        title: t("noodles"),
+        menus: [
+          {
+            id: 1,
+            name: "헤헤헤",
+            price: 7000,
+            image: blackNoodles,
+          },
+          {
+            id: 2,
+            name: t("spicySeafoodNoodles"),
+            price: 8000,
+            image: jambong,
+          },
+          {
+            id: 3,
+            name: t("spicyBlackNoodles"),
+            price: 8000,
+            image: ganblackNoodles,
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: t("rice"),
+        menus: [
+          {
+            id: 1,
+            name: t("friedRice"),
+            price: 7000,
+            image: friedRice,
+          },
+          {
+            id: 2,
+            name: t("blackRice"),
+            price: 7000,
+            image: jajangRice,
+          },
+          {
+            id: 3,
+            name: t("spicySeafoodRice"),
+            price: 7000,
+            image: jambongRice,
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: t("beverage"),
+        menus: [
+          {
+            id: 1,
+            name: t("cola"),
+            price: 1000,
+            image: coke,
+          },
+          {
+            id: 2,
+            name: t("cider"),
+            price: 1000,
+            image: cider,
+          },
+          {
+            id: 3,
+            name: t("fanta"),
+            price: 1000,
+            image: fanta,
+          },
+        ],
+      },
+      {
+        id: 4,
+        title: t("beverage"),
+        menus: [
+          {
+            id: 1,
+            name: t("cola"),
+            price: 1000,
+            image: coke,
+          },
+          {
+            id: 2,
+            name: t("cider"),
+            price: 1000,
+            image: cider,
+          },
+          {
+            id: 3,
+            name: t("fanta"),
+            price: 1000,
+            image: fanta,
+          },
+        ],
+      },
+      {
+        id: 5,
+        title: t("beverage"),
+        menus: [
+          {
+            id: 1,
+            name: t("cola"),
+            price: 1000,
+            image: coke,
+          },
+          {
+            id: 2,
+            name: t("cider"),
+            price: 1000,
+            image: cider,
+          },
+          {
+            id: 3,
+            name: t("fanta"),
+            price: 1000,
+            image: fanta,
+          },
+        ],
+      },
+      {
+        id: 6,
+        title: t("beverage"),
+        menus: [
+          {
+            id: 1,
+            name: t("cola"),
+            price: 1000,
+            image: coke,
+          },
+          {
+            id: 2,
+            name: t("cider"),
+            price: 1000,
+            image: cider,
+          },
+          {
+            id: 3,
+            name: t("fanta"),
+            price: 1000,
+            image: fanta,
+          },
+        ],
+      },
+    ],
+  },
+];
+
 const App = () => {
   const getChatroom = (id) => {
     return chatrooms.find((room) => room.id == id);
+  };
+
+  const [purchasedMenus, setPurchasedMenus] = useState([]);
+  const [nowType, setNowType] = useState(1);
+  const [categoryList, setCategoryList] = useState([]);
+
+  const changeType = (type) => {
+    setNowType(type);
+  };
+
+  useEffect(() => {
+    setCategoryList(
+      _categoryList.find((_category) => _category.id === nowType).categorys
+    );
+  }, [nowType]);
+
+  const getMenuByCategoryIdAndMenuId = (categoryId, menuId) => {
+    const { menus } = categoryList.find(
+      (category) => category.id === categoryId
+    );
+
+    const menu = menus.find((_menus) => _menus.id === menuId);
+
+    return menu;
   };
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/alert" element={<NoticeBoard />} />
-        <Route path="/log" element={<OrderLog />} />
+        <Route
+          path="log"
+          element={
+            <OrderLog
+              purchasedMenus={purchasedMenus}
+              getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
+            />
+          }
+        />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/chatting" element={<Chatting type={1} />} />
         <Route
@@ -142,7 +496,19 @@ const App = () => {
           element={<ChatSelection chatrooms={chatrooms} />}
         />
         <Route path="/gifticon" element={<Gifticon />} />
-        <Route path="/" element={<OrderBoard langList={langList} />} />
+        <Route
+          path="/"
+          element={
+            <OrderBoard
+              langList={langList}
+              changeType={changeType}
+              purchasedMenus={purchasedMenus}
+              setPurchasedMenus={setPurchasedMenus}
+              getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
+              categoryList={categoryList}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

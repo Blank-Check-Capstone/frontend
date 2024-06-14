@@ -8,12 +8,10 @@ import {
 import "./App.css";
 import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
-import ChoiceGame from "./pages/ChoiceGame";
 import Chatting from "./components/OrderBoard/Chatting";
 import ChatSelection from "./components/OrderBoard/ChatSelection";
 import OrderLog from "./components/OrderBoard/OrderLog";
 import Gifticon from "./components/OrderBoard/Gifticon";
-import DutchPay from "./pages/DutchPay";
 import AdminLogin from "./components/OrderBoard/AdminLogin";
 import KoreanFlag from "./assets/images/KoreanFlag.png";
 import USAFlag from "./assets/images/USAFlag.svg";
@@ -39,6 +37,7 @@ import cider from "./assets/images/cider.png";
 import fanta from "./assets/images/fanta.png";
 import { useEffect, useState } from "react";
 import { t } from "i18next";
+import Display from "./pages/Display";
 
 const chatrooms = [
   {
@@ -139,312 +138,6 @@ const langList = [
   },
 ];
 
-const _categoryList = [
-  {
-    id: 1,
-    categorys: [
-      {
-        id: 1,
-        title: t("noodles"),
-        menus: [
-          {
-            id: 1,
-            name: t("blackNoodles"),
-            price: 7000,
-            image: blackNoodles,
-          },
-          {
-            id: 2,
-            name: t("spicySeafoodNoodles"),
-            price: 8000,
-            image: jambong,
-          },
-          {
-            id: 3,
-            name: t("spicyBlackNoodles"),
-            price: 8000,
-            image: ganblackNoodles,
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: t("rice"),
-        menus: [
-          {
-            id: 1,
-            name: t("friedRice"),
-            price: 7000,
-            image: friedRice,
-          },
-          {
-            id: 2,
-            name: t("blackRice"),
-            price: 7000,
-            image: jajangRice,
-          },
-          {
-            id: 3,
-            name: t("spicySeafoodRice"),
-            price: 7000,
-            image: jambongRice,
-          },
-        ],
-      },
-      {
-        id: 3,
-        title: t("beverage"),
-        menus: [
-          {
-            id: 1,
-            name: t("cola"),
-            price: 1000,
-            image: coke,
-          },
-          {
-            id: 2,
-            name: t("cider"),
-            price: 1000,
-            image: cider,
-          },
-          {
-            id: 3,
-            name: t("fanta"),
-            price: 1000,
-            image: fanta,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    categorys: [
-      {
-        id: 1,
-        title: t("noodles"),
-        menus: [
-          {
-            id: 1,
-            name: "헤헤헤",
-            price: 7000,
-            image: blackNoodles,
-          },
-          {
-            id: 2,
-            name: t("spicySeafoodNoodles"),
-            price: 8000,
-            image: jambong,
-          },
-          {
-            id: 3,
-            name: t("spicyBlackNoodles"),
-            price: 8000,
-            image: ganblackNoodles,
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: t("rice"),
-        menus: [
-          {
-            id: 1,
-            name: t("friedRice"),
-            price: 7000,
-            image: friedRice,
-          },
-          {
-            id: 2,
-            name: t("blackRice"),
-            price: 7000,
-            image: jajangRice,
-          },
-          {
-            id: 3,
-            name: t("spicySeafoodRice"),
-            price: 7000,
-            image: jambongRice,
-          },
-        ],
-      },
-      {
-        id: 3,
-        title: t("beverage"),
-        menus: [
-          {
-            id: 1,
-            name: t("cola"),
-            price: 1000,
-            image: coke,
-          },
-          {
-            id: 2,
-            name: t("cider"),
-            price: 1000,
-            image: cider,
-          },
-          {
-            id: 3,
-            name: t("fanta"),
-            price: 1000,
-            image: fanta,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 3,
-    categorys: [
-      {
-        id: 1,
-        title: t("noodles"),
-        menus: [
-          {
-            id: 1,
-            name: "헤헤헤",
-            price: 7000,
-            image: blackNoodles,
-          },
-          {
-            id: 2,
-            name: t("spicySeafoodNoodles"),
-            price: 8000,
-            image: jambong,
-          },
-          {
-            id: 3,
-            name: t("spicyBlackNoodles"),
-            price: 8000,
-            image: ganblackNoodles,
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: t("rice"),
-        menus: [
-          {
-            id: 1,
-            name: t("friedRice"),
-            price: 7000,
-            image: friedRice,
-          },
-          {
-            id: 2,
-            name: t("blackRice"),
-            price: 7000,
-            image: jajangRice,
-          },
-          {
-            id: 3,
-            name: t("spicySeafoodRice"),
-            price: 7000,
-            image: jambongRice,
-          },
-        ],
-      },
-      {
-        id: 3,
-        title: t("beverage"),
-        menus: [
-          {
-            id: 1,
-            name: t("cola"),
-            price: 1000,
-            image: coke,
-          },
-          {
-            id: 2,
-            name: t("cider"),
-            price: 1000,
-            image: cider,
-          },
-          {
-            id: 3,
-            name: t("fanta"),
-            price: 1000,
-            image: fanta,
-          },
-        ],
-      },
-      {
-        id: 4,
-        title: t("beverage"),
-        menus: [
-          {
-            id: 1,
-            name: t("cola"),
-            price: 1000,
-            image: coke,
-          },
-          {
-            id: 2,
-            name: t("cider"),
-            price: 1000,
-            image: cider,
-          },
-          {
-            id: 3,
-            name: t("fanta"),
-            price: 1000,
-            image: fanta,
-          },
-        ],
-      },
-      {
-        id: 5,
-        title: t("beverage"),
-        menus: [
-          {
-            id: 1,
-            name: t("cola"),
-            price: 1000,
-            image: coke,
-          },
-          {
-            id: 2,
-            name: t("cider"),
-            price: 1000,
-            image: cider,
-          },
-          {
-            id: 3,
-            name: t("fanta"),
-            price: 1000,
-            image: fanta,
-          },
-        ],
-      },
-      {
-        id: 6,
-        title: t("beverage"),
-        menus: [
-          {
-            id: 1,
-            name: t("cola"),
-            price: 1000,
-            image: coke,
-          },
-          {
-            id: 2,
-            name: t("cider"),
-            price: 1000,
-            image: cider,
-          },
-          {
-            id: 3,
-            name: t("fanta"),
-            price: 1000,
-            image: fanta,
-          },
-        ],
-      },
-    ],
-  },
-];
-
 const App = () => {
   const getChatroom = (id) => {
     return chatrooms.find((room) => room.id == id);
@@ -452,17 +145,176 @@ const App = () => {
 
   const [purchasedMenus, setPurchasedMenus] = useState([]);
   const [nowType, setNowType] = useState(1);
-  const [categoryList, setCategoryList] = useState([]);
+  const [nowLang, setNowLang] = useState("KOR");
 
   const changeType = (type) => {
     setNowType(type);
   };
 
-  useEffect(() => {
-    setCategoryList(
-      _categoryList.find((_category) => _category.id === nowType).categorys
-    );
-  }, [nowType]);
+  const changeLang = (lang) => {
+    setNowLang(lang);
+  };
+
+  const _categoryList = [
+    {
+      id: 1,
+      categorys: [
+        {
+          id: 1,
+          title: t("noodles"),
+          menus: [
+            {
+              id: 1,
+              name: t("blackNoodles"),
+              price: 7000,
+              image: blackNoodles,
+            },
+            {
+              id: 2,
+              name: t("spicySeafoodNoodles"),
+              price: 8000,
+              image: jambong,
+            },
+            {
+              id: 3,
+              name: t("spicyBlackNoodles"),
+              price: 8000,
+              image: ganblackNoodles,
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: t("rice"),
+          menus: [
+            {
+              id: 1,
+              name: t("friedRice"),
+              price: 7000,
+              image: friedRice,
+            },
+            {
+              id: 2,
+              name: t("blackRice"),
+              price: 7000,
+              image: jajangRice,
+            },
+            {
+              id: 3,
+              name: t("spicySeafoodRice"),
+              price: 7000,
+              image: jambongRice,
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: t("beverage"),
+          menus: [
+            {
+              id: 1,
+              name: t("cola"),
+              price: 1000,
+              image: coke,
+            },
+            {
+              id: 2,
+              name: t("cider"),
+              price: 1000,
+              image: cider,
+            },
+            {
+              id: 3,
+              name: t("fanta"),
+              price: 1000,
+              image: fanta,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 2,
+      categorys: [
+        {
+          id: 1,
+          title: t("noodles"),
+          menus: [
+            {
+              id: 1,
+              name: "헤헤헤",
+              price: 7000,
+              image: blackNoodles,
+            },
+            {
+              id: 2,
+              name: t("spicySeafoodNoodles"),
+              price: 8000,
+              image: jambong,
+            },
+            {
+              id: 3,
+              name: t("spicyBlackNoodles"),
+              price: 8000,
+              image: ganblackNoodles,
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: t("rice"),
+          menus: [
+            {
+              id: 1,
+              name: t("friedRice"),
+              price: 7000,
+              image: friedRice,
+            },
+            {
+              id: 2,
+              name: t("blackRice"),
+              price: 7000,
+              image: jajangRice,
+            },
+            {
+              id: 3,
+              name: t("spicySeafoodRice"),
+              price: 7000,
+              image: jambongRice,
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: t("beverage"),
+          menus: [
+            {
+              id: 1,
+              name: t("cola"),
+              price: 1000,
+              image: coke,
+            },
+            {
+              id: 2,
+              name: t("cider"),
+              price: 1000,
+              image: cider,
+            },
+            {
+              id: 3,
+              name: t("fanta"),
+              price: 1000,
+              image: fanta,
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
+  const categoryList = _categoryList.find(
+    (_category) => _category.id === nowType
+  ).categorys;
 
   const getMenuByCategoryIdAndMenuId = (categoryId, menuId) => {
     const { menus } = categoryList.find(
@@ -488,18 +340,17 @@ const App = () => {
           }
         />
         <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/game" element={<ChoiceGame />} />
         <Route path="/chatting" element={<Chatting type={1} />} />
         <Route
           path="/chatting/:chatId"
           element={<Chatting type={2} getChatroom={getChatroom} />}
         />
         <Route
-          path="/chatSelection"
+          path="/chatselection"
           element={<ChatSelection chatrooms={chatrooms} />}
         />
         <Route path="/gifticon" element={<Gifticon />} />
-        <Route path="/dutchpay" element={<DutchPay />} />
+        <Route path="/display" element={<Display />} />
         <Route
           path="/"
           element={
@@ -510,6 +361,8 @@ const App = () => {
               setPurchasedMenus={setPurchasedMenus}
               getMenuByCategoryIdAndMenuId={getMenuByCategoryIdAndMenuId}
               categoryList={categoryList}
+              nowLang={nowLang}
+              changeLang={changeLang}
             />
           }
         />

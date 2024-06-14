@@ -25,6 +25,8 @@ const OrderBoard = ({
   getMenuByCategoryIdAndMenuId,
   changeType,
   categoryList,
+  nowLang,
+  changeLang,
 }) => {
   const [nowShowModal, setNowShowModal] = useState(null);
   const [selectedSideMenu, setSelectedSideMenu] = useState(1);
@@ -36,8 +38,6 @@ const OrderBoard = ({
   const categoryRefs = useRef([]);
   const [searchParams, setSeratchParams] = useSearchParams();
   const navigate = useNavigate();
-
-  const nowLang = searchParams.get("lang");
 
   const addChoiceMenu = (categoryId, menuId) => {
     const hasMenu = choiceMenus.findIndex(
@@ -132,6 +132,10 @@ const OrderBoard = ({
       searchParams.get("type") ? parseInt(searchParams.get("type")) : 1
     );
   }, []);
+
+  useEffect(() => {
+    changeLang(searchParams.get("lang"));
+  }, [searchParams.get("lang")]);
 
   useEffect(() => {
     if (selectedSideMenu == 2) {

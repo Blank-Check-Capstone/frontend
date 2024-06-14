@@ -38,6 +38,7 @@ import fanta from "./assets/images/fanta.png";
 import { useEffect, useState } from "react";
 import { t } from "i18next";
 import Display from "./pages/Display";
+import ChoiceGame from "./pages/ChoiceGame";
 
 const chatrooms = [
   {
@@ -340,6 +341,7 @@ const App = () => {
           }
         />
         <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/game" element={<ChoiceGame />} />
         <Route path="/chatting" element={<Chatting type={1} />} />
         <Route
           path="/chatting/:chatId"

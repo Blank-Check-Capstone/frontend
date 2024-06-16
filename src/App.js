@@ -1,10 +1,5 @@
 import "./assets/fonts/NotoSansKR.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useSearchParams,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import NoticeBoard from "./pages/NoticeBoard";
 import OrderBoard from "./pages/OrderBoard";
@@ -35,7 +30,7 @@ import jambongRice from "./assets/images/jambongRice.webp";
 import coke from "./assets/images/coke.png";
 import cider from "./assets/images/cider.png";
 import fanta from "./assets/images/fanta.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { t } from "i18next";
 import Display from "./pages/Display";
 import ChoiceGame from "./pages/ChoiceGame";
@@ -141,7 +136,7 @@ const langList = [
 
 const App = () => {
   const getChatroom = (id) => {
-    return chatrooms.find((room) => room.id == id);
+    return chatrooms.find((room) => room.id === id);
   };
 
   const [purchasedMenus, setPurchasedMenus] = useState([]);

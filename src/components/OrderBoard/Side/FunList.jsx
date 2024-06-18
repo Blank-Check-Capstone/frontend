@@ -6,9 +6,9 @@ import ChatIcon from "../../../assets/images/mint-message-circle.svg";
 
 const FunList = ({ closeModal }) => {
   const FunElements = [
-    { id: 1, title: t("game"), uri: "/game", icon: FunIcon },
-    { id: 2, title: t("chatting.p"), uri: "/chatselection", icon: ChatsIcon },
-    { id: 3, title: t("chatting.a"), uri: "/chatting", icon: ChatIcon },
+    { id: 1, title: t("게임"), uri: "/game", icon: FunIcon },
+    { id: 2, title: t("1대1채팅"), uri: "/chatselection", icon: ChatsIcon },
+    { id: 3, title: t("단체채팅"), uri: "/chatting", icon: ChatIcon },
   ];
 
   return (

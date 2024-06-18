@@ -247,7 +247,7 @@ const OrderBoard = ({
               onClick={openCallModal}
             >
               <div className="w-full text-center text-[1.8vw] break-words">
-                {t("employeeCall")
+                {t("직원호출")
                   .split("\n")
                   .map((line) => (
                     <div>{line}</div>

@@ -15,7 +15,7 @@ const Menu = ({ id, name, price, image, addChoiceMenu }) => {
         </div>
         <div className="text-[2vw] font-bold tracking-tighter">
           {price.toLocaleString()}
-          {t("won")}
+          {t("원")}
         </div>
       </div>
       <div className="w-[5vw] h-[3vw] bg-[#000] flex items-center justify-center rounded-lg text-white text-[1.5vw] float-right">

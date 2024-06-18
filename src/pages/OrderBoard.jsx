@@ -80,6 +80,10 @@ const OrderBoard = ({
     navigate("/log", { replace: true });
   };
 
+  const purchaseDutchPay = () => {
+    navigate("/dutchpay", {replace: true})
+  }
+
   const openCallModal = () => {
     setNowShowModal(1);
   };
@@ -206,7 +210,7 @@ const OrderBoard = ({
         />
       )}
       {isOpenPaymentModal && (
-        <Payment closePaymentModal={closePaymentModal} purchase={purchase} />
+        <Payment closePaymentModal={closePaymentModal} purchase={purchase} purchaseDutchPay={purchaseDutchPay} />
       )}
       {modalList.find((modal) => modal.id == nowShowModal)?.modal}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">

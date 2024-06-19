@@ -25,7 +25,7 @@ const Menu = ({ id, title, icon, selected, onClick }) => {
         }`}
       >
         {id == 1
-          ? t("menuOrder")
+          ? t(title)
               .split("\n")
               .map((line) => <div>{line}</div>)
           : title}

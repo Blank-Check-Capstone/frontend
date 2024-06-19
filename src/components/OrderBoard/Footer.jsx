@@ -12,10 +12,12 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
         >
           <img
             src={gifts_image}
-            alt={t("giftcard")}
+            alt={t("상품할인권")}
             className="w-[3vw] h-[3vw]"
           />
-          <div className="text-[#b0b0b0] text-[2.3vw]">{t("giftcard")}</div>
+          <div className="text-[#b0b0b0] text-[2vw] leading-[2vw]">
+            {t("상품할인권")}
+          </div>
         </Link>
       </div>
 
@@ -33,7 +35,7 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
               <rect y="28.0001" width="34" height="6" fill="#D9D9D9" />
             </svg>
             <div className="max-h-full text-[#b0b0b0] text-[2.1vw] leading-[2vw]">
-              {t("orderHistory")}
+              {t("주문내역")}
             </div>
           </div>
         </Link>
@@ -43,7 +45,7 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
           onClick={openShoppingModal}
         >
           <div className="text-white text-[2.3vw] font-semibold">
-            {t("order")}
+            {t("주문하기")}
           </div>
           <div className="w-[2.5vw] h-[2.5vw] bg-white rounded-full flex items-center justify-center text-[#27CACA] text-[1.8vw]">
             {choiceMenus.reduce(

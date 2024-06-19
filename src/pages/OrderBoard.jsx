@@ -36,7 +36,7 @@ const OrderBoard = ({
   const [isShowNoChoiceMessageBox, setIsShowNoChoiceMessageBox] =
     useState(false);
   const categoryRefs = useRef([]);
-  const [searchParams, setSeratchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const addChoiceMenu = (categoryId, menuId) => {
@@ -78,6 +78,10 @@ const OrderBoard = ({
   const purchase = () => {
     setPurchasedMenus(choiceMenus);
     navigate("/log", { replace: true });
+  };
+
+  const purchaseDutchPay = () => {
+    navigate("/dutchpay", { replace: true });
   };
 
   const openCallModal = () => {
@@ -206,7 +210,11 @@ const OrderBoard = ({
         />
       )}
       {isOpenPaymentModal && (
-        <Payment closePaymentModal={closePaymentModal} purchase={purchase} />
+        <Payment
+          closePaymentModal={closePaymentModal}
+          purchase={purchase}
+          purchaseDutchPay={purchaseDutchPay}
+        />
       )}
       {modalList.find((modal) => modal.id == nowShowModal)?.modal}
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
@@ -247,7 +255,7 @@ const OrderBoard = ({
               onClick={openCallModal}
             >
               <div className="w-full text-center text-[1.8vw] break-words">
-                {t("employeeCall")
+                {t("직원호출")
                   .split("\n")
                   .map((line) => (
                     <div>{line}</div>

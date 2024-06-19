@@ -6,7 +6,7 @@ import CancelIcon from "../../CancelIcon";
 import YesNoModal from "./YesNoModal";
 import { useState } from "react";
 
-const Payment = ({ closePaymentModal, purchase }) => {
+const Payment = ({ closePaymentModal, purchase, purchaseDutchPay }) => {
   const [isCardConfirmModalShow, setIsCardConfirmModalShow] = useState(false);
   const [isCashConfirmModalShow, setIsCashConfirmModalShow] = useState(false);
   const [isDutchConfirmModalShow, setIsDutchConfirmModalShow] = useState(false);
@@ -41,8 +41,16 @@ const Payment = ({ closePaymentModal, purchase }) => {
       label: "카드결제",
       onClick: showCardConfirmModal,
     },
-    { image: MoneyIcon, label: "현금결제", onClick: showCashConfirmModal },
-    { image: DutchPayIcon, label: "더치페이", onClick: showDutchPayModal },
+    {
+      image: MoneyIcon,
+      label: "현금결제",
+      onClick: showCashConfirmModal
+    },
+    {
+      image: DutchPayIcon,
+      label: "더치페이",
+      onClick: showDutchPayModal
+    },
   ];
 
   return (
@@ -62,6 +70,14 @@ const Payment = ({ closePaymentModal, purchase }) => {
           onYesClick={purchase}
           closeModal={closeCashConfirmModal}
         />
+      )}
+      {isDutchConfirmModalShow && (
+        <YesNoModal
+          title="더치페이할거야?"
+          content="자자 드가자~"
+          onYesClick={purchaseDutchPay}
+          closeModal={closeDutchPayModal}
+        /> 
       )}
       <div className="w-[80%] h-[75%] flex flex-col justify-center gap-[2vw] rounded-lg bg-white relative z-[2] p-[4vw]">
         {/* 제목 (헤더라인) */}

@@ -7,7 +7,9 @@ const Lang = ({ langList, closeModal }) => {
   const nowLang = searchParams.get("lang") ?? "KOR";
 
   const changeLang = (lang) => {
-    setSeratchParams({ lang });
+    const tmpSearchParams = new URLSearchParams(searchParams);
+    tmpSearchParams.set("lang", lang);
+    setSeratchParams(tmpSearchParams);
     i18n.changeLanguage(lang);
     closeModal();
   };

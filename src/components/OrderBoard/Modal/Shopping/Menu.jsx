@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import CancelIcon from "../../../CancelIcon";
 import MinusIcon from "../../../MinusIcon";
 import PlusIcon from "../../../PlusIcon";
@@ -25,7 +26,8 @@ const Menu = ({ menu, menuInfo, addChoiceMenu, removeChoiceMenu }) => {
           </div>
           <div className="flex gap-7 items-end">
             <p className="text-[2vw] text-[#6D6D6D] ">
-              {(menuInfo.price * menu.amount).toLocaleString()}원
+              {(menuInfo.price * menu.amount).toLocaleString()}
+              {t("원")}
             </p>
             <div className="w-[2.7vw] h-[2.7vw] bg-[#D9D9D9] rounded-3xl hover: cursor-pointer mr-[0.3vw] mb-[0.3vw]">
               <CancelIcon />

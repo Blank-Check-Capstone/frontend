@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import CancelIcon from "../../CancelIcon";
 import CheckIcon from "../../CheckIcon";
 import Menu from "./Shopping/Menu";
@@ -17,7 +18,7 @@ const Shopping = ({
         <div className="h-[10%] flex items-center justify-between border-b border-[#E2E2E2] border-solid ">
           <div>
             <div className="flex p-[1.2vw] ml-[0.25vw] text-[1.7vw] text-[#B0B0B0]">
-              장바구니(
+              {t("장바구니")} (
               <div>
                 {choiceMenus
                   .reduce((total, choiceMenu) => {
@@ -33,7 +34,7 @@ const Shopping = ({
               className="w-[15vw] h-[70%] bg-[#D9D9D9] text-[#929292] rounded-3xl font-light leading-[3vw] text-center px-3 hover: cursor-pointer text-[1.35vw]"
               onClick={emptyShopping}
             >
-              장바구니 비우기
+              {t("장바구니 비우기")}
             </div>
             <div
               className="hover: cursor-pointer w-[4vw] h-[4vw] flex mr-[10px]"
@@ -71,14 +72,14 @@ const Shopping = ({
               <CheckIcon />
             </div>
             <p className="font-bold text-[#5F5F5F] text-[1.25vw]">
-              상품 할인권 사용
+              {t("상품 할인권 사용")}
             </p>
           </div>
         </div>
 
         <div className="w-full h-[14%] flex justify-between px-[1.8vw]">
           <div className="text-[#A8A8A8] text-[1.8vw] flex items-center">
-            총 금액
+            {t("총 금액")}
           </div>
           <div className="text-3xl mt-[2vw] flex">
             <p className="font-bold items-center text-[3vw]">
@@ -93,22 +94,25 @@ const Shopping = ({
                 }, 0)
                 .toLocaleString()}
             </p>
-            <p className="text-[2vw] leading-10 items-center">원</p>
+            <p className="text-[2vw] leading-10 items-center">{t("원")}</p>
           </div>
         </div>
 
         <div className="bg-blue-300 w-full h-[14%] flex text-white">
           <div className="bg-[#505050] w-[25%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer">
-            <p>선물</p>
+            <p>{t("선물")}</p>
           </div>
-          <div className="bg-black w-[25%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer">
-            포장
+          <div
+            className="bg-black w-[25%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer"
+            onClick={openPaymentModal}
+          >
+            {t("포장")}
           </div>
           <div
             className="bg-[#27CACA] w-[50%] h-full flex items-center justify-center text-[2.2vw] hover: cursor-pointer"
             onClick={openPaymentModal}
           >
-            주문하기
+            {t("주문하기")}
           </div>
         </div>
       </div>

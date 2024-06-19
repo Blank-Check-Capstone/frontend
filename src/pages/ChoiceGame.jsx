@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import bg from "../../src/assets/images/bgimg.png";
 import game from "../../src/assets/images/game.png";
 import vs from "../../src/assets/images/VS.jpg";
 
 const ChoiceGame = () => {
+  const navigate = useNavigate();
+
+  const moveBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="w-full h-screen bg-[#ffffff] relative">
       <img
@@ -21,7 +28,10 @@ const ChoiceGame = () => {
             </g>
           </svg>
         </div>
-        <div className="h-full w-[12%] bg-[#515c7a] flex justify-center items-center text-[3vw] font-black italic text-[#e7f0ee]">
+        <div
+          className="h-full w-[12%] bg-[#515c7a] flex justify-center items-center text-[3vw] font-black italic text-[#e7f0ee]"
+          onClick={moveBack}
+        >
           나가기
         </div>
       </div>

@@ -52,6 +52,7 @@ import cass from "./assets/images/cass.jpg";
 import terra from "./assets/images/terra.jpg";
 import riceWine from "./assets/images/riceWine.webp";
 import pearDrink from "./assets/images/pearDrink.jfif";
+import DutchPay from "./pages/DutchPay";
 
 const chatrooms = [
   {
@@ -438,6 +439,7 @@ const App = () => {
         />
         <Route path="/gifticon" element={<Gifticon />} />
         <Route path="/display" element={<Display />} />
+        <Route path="/dutchpay" element={<DutchPay />} />
         <Route
           path="/"
           element={

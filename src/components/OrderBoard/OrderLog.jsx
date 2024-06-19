@@ -4,7 +4,7 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
   const navigate = useNavigate();
 
   const pageBack = () => {
-    navigate("/", { replace: true });
+    navigate(-1, { replace: true });
   };
 
   return (

@@ -34,6 +34,24 @@ import { useState } from "react";
 import { t } from "i18next";
 import Display from "./pages/Display";
 import ChoiceGame from "./pages/ChoiceGame";
+import porkBelly from "./assets/images/porkBelly.jpg";
+import skinonPorkBelly from "./assets/images/skin-onPorkBelly.jfif";
+import porkShoulder from "./assets/images/porkShoulder.jpg";
+import thinSkirt from "./assets/images/thinSkirt.jfif";
+import jowlMeat from "./assets/images/jowlMeat.png";
+import coldBuckwheatNoodles from "./assets/images/coldBuckwheatNoodles.jpg";
+import soybeanPasteJjigae from "./assets/images/soybeanPasteJjigae.jpg";
+import porkRinds from "./assets/images/porkRinds.jpg";
+import rice from "./assets/images/rice.jpg";
+import beer from "./assets/images/beer.webp";
+import cahmiseul from "./assets/images/cahmiseul.webp";
+import goodDay from "./assets/images/goodDay.png";
+import daesun from "./assets/images/daesun.jpg";
+import jinro from "./assets/images/jinro.webp";
+import cass from "./assets/images/cass.jpg";
+import terra from "./assets/images/terra.jpg";
+import riceWine from "./assets/images/riceWine.webp";
+import pearDrink from "./assets/images/pearDrink.jfif";
 
 const chatrooms = [
   {
@@ -240,31 +258,31 @@ const App = () => {
               id: 1,
               name: t("삼겹살"),
               price: 15000,
-              image: friedRice,
+              image: porkBelly,
             },
             {
               id: 2,
               name: t("오겹살"),
               price: 15000,
-              image: jajangRice,
+              image: skinonPorkBelly,
             },
             {
               id: 3,
               name: t("목살"),
               price: 15000,
-              image: jambongRice,
+              image: porkShoulder,
             },
             {
               id: 4,
-              name: t("감매기살"),
+              name: t("갈매기살"),
               price: 15000,
-              image: jambongRice,
+              image: thinSkirt,
             },
             {
               id: 5,
               name: t("항정살"),
               price: 15000,
-              image: jambongRice,
+              image: jowlMeat,
             },
           ],
         },
@@ -276,25 +294,25 @@ const App = () => {
               id: 1,
               name: t("물냉면"),
               price: 5000,
-              image: friedRice,
+              image: coldBuckwheatNoodles,
             },
             {
               id: 2,
               name: t("된장찌개"),
               price: 5000,
-              image: jajangRice,
+              image: soybeanPasteJjigae,
             },
             {
               id: 3,
               name: t("돼지껍데기"),
               price: 5000,
-              image: jambongRice,
+              image: porkRinds,
             },
             {
               id: 4,
               name: t("공기밥 추가"),
               price: 1000,
-              image: jambongRice,
+              image: rice,
             },
           ],
         },
@@ -304,51 +322,51 @@ const App = () => {
           menus: [
             {
               id: 1,
-              name: t("살업음맥주500cc"),
+              name: t("살얼음맥주500cc"),
               price: 5000,
-              image: coke,
+              image: beer,
             },
             {
               id: 2,
               name: t("참이슬"),
               price: 5000,
-              image: cider,
+              image: cahmiseul,
             },
             {
               id: 3,
               name: t("좋은데이"),
               price: 5000,
-              image: fanta,
+              image: goodDay,
             },
             {
               id: 4,
               name: t("대선"),
               price: 5000,
-              image: fanta,
+              image: daesun,
             },
             {
               id: 5,
               name: t("진로"),
               price: 5000,
-              image: fanta,
+              image: jinro,
             },
             {
               id: 6,
               name: t("카스"),
               price: 5000,
-              image: fanta,
+              image: cass,
             },
             {
               id: 7,
               name: t("테라"),
               price: 5000,
-              image: fanta,
+              image: terra,
             },
             {
               id: 8,
               name: t("막걸리"),
               price: 5000,
-              image: fanta,
+              image: riceWine,
             },
           ],
         },
@@ -372,7 +390,7 @@ const App = () => {
               id: 3,
               name: t("갈아만든배"),
               price: 5000,
-              image: fanta,
+              image: pearDrink,
             },
           ],
         },

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [passwordValue, setPasswordValue] = useState("");
+  const navigate = useNavigate();
 
   const addPasswordValue = (value) => {
     setPasswordValue(`${passwordValue}${value}`);
@@ -16,6 +17,10 @@ const AdminLogin = () => {
     setPasswordValue("");
   };
 
+  const moveBack = () => {
+    navigate(-1, { replace: true });
+  };
+
   return (
     <div className="w-full h-screen">
       <div className="w-full h-[10%] flex items-center justify-between">
@@ -25,7 +30,7 @@ const AdminLogin = () => {
         <div className="mb-auto text-[#4c51e8] text-[2vw] font-semibold">
           KT 시연단말
         </div>
-        <Link to="/" className="h-full w-[10%] flex items-center">
+        <div className="h-full w-[10%] flex items-center" onClick={moveBack}>
           <svg
             className="w-[3vw] h-[3vw] fill-[#b9b9b9] cursor-pointer ml-auto mx-4"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +38,7 @@ const AdminLogin = () => {
           >
             <path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
           </svg>
-        </Link>
+        </div>
       </div>
       <div className="w-full h-[90%] flex justify-center">
         <div className="h-full w-[50%]  flex flex-col items-center justify-center">

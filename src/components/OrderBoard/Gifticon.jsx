@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Gifticonimg from "../../assets/images/Gifticon.png";
 import { useState } from "react";
+import { t } from "i18next";
 
 const Gifticon = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Gifticon = () => {
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-[#ffd745] ">
         <div className="h-full w-[95%] ml-[5%] text-white text-[2vw] flex items-center justify-center">
-          상품 활용권 사용
+          {t("상품 할인권 사용")}
         </div>
         <div
           className="h-full w-[5%] flex items-center justify-center"
@@ -43,19 +44,19 @@ const Gifticon = () => {
       </div>
       <div className="flex w-full h-[90%]">
         <div className="h-full w-[50%] flex flex-col items-center justify-center">
-          <div className="h-[20%] w-[75%]">
+          <div className="w-[75%]">
             <div className="text-[2vw] font-semibold">
-              상품 할인권 번호 입력
+              {t("상품 할인권 번호 입력")}
             </div>
             <input
-              className="h-[50%] w-full border border-[#919191] my-[1vw] flex items-center px-[1vw] text-[#919191] text-[1.5vw]"
-              placeholder="상품 할인권 번호 입력해주세요."
+              className="w-full border border-[#919191] my-[1vw] flex items-center px-[1vw] py-[2vw] text-[#919191] text-[1.5vw] "
+              placeholder={t("상품 할인권 번호 입력해주세요")}
               value={giftconNumber}
             />
           </div>
-          <img src={Gifticonimg} alt="Gifticon" className="h-[25vw]" />
+          <img src={Gifticonimg} alt="Gifticon" className="h-[20vw]" />
           <div className="text-[1.5vw] my-[1vw]">
-            상품 할인권 내에 가입되어 있는 번호를 입력해주세요
+            {t("상품 할인권 내에 기입되어 있는 번호를 입력해주세요")}
           </div>
         </div>
         <div className="border h-[85%] mt-[3%]"></div>
@@ -147,7 +148,7 @@ const Gifticon = () => {
             </div>
           </div>
           <div className="w-[70%] h-[13%] my-[3vw] bg-black text-white flex items-center justify-center text-[2vw] rounded-lg">
-            조회
+            {t("조회")}
           </div>
         </div>
       </div>

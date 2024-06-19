@@ -12,10 +12,12 @@ const Footer = ({ openShoppingModal, choiceMenus }) => {
         >
           <img
             src={gifts_image}
-            alt={t("기프티콘")}
+            alt={t("상품할인권")}
             className="w-[3vw] h-[3vw]"
           />
-          <div className="text-[#b0b0b0] text-[2.3vw]">{t("기프티콘")}</div>
+          <div className="text-[#b0b0b0] text-[2vw] leading-[2vw]">
+            {t("상품할인권")}
+          </div>
         </Link>
       </div>
 

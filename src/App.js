@@ -34,6 +34,7 @@ import { useState } from "react";
 import { t } from "i18next";
 import Display from "./pages/Display";
 import ChoiceGame from "./pages/ChoiceGame";
+import DutchPay from "./pages/DutchPay";
 
 const chatrooms = [
   {
@@ -348,6 +349,7 @@ const App = () => {
         />
         <Route path="/gifticon" element={<Gifticon />} />
         <Route path="/display" element={<Display />} />
+        <Route path="/dutchpay" element={<DutchPay />} />
         <Route
           path="/"
           element={

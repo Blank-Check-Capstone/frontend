@@ -158,7 +158,10 @@ const App = () => {
     return chatrooms.find((room) => room.id === id);
   };
 
-  const [purchasedMenus, setPurchasedMenus] = useState([]);
+  const [purchasedMenus, setPurchasedMenus] = useState({
+    menus: [],
+    isPay: false,
+  });
   const [nowType, setNowType] = useState(1);
   const [nowLang, setNowLang] = useState("KOR");
 
@@ -250,6 +253,10 @@ const App = () => {
     },
     {
       id: 2,
+      categorys: [],
+    },
+    {
+      id: 3,
       categorys: [
         {
           id: 1,

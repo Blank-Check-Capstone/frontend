@@ -4,15 +4,17 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
   const navigate = useNavigate();
 
   const pageBack = () => {
-    navigate(-1, { replace: true });
+    navigate(-1);
   };
+
+  console.log(purchasedMenus);
 
   return (
     <div className="w-full pt-[15vw] pb-[8vw] px-[5vw]">
       <div className="flex items-center w-full h-[5vw] bg-black text-white fixed top-0 left-0">
         <div className="flex w-full h-full items-center">
           <div className="w-[15%] h-full bg-[#393939] text-[2vw] font-bold flex items-center justify-center">
-            Table 중식당
+            1번
           </div>
           <div className="h-full flex items-center justify-between px-[1vw] text-[2vw] font-bold">
             결제 대기중입니다.
@@ -32,14 +34,16 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
       </div>
       <div className="text-black text-[4vw] font-bold w-full h-[10vw] bg-white fixed top-[5vw] left-0">
         <div className="w-full h-full flex items-center justify-center">
-          {purchasedMenus.length === 0
+          {purchasedMenus["menus"].length === 0
             ? "주문내역이 없습니다."
+            : purchasedMenus.isPay
+            ? "주문이 완료되었습니다."
             : "직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요."}
         </div>
       </div>
       <div className="flex w-full h-full items-center flex-col py-[1vw]">
         <div className="w-full grid grid-cols-4 font-bold gap-[5vw]">
-          {purchasedMenus.map((menu) => {
+          {purchasedMenus["menus"].map((menu) => {
             const menuInfo = getMenuByCategoryIdAndMenuId(
               menu.categoryId,
               menu.menuId
@@ -67,7 +71,7 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
           Total
           <div className="text-[#40d7e1]">
             &ensp;
-            {purchasedMenus
+            {purchasedMenus["menus"]
               .reduce((total, purchasedMenu) => {
                 const menu = getMenuByCategoryIdAndMenuId(
                   purchasedMenu.categoryId,

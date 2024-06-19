@@ -75,13 +75,13 @@ const OrderBoard = ({
     setChoiceMenus(_choiceMenus);
   };
 
-  const purchase = () => {
-    setPurchasedMenus(choiceMenus);
-    navigate("/log", { replace: true });
+  const purchase = (isPay) => {
+    setPurchasedMenus({ menus: choiceMenus, isPay });
+    navigate("/log");
   };
 
   const purchaseDutchPay = () => {
-    navigate("/dutchpay", { replace: true });
+    navigate("/dutchpay");
   };
 
   const openCallModal = () => {
@@ -124,6 +124,7 @@ const OrderBoard = ({
   const scrollSelectCategory = (categoryId) => {
     categoryRefs.current[categoryId].scrollIntoView({
       behavior: "smooth",
+      block: "nearest",
     });
   };
 

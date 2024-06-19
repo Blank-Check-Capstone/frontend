@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const ChatSelection = ({ chatrooms }) => {
   return (
-    <div className="w-full h-full">
-      <div className="w-full h-[7vw] bg-white flex border-[#7B7B7B] border px-[1vw]">
+    <div className="w-full h-full bg-white min-h-[100vh]">
+      <div className="w-full h-[7vw] flex border-[#7B7B7B] border px-[1vw]">
         <Link
           to="/"
           className="h-full flex text-2xl items-center justify-center gap-[0.5vw]"

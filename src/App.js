@@ -61,6 +61,8 @@ import creamPasta from "./assets/images/creamPasta.jpg";
 import vanillaIceCream from "./assets/images/vanillaIceCream.jpg";
 import mangoPannaCotaAndGarlicCompot from "./assets/images/mangoPannaCota&GarlicCompot.jfif";
 import miniCheesePlatter from "./assets/images/miniCheesePlatter.jfif";
+import sweetAndSourPork from "./assets/images/sweetAndSourPork.jfif";
+import palbochae from "./assets/images/palbochae.jpg";
 
 const chatrooms = [
   {
@@ -235,6 +237,24 @@ const App = () => {
         },
         {
           id: 3,
+          title: t("요리"),
+          menus: [
+            {
+              id: 1,
+              name: t("탕수육"),
+              price: 15000,
+              image: sweetAndSourPork,
+            },
+            {
+              id: 2,
+              name: t("팔보채"),
+              price: 18000,
+              image: palbochae,
+            },
+          ],
+        },
+        {
+          id: 4,
           title: t("음료"),
           menus: [
             {

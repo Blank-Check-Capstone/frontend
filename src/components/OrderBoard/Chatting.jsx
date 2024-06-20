@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as Hangul from "hangul-js";
 import { t } from "i18next";
 
@@ -16,6 +16,12 @@ const Chatting = ({ type, getChatroom }) => {
   ]);
 
   const { chatId } = useParams();
+
+  const navigate = useNavigate();
+
+  const moveBack = () => {
+    navigate(-1);
+  };
 
   const roomInit = async (id) => {
     const room = await getChatroom(id);
@@ -324,9 +330,9 @@ const Chatting = ({ type, getChatroom }) => {
   return (
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-white">
-        <Link
-          to={`${type == 1 ? "/" : "/chatSelection"}`}
+        <div
           className="h-full w-[10%] flex text-2xl items-center justify-center"
+          onClick={moveBack}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -338,7 +344,7 @@ const Chatting = ({ type, getChatroom }) => {
             <path d="M16.041,24,6.534,14.48a3.507,3.507,0,0,1,0-4.948L16.052,0,18.17,2.121,8.652,11.652a.5.5,0,0,0,0,.707l9.506,9.52Z" />
           </svg>
           {t("이전")}
-        </Link>
+        </div>
         <div className="h-full w-[80%] text-2xl font-bold flex items-center justify-center">
           {chatInfo.name}
         </div>

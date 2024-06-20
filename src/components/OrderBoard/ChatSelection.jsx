@@ -1,13 +1,19 @@
 import { t } from "i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ChatSelection = ({ chatrooms }) => {
+  const navigate = useNavigate();
+
+  const moveBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="w-full h-full bg-white min-h-[100vh]">
       <div className="w-full h-[7vw] flex border-[#7B7B7B] border px-[1vw]">
-        <Link
-          to="/"
+        <div
           className="h-full flex text-2xl items-center justify-center gap-[0.5vw]"
+          onClick={moveBack}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -16,8 +22,8 @@ const ChatSelection = ({ chatrooms }) => {
           >
             <path d="M16.041,24,6.534,14.48a3.507,3.507,0,0,1,0-4.948L16.052,0,18.17,2.121,8.652,11.652a.5.5,0,0,0,0,.707l9.506,9.52Z" />
           </svg>
-          <div className="text-[1.8vw]">이전</div>
-        </Link>
+          <div className="text-[1.8vw]">{t("이전")}</div>
+        </div>
         <div className="flex-1 text-[1.8vw] font-bold flex items-center justify-center">
           {t("1대1채팅")}
         </div>

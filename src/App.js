@@ -63,6 +63,7 @@ import mangoPannaCotaAndGarlicCompot from "./assets/images/mangoPannaCota&Garlic
 import miniCheesePlatter from "./assets/images/miniCheesePlatter.jfif";
 import sweetAndSourPork from "./assets/images/sweetAndSourPork.jfif";
 import palbochae from "./assets/images/palbochae.jpg";
+import chiliJapchae from "./assets/images/chiliJapchae.jpg";
 
 const chatrooms = [
   {
@@ -250,6 +251,12 @@ const App = () => {
               name: t("팔보채"),
               price: 18000,
               image: palbochae,
+            },
+            {
+              id: 3,
+              name: t("고추잡채"),
+              price: 18000,
+              image: chiliJapchae,
             },
           ],
         },

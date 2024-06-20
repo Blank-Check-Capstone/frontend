@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { Link } from "react-router-dom";
 
 const ChatSelection = ({ chatrooms }) => {
@@ -18,7 +19,7 @@ const ChatSelection = ({ chatrooms }) => {
           <div className="text-[1.8vw]">이전</div>
         </Link>
         <div className="flex-1 text-[1.8vw] font-bold flex items-center justify-center">
-          1:1 채팅
+          {t("1대1채팅")}
         </div>
       </div>
 

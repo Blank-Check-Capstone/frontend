@@ -6,6 +6,7 @@ import CancelIcon from "../../CancelIcon";
 import YesNoModal from "./YesNoModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
 
 const Payment = ({ closePaymentModal, purchase, purchaseDutchPay }) => {
   const [isCardConfirmModalShow, setIsCardConfirmModalShow] = useState(false);
@@ -36,17 +37,17 @@ const Payment = ({ closePaymentModal, purchase, purchaseDutchPay }) => {
   const paymentList = [
     {
       image: cardPayment,
-      label: "카드결제",
+      label: t("카드결제"),
       onClick: showCardConfirmModal,
     },
     {
       image: MoneyIcon,
-      label: "현금결제",
+      label: t("현금결제"),
       onClick: showCashConfirmModal,
     },
     {
       image: DutchPayIcon,
-      label: "더치페이",
+      label: t("더치페이"),
       onClick: moveDutchPay,
     },
   ];
@@ -55,8 +56,8 @@ const Payment = ({ closePaymentModal, purchase, purchaseDutchPay }) => {
     <div className="w-full h-full fixed flex justify-center items-center z-20">
       {isCardConfirmModalShow && (
         <YesNoModal
-          title="카드결제 후 주문변경 및 카드변경/취소 불가합니다."
-          content="계속 진행하시겠습니까?"
+          title={t("카드결제 후 주문변경 및 카드변경/취소 불가합니다.")}
+          content={t("계속 진행하시겠습니까?")}
           onYesClick={() => {
             purchase(true);
           }}
@@ -65,8 +66,8 @@ const Payment = ({ closePaymentModal, purchase, purchaseDutchPay }) => {
       )}
       {isCashConfirmModalShow && (
         <YesNoModal
-          title="주문 하시겠습니까?"
-          content="직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요."
+          title={t("주문 하시겠습니까?")}
+          content={t("직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요.")}
           onYesClick={() => {
             purchase(false);
           }}
@@ -77,10 +78,10 @@ const Payment = ({ closePaymentModal, purchase, purchaseDutchPay }) => {
         {/* 제목 (헤더라인) */}
         <div className="flex justify-center items-center relative">
           <div className="flex gap-[1.5vw] items-center">
-            <div className="text-[2vw] font-bold">주문</div>
+            <div className="text-[2vw] font-bold">{t("주문")}</div>
             <div className="border-[0.11vw] border-black h-[2vw]"></div>
             <div className="text-[1.5vw] font-light text-[#5F5F5F]">
-              결제방법을 선택하세요
+              {t("결제방법을 선택하세요")}
             </div>
           </div>
           <div

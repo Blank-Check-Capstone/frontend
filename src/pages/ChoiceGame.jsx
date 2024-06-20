@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import bg from "../../src/assets/images/bgimg.png";
 import game from "../../src/assets/images/game.png";
 import vs from "../../src/assets/images/VS.jpg";
+import { t } from "i18next";
 
 const ChoiceGame = () => {
   const navigate = useNavigate();
@@ -29,28 +30,32 @@ const ChoiceGame = () => {
           </svg>
         </div>
         <div
-          className="h-full w-[12%] bg-[#515c7a] flex justify-center items-center text-[3vw] font-black italic text-[#e7f0ee]"
+          className="h-full w-[12%] bg-[#515c7a] flex justify-center items-center text-[3vw] font-black italic text-[#e7f0ee] cursor-pointer"
           onClick={moveBack}
         >
-          나가기
+          {t("나가기")}
         </div>
       </div>
-      <div className="w-full h-[20%] text-[#b2baba] text-[7vw] italic font-black flex justify-center relative">
-        플레이 모드 선택
+      <div className="text-[#ffffff] text-[7vw] italic font-black flex justify-center relative drop-shadow-lg">
+        {t("플레이 모드 선택")}
       </div>
       <div className="w-full h-[70%] gap-[2vw] flex justify-center relative">
         <div className="w-[40%] h-[80%]">
           <img src={game} className="w-full h-[70%]" />
           <div className="w-full h-[30%] bg-[#273c79] flex justify-center items-center flex-col">
-            <div className="text-white text-[3vw] font-bold">싱글 게임</div>
-            <div className="text-[#8e8e8e]">심심할때 우리끼리 놀자</div>
+            <div className="text-white text-[3vw] font-bold">
+              {t("싱글 게임")}
+            </div>
+            <div className="text-[#f1f1f1]">{t("심심할때 우리끼리 놀자")}</div>
           </div>
         </div>
         <div className="w-[40%] h-[80%]">
           <img src={vs} className="w-full h-[70%]" />
           <div className="w-full h-[30%] bg-[#273c79] flex justify-center items-center flex-col">
-            <div className="text-white text-[3vw] font-bold">대전 게임</div>
-            <div className="text-[#8e8e8e]">안주걸고 진검승부!</div>
+            <div className="text-white text-[3vw] font-bold">
+              {t("대전 게임")}
+            </div>
+            <div className="text-[#f1f1f1]">{t("안주걸고 진검승부!")}</div>
           </div>
         </div>
       </div>

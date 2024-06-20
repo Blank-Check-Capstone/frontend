@@ -2,32 +2,33 @@ import { useState } from "react";
 import CancelIcon from "../../CancelIcon";
 import SelectedSide from "./Call/SelectedSide";
 import UnSelectedSide from "./Call/UnSelectedSide";
+import { t } from "i18next";
 
-const callMenus = [
-  {
-    id: 1,
-    name: "티슈 주세요",
-  },
-  {
-    id: 2,
-    name: "테이블정리해주세요",
-  },
-  {
-    id: 3,
-    name: "물 주세요",
-  },
-  {
-    id: 4,
-    name: "직원 호출",
-  },
-  {
-    id: 5,
-    name: "티슈",
-  },
-];
-
-const Call = ({ closeModal }) => {
+const Call = ({ closeModal, openCallConfirmModal }) => {
   const [selectedCalls, setSelectedCalls] = useState([]);
+
+  const callMenus = [
+    {
+      id: 1,
+      name: t("티슈 주세요"),
+    },
+    {
+      id: 2,
+      name: t("테이블정리해주세요"),
+    },
+    {
+      id: 3,
+      name: t("물 주세요"),
+    },
+    {
+      id: 4,
+      name: t("직원 호출"),
+    },
+    {
+      id: 5,
+      name: t("티슈"),
+    },
+  ];
 
   const getCallById = (id) => {
     return callMenus.find((callMenu) => callMenu.id == id);
@@ -81,6 +82,10 @@ const Call = ({ closeModal }) => {
     setSelectedCalls(_selectedCalls);
   };
 
+  const clearSelectedCall = () => {
+    setSelectedCalls([]);
+  };
+
   return (
     <div className="w-full h-full fixed z-10 flex justify-center items-center">
       <div className="w-[90%] h-[90%]  bg-white relative z-[2]">
@@ -103,7 +108,7 @@ const Call = ({ closeModal }) => {
                 fill="white"
               />
             </svg>
-            직원호출
+            {t("직원호출")}
           </div>
           <div
             className="flex items-center cursor-pointer gap-[1vw]"
@@ -118,7 +123,7 @@ const Call = ({ closeModal }) => {
               />
             </div>
             <div className="text-[2vw] text-white leading-[2vw] font-bold">
-              닫기
+              {t("닫기")}
             </div>
           </div>
         </div>
@@ -164,6 +169,8 @@ const Call = ({ closeModal }) => {
               removeSelectedCall={removeSelectedCall}
               deleteSelectedCall={deleteSelectedCall}
               getCallById={getCallById}
+              openCallConfirmModal={openCallConfirmModal}
+              clearSelectedCall={clearSelectedCall}
             />
           ) : (
             <UnSelectedSide />

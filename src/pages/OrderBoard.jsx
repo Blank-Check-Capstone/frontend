@@ -75,6 +75,22 @@ const OrderBoard = ({
     setChoiceMenus(_choiceMenus);
   };
 
+  const deleteChoiceMenu = (categoryId, menuId) => {
+    const hasMenu = choiceMenus.findIndex(
+      (menu) => menu.categoryId == categoryId && menu.menuId == menuId
+    );
+
+    if (hasMenu < 0) {
+      return;
+    }
+
+    const _choiceMenus = [...choiceMenus];
+
+    _choiceMenus.splice(hasMenu, 1);
+
+    setChoiceMenus(_choiceMenus);
+  };
+
   const purchase = (isPay) => {
     setPurchasedMenus({ menus: choiceMenus, isPay });
     navigate("/log");
@@ -119,6 +135,10 @@ const OrderBoard = ({
 
   const emptyShopping = () => {
     setChoiceMenus([]);
+  };
+
+  const openCallConfirmModal = () => {
+    setNowShowModal(5);
   };
 
   const scrollSelectCategory = (categoryId) => {
@@ -175,7 +195,12 @@ const OrderBoard = ({
   const modalList = [
     {
       id: 1,
-      modal: <Call closeModal={closeModal} />,
+      modal: (
+        <Call
+          closeModal={closeModal}
+          openCallConfirmModal={openCallConfirmModal}
+        />
+      ),
     },
     {
       id: 2,
@@ -188,6 +213,7 @@ const OrderBoard = ({
           addChoiceMenu={addChoiceMenu}
           removeChoiceMenu={removeChoiceMenu}
           openPaymentModal={openPaymentModal}
+          deleteChoiceMenu={deleteChoiceMenu}
         />
       ),
     },
@@ -199,14 +225,24 @@ const OrderBoard = ({
       id: 4,
       modal: <Lang closeModal={closeSideMenuModal} langList={langList} />,
     },
+    {
+      id: 5,
+      modal: (
+        <MessageBox
+          title={t("정상적으로 호출되었습니다.")}
+          content=""
+          closeModal={closeModal}
+        />
+      ),
+    },
   ];
 
   return (
     <div className="flex w-full h-screen">
       {isShowNoChoiceMessageBox && (
         <MessageBox
-          title="장바구니에 상품이 없습니다."
-          content="상품을 추가해 주세요."
+          title={t("장바구니에 상품이 없습니다.")}
+          content={t("상품을 추가해 주세요.")}
           closeModal={closeNoChoiceMessageBox}
         />
       )}

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -24,11 +25,11 @@ const AdminLogin = () => {
   return (
     <div className="w-full h-screen">
       <div className="w-full h-[10%] flex items-center justify-between">
-        <div className="flex text-[#737373] text-[2vw] font-semibold h-full w-[10%] items-center px-4">
+        <div className="flex text-[#737373] text-[2vw] font-semibold h-full items-center px-4">
           하이오더
         </div>
         <div className="mb-auto text-[#4c51e8] text-[2vw] font-semibold">
-          KT 시연단말
+          {t("KT 시연단말")}
         </div>
         <div className="h-full w-[10%] flex items-center" onClick={moveBack}>
           <svg
@@ -43,7 +44,7 @@ const AdminLogin = () => {
       <div className="w-full h-[90%] flex justify-center">
         <div className="h-full w-[50%]  flex flex-col items-center justify-center">
           <div className="w-[43%] h-[7%] text-[2vw] flex items-center justify-center">
-            호출 번호를 입력해주세요
+            {t("호출 번호를 입력해주세요")}
           </div>
           <div className="w-[43%] h-[10%] border-[#7B7B7B] border my-5">
             <input
@@ -140,7 +141,7 @@ const AdminLogin = () => {
             </div>
           </div>
           <div className="w-[43%] h-[13%] my-[2vw] bg-[#4c51e8] text-white flex items-center justify-center text-[2vw] rounded-lg">
-            호출번호 확인
+            {t("호출번호 확인")}
           </div>
         </div>
       </div>

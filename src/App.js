@@ -53,6 +53,14 @@ import terra from "./assets/images/terra.jpg";
 import riceWine from "./assets/images/riceWine.webp";
 import pearDrink from "./assets/images/pearDrink.jfif";
 import DutchPay from "./pages/DutchPay";
+import wholeShrimpCheeseChiliSandwich from "./assets/images/wholeshrimpcheesechilisandwich.png";
+import greenCobbSalad from "./assets/images/greenCobbSalad.jpg";
+import wholePorkBellyCarbonara from "./assets/images/wholePorkBellyCarbonara.jpg";
+import meatballBolognesePasta from "./assets/images/meatballBolognesePasta.jfif";
+import creamPasta from "./assets/images/creamPasta.jpg";
+import vanillaIceCream from "./assets/images/vanillaIceCream.jpg";
+import mangoPannaCotaAndGarlicCompot from "./assets/images/mangoPannaCota&GarlicCompot.jfif";
+import miniCheesePlatter from "./assets/images/miniCheesePlatter.jfif";
 
 const chatrooms = [
   {
@@ -155,7 +163,7 @@ const langList = [
 
 const App = () => {
   const getChatroom = (id) => {
-    return chatrooms.find((room) => room.id === id);
+    return chatrooms.find((room) => parseInt(room.id) === parseInt(id));
   };
 
   const [purchasedMenus, setPurchasedMenus] = useState({
@@ -253,7 +261,104 @@ const App = () => {
     },
     {
       id: 2,
-      categorys: [],
+      categorys: [
+        {
+          id: 1,
+          title: t("샐러드"),
+          menus: [
+            {
+              id: 1,
+              name: t("통새우치즈칠리샌드위치"),
+              price: 6000,
+              image: wholeShrimpCheeseChiliSandwich,
+            },
+            {
+              id: 2,
+              name: t("그린콥샐러드"),
+              price: 8000,
+              image: greenCobbSalad,
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: t("파스타"),
+          menus: [
+            {
+              id: 1,
+              name: t("통삼겹 까르보나라"),
+              price: 12000,
+              image: wholePorkBellyCarbonara,
+            },
+            {
+              id: 2,
+              name: t("쉬림프 로제 파스타"),
+              price: 12000,
+              image: porkBelly,
+            },
+            {
+              id: 3,
+              name: t("미트볼 볼로네제 파스타"),
+              price: 12000,
+              image: meatballBolognesePasta,
+            },
+            {
+              id: 4,
+              name: t("크림파스타"),
+              price: 12000,
+              image: creamPasta,
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: t("디저트"),
+          menus: [
+            {
+              id: 1,
+              name: t("바닐라 아이스크림"),
+              price: 1000,
+              image: vanillaIceCream,
+            },
+            {
+              id: 2,
+              name: t("망고 판나 코타 & 갈릭 콤포트"),
+              price: 4000,
+              image: mangoPannaCotaAndGarlicCompot,
+            },
+            {
+              id: 3,
+              name: t("미니 치즈 플래터"),
+              price: 4000,
+              image: miniCheesePlatter,
+            },
+          ],
+        },
+        {
+          id: 4,
+          title: t("음료"),
+          menus: [
+            {
+              id: 1,
+              name: t("코카콜라"),
+              price: 1000,
+              image: coke,
+            },
+            {
+              id: 2,
+              name: t("칠성사이다"),
+              price: 1000,
+              image: cider,
+            },
+            {
+              id: 3,
+              name: t("환타"),
+              price: 1000,
+              image: fanta,
+            },
+          ],
+        },
+      ],
     },
     {
       id: 3,

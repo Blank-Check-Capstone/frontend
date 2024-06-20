@@ -1,5 +1,5 @@
-import CancelIcon from "../../CancelIcon";
 import NotCircleCheckIcon from "../../../assets/images/NotCircleCheckIcon.svg";
+import { t } from "i18next";
 
 const MessageBox = ({ title, content, closeModal }) => {
   return (
@@ -18,7 +18,7 @@ const MessageBox = ({ title, content, closeModal }) => {
               <div className="w-[2vw] h-[2vw] ">
                 <img src={NotCircleCheckIcon} height="33vw" width="33vw" />
               </div>
-              확인
+              {t("확인")}
             </div>
           </div>
         </div>

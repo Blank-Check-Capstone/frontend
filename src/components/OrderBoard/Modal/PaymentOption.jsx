@@ -8,7 +8,7 @@ const PaymentOption = ({ src, label, onClick }) => {
     >
       <div className="flex justify-center items-center w-full h-full flex-col">
         <img src={src} className="w-[10vw] h-[10vw] rounded-[50%]" />
-        <p className="text-[2.5vw] font-bold mt-[1vw]">{label}</p>
+        <p className="text-[2.5vw] font-bold mt-[1vw] pl-[1vw]">{label}</p>
       </div>
     </div>
   );

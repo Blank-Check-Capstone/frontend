@@ -11,6 +11,7 @@ const Shopping = ({
   addChoiceMenu,
   removeChoiceMenu,
   openPaymentModal,
+  deleteChoiceMenu,
 }) => {
   return (
     <div className="w-full h-full fixed z-10">
@@ -61,6 +62,7 @@ const Shopping = ({
                 menuInfo={menuInfo}
                 addChoiceMenu={addChoiceMenu}
                 removeChoiceMenu={removeChoiceMenu}
+                deleteChoiceMenu={deleteChoiceMenu}
               />
             );
           })}

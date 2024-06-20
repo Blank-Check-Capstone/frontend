@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as Hangul from "hangul-js";
+import { t } from "i18next";
 
 const Chatting = ({ type, getChatroom }) => {
-  const [chatInfo, setChatInfo] = useState({ id: 0, name: "단체 채팅" });
+  const [chatInfo, setChatInfo] = useState({ id: 0, name: t("단체채팅") });
   const [isLoading, setIsLoading] = useState(false);
   const [inputContent, setInputContent] = useState([]);
   const [beforeInput, setBeforeInput] = useState("");
@@ -336,7 +337,7 @@ const Chatting = ({ type, getChatroom }) => {
           >
             <path d="M16.041,24,6.534,14.48a3.507,3.507,0,0,1,0-4.948L16.052,0,18.17,2.121,8.652,11.652a.5.5,0,0,0,0,.707l9.506,9.52Z" />
           </svg>
-          이전
+          {t("이전")}
         </Link>
         <div className="h-full w-[80%] text-2xl font-bold flex items-center justify-center">
           {chatInfo.name}
@@ -346,10 +347,13 @@ const Chatting = ({ type, getChatroom }) => {
         <div className="h-full w-[75%]">
           <div className="h-[85%] w-full bg-[#FFE4E4] overflow-auto">
             <div className="h-[13%] w-full bg-white bg-opacity-90 flex items-center text-sm pl-3 text-[#7F7F7F] my-5 leading-[2]">
-              1. 카카오톡ID 또는 개인 연락처를 물어보거나 알려주지 마세요.
+              {t(
+                "1. 카카오톡ID 또는 개인 연락처를 물어보거나 알려주지 마세요."
+              )}
               <br />
-              2. 앱을 통해서 충분히 대화를 나누고 난뒤 연락처 주고 받으시기
-              바랍니다.
+              {t(
+                "2. 앱을 통해서 충분히 대화를 나누고 난뒤 연락처 주고 받으시기 바랍니다."
+              )}
             </div>
             <div className="w-full h-full flex flex-col gap-[1vw]">
               {chats.map((chat) => {
@@ -367,7 +371,7 @@ const Chatting = ({ type, getChatroom }) => {
                 return (
                   <div className="flex h-[10%] w-full justify-end pr-2">
                     <div className="flex-shrink-0 mt-auto mr-2 flex">
-                      {`${isAmPm} ${hour}:${min }`}
+                      {`${isAmPm} ${hour}:${min}`}
                     </div>
                     <div className="bg-[#FFF500] flex items-center justify-center px-3 rounded-xl text-2xl">
                       {Hangul.assemble(chat.content)}
@@ -391,7 +395,7 @@ const Chatting = ({ type, getChatroom }) => {
               >
                 <path d="M10,12a1,1,0,0,1-1-1c0-1.054-.68-2-1-2s-1,.946-1,2a1,1,0,0,1-2,0C5,9.108,6.232,7,8,7s3,2.108,3,4A1,1,0,0,1,10,12Zm9-1c0-1.892-1.232-4-3-4s-3,2.108-3,4a1,1,0,0,0,2,0c0-1.054.68-2,1-2s1,.946,1,2a1,1,0,0,0,2,0Zm5,1A12.013,12.013,0,0,0,12,0C-3.9.6-3.893,23.4,12,24A12.013,12.013,0,0,0,24,12Zm-2,0A10.011,10.011,0,0,1,12,22C-1.249,21.5-1.244,2.5,12,2A10.011,10.011,0,0,1,22,12Zm-4.334,3.746a1,1,0,0,0-1.33-1.493,6.36,6.36,0,0,1-8.67,0,1,1,0,0,0-1.332,1.492A9.454,9.454,0,0,0,12,18,9.454,9.454,0,0,0,17.666,15.746Z" />
               </svg>
-              이모티콘
+              {t("이모티콘")}
             </div>
             <div className="h-[70%] w-[60%] border-[#7B7B7B] border rounded-xl pl-[1vw] py-[1vw]">
               <input
@@ -402,10 +406,10 @@ const Chatting = ({ type, getChatroom }) => {
               />
             </div>
             <div
-              className="h-[70%] w-[15%] bg-[#E6E6E6] border-[#7B7B7B] border mx-3 flex items-center justify-center rounded-xl text-2xl font-bold"
+              className="h-[70%] w-[15%] bg-[#E6E6E6] border-[#7B7B7B] border mx-3 flex items-center justify-center rounded-xl text-2xl font-bold cursor-pointer"
               onClick={addChat}
             >
-              전송
+              {t("전송")}
             </div>
           </div>
         </div>
@@ -421,10 +425,10 @@ const Chatting = ({ type, getChatroom }) => {
               />
             </div>
             <div
-              className="w-[25%] h-[80%] border-[#7B7B7B] border flex items-center justify-center text-[#7B7B7B] bg-[#C9CDD0] rounded-xl"
+              className="w-[25%] h-[80%] border-[#7B7B7B] border flex items-center justify-center text-[#7B7B7B] bg-[#C9CDD0] rounded-xl cursor-pointer"
               onClick={addChat}
             >
-              전송
+              {t("전송")}
             </div>
           </div>
           <div className="w-full h-[85%] grid grid-cols-3 font-bold">

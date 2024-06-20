@@ -19,7 +19,7 @@ const Menu = ({ id, name, price, image, addChoiceMenu }) => {
         </div>
       </div>
       <div className="w-[5vw] h-[3vw] bg-[#000] flex items-center justify-center rounded-lg text-white text-[1.5vw] float-right">
-        담기
+        {t("담기")}
       </div>
     </div>
   );

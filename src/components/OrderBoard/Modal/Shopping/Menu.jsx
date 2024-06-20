@@ -3,7 +3,13 @@ import CancelIcon from "../../../CancelIcon";
 import MinusIcon from "../../../MinusIcon";
 import PlusIcon from "../../../PlusIcon";
 
-const Menu = ({ menu, menuInfo, addChoiceMenu, removeChoiceMenu }) => {
+const Menu = ({
+  menu,
+  menuInfo,
+  addChoiceMenu,
+  removeChoiceMenu,
+  deleteChoiceMenu,
+}) => {
   return (
     <div className="w-full py-[1.2vw] border-b border-[#E2E2E2] border-solid">
       <div className="p-[1vw] ml-[0.55vw] flex flex-col gap-[1.7vw]">
@@ -29,7 +35,10 @@ const Menu = ({ menu, menuInfo, addChoiceMenu, removeChoiceMenu }) => {
               {(menuInfo.price * menu.amount).toLocaleString()}
               {t("원")}
             </p>
-            <div className="w-[2.7vw] h-[2.7vw] bg-[#D9D9D9] rounded-3xl hover: cursor-pointer mr-[0.3vw] mb-[0.3vw]">
+            <div
+              className="w-[2.7vw] h-[2.7vw] bg-[#D9D9D9] rounded-3xl hover: cursor-pointer mr-[0.3vw] mb-[0.3vw]"
+              onClick={() => deleteChoiceMenu(menu.categoryId, menu.menuId)}
+            >
               <CancelIcon />
             </div>
           </div>

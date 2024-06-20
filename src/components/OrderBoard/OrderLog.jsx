@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { useNavigate } from "react-router-dom";
 
 const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
@@ -17,7 +18,11 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
             1번
           </div>
           <div className="h-full flex items-center justify-between px-[1vw] text-[2vw] font-bold">
-            결제 대기중입니다.
+            {purchasedMenus["menus"].length === 0
+              ? t("주문내역이 없습니다.")
+              : purchasedMenus.isPay
+              ? t("결제완료")
+              : t("결제 대기중입니다.")}
           </div>
         </div>
         <div onClick={pageBack}>
@@ -33,12 +38,12 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
         </div>
       </div>
       <div className="text-black text-[4vw] font-bold w-full h-[10vw] bg-white fixed top-[5vw] left-0">
-        <div className="w-full h-full flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center text-[3vw] pl-[1vw]">
           {purchasedMenus["menus"].length === 0
-            ? "주문내역이 없습니다."
+            ? t("주문내역이 없습니다.")
             : purchasedMenus.isPay
-            ? "주문이 완료되었습니다."
-            : "직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요."}
+            ? t("주문이 완료되었습니다.")
+            : t("직원이 직접 결제 받으러 옵니다. 결제 준비 해주세요.")}
         </div>
       </div>
       <div className="flex w-full h-full items-center flex-col py-[1vw]">
@@ -59,7 +64,10 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
                   <div>
                     {menuInfo.name} X{menu.amount}
                   </div>
-                  <div>{(menuInfo.price * menu.amount).toLocaleString()}원</div>
+                  <div>
+                    {(menuInfo.price * menu.amount).toLocaleString()}
+                    {t("원")}
+                  </div>
                 </div>
               </div>
             );
@@ -82,7 +90,7 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
               }, 0)
               .toLocaleString()}
           </div>
-          원
+          {t("원")}
         </div>
       </div>
     </div>

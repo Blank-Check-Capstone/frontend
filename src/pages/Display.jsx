@@ -10,18 +10,18 @@ const Display = () => {
   const [nowType, setNowType] = useState(1);
 
   return (
-    <div className="w-screen h-screen bg-[#eff0f5]">
+    <div className="w-screen h-screen bg-[#eff0f5] overflow-hidden">
       <div className="w-full h-[5vw] bg-[#ffffff] flex items-center pl-[1vw] text-[3vw] font-bold">
         GBSW
       </div>
-      <div className="w-full flex py-[2vw]">
+      <div className="w-full flex py-[1vw]">
         <div className="w-[70%] h-[40vw] flex justify-center">
           <div className="w-[90%] bg-[#ffffff] rounded-2xl flex justify-center items-center shadow-xl">
             <div className="w-[95%] h-[95%] bg-[#000000] rounded-2xl flex justify-center items-center">
               <iframe
                 src={`/?type=${nowType}`}
                 frameborder="0"
-                className="w-[55vw] h-[35vw] bg-white"
+                className="w-[90%] h-[90%] bg-white"
               ></iframe>
             </div>
           </div>
@@ -78,7 +78,7 @@ const Display = () => {
                     src={stand}
                     className="object-cover w-full aspect-square"
                   />
-                  <div className="w-full flex justify-center mt-[1vw]">
+                  <div className="w-full flex justify-center mt-[1vw] text-[1vw]">
                     스탠드형
                   </div>
                 </div>
@@ -87,7 +87,7 @@ const Display = () => {
                     src={table}
                     className="object-cover w-full aspect-square"
                   />
-                  <div className="w-full flex justify-center mt-[1vw]">
+                  <div className="w-full flex justify-center mt-[1vw] text-[1vw]">
                     탁상형
                   </div>
                 </div>
@@ -96,7 +96,7 @@ const Display = () => {
                     src={wall}
                     className="object-cover w-full aspect-square"
                   />
-                  <div className="w-full flex justify-center mt-[1vw]">
+                  <div className="w-full flex justify-center mt-[1vw] text-[1vw]">
                     벽결이형
                   </div>
                 </div>

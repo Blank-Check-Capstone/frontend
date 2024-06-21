@@ -12,7 +12,6 @@ import { t } from "i18next";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Payment from "../components/OrderBoard/Modal/Payment";
 import MessageBox from "../components/OrderBoard/Modal/MessageBox";
-import MenuDetail from "../components/OrderBoard/Modal/MenuDetail";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },

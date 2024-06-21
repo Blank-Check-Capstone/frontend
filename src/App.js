@@ -173,7 +173,7 @@ const App = () => {
     menus: [],
     isPay: false,
   });
-  const [nowType, setNowType] = useState(1);
+  const [nowType, setNowType] = useState(0);
   const [nowLang, setNowLang] = useState("KOR");
 
   const changeType = (type) => {
@@ -185,6 +185,10 @@ const App = () => {
   };
 
   const _categoryList = [
+    {
+      id: 0,
+      categorys: [],
+    },
     {
       id: 1,
       categorys: [
@@ -262,6 +266,54 @@ const App = () => {
         },
         {
           id: 4,
+          title: t("주류"),
+          menus: [
+            {
+              id: 1,
+              name: t("참이슬"),
+              price: 5000,
+              image: cahmiseul,
+            },
+            {
+              id: 2,
+              name: t("좋은데이"),
+              price: 5000,
+              image: goodDay,
+            },
+            {
+              id: 3,
+              name: t("대선"),
+              price: 5000,
+              image: daesun,
+            },
+            {
+              id: 4,
+              name: t("진로"),
+              price: 5000,
+              image: jinro,
+            },
+            {
+              id: 5,
+              name: t("카스"),
+              price: 5000,
+              image: cass,
+            },
+            {
+              id: 6,
+              name: t("테라"),
+              price: 5000,
+              image: terra,
+            },
+            {
+              id: 7,
+              name: t("막걸리"),
+              price: 5000,
+              image: riceWine,
+            },
+          ],
+        },
+        {
+          id: 5,
           title: t("음료"),
           menus: [
             {

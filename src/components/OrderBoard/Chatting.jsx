@@ -331,7 +331,7 @@ const Chatting = ({ type, getChatroom }) => {
     <div className="w-full h-screen">
       <div className="flex w-full h-[10%] bg-white">
         <div
-          className="h-full w-[10%] flex text-2xl items-center justify-center"
+          className="h-full w-[10%] flex text-[2vw] items-center justify-center"
           onClick={moveBack}
         >
           <svg
@@ -345,14 +345,14 @@ const Chatting = ({ type, getChatroom }) => {
           </svg>
           {t("이전")}
         </div>
-        <div className="h-full w-[80%] text-2xl font-bold flex items-center justify-center">
+        <div className="h-full w-[80%] text-[2vw] font-bold flex items-center justify-center">
           {chatInfo.name}
         </div>
       </div>
       <div className="w-full h-[90%] flex">
         <div className="h-full w-[75%]">
           <div className="h-[85%] w-full bg-[#FFE4E4] overflow-auto">
-            <div className="h-[13%] w-full bg-white bg-opacity-90 flex items-center text-sm pl-3 text-[#7F7F7F] my-5 leading-[2]">
+            <div className="h-[13%] w-full bg-white bg-opacity-90 flex items-center text-[1.5vw] pl-[1.5vw] text-[#7F7F7F] my-5 leading-[2]">
               {t(
                 "1. 카카오톡ID 또는 개인 연락처를 물어보거나 알려주지 마세요."
               )}
@@ -361,7 +361,7 @@ const Chatting = ({ type, getChatroom }) => {
                 "2. 앱을 통해서 충분히 대화를 나누고 난뒤 연락처 주고 받으시기 바랍니다."
               )}
             </div>
-            <div className="w-full h-full flex flex-col gap-[1vw]">
+            <div className="w-full h-full flex flex-col gap-[1vw] px-[1vw]">
               {chats.map((chat) => {
                 const isAmPm = chat.time.getHours() < 12 ? "AM" : "PM";
                 const hour =
@@ -375,11 +375,11 @@ const Chatting = ({ type, getChatroom }) => {
                     : `${chat.time.getMinutes()}`;
 
                 return (
-                  <div className="flex h-[10%] w-full justify-end pr-2">
-                    <div className="flex-shrink-0 mt-auto mr-2 flex">
+                  <div className="flex w-full justify-end items-end">
+                    <div className="flex-shrink-0 mr-[1vw] flex text-[1.5vw]">
                       {`${isAmPm} ${hour}:${min}`}
                     </div>
-                    <div className="bg-[#FFF500] flex items-center justify-center px-3 rounded-xl text-2xl">
+                    <div className="bg-[#FFF500] flex items-center justify-center px-[1.5vw] py-[1vw] rounded-xl text-[2vw]">
                       {Hangul.assemble(chat.content)}
                     </div>
                   </div>
@@ -388,8 +388,8 @@ const Chatting = ({ type, getChatroom }) => {
             </div>
           </div>
 
-          <div className="h-[15%] w-full bg-white flex items-center justify-between">
-            <div className="h-[70%] w-[20%] bg-[#FFF500] border-[#7B7B7B] border mx-3 flex items-center justify-center rounded-xl text-2xl font-bold">
+          <div className="h-[15%] w-full bg-white flex items-center justify-between px-[1vw] gap-[1vw]">
+            <div className="h-[70%] w-[20%] bg-[#FFF500] border-[#7B7B7B] border flex items-center justify-center rounded-xl text-[2vw] font-bold">
               <svg
                 className="w-[2vw] h-[2vw] mx-2"
                 xmlns="http://www.w3.org/2000/svg"
@@ -403,16 +403,16 @@ const Chatting = ({ type, getChatroom }) => {
               </svg>
               {t("이모티콘")}
             </div>
-            <div className="h-[70%] w-[60%] border-[#7B7B7B] border rounded-xl pl-[1vw] py-[1vw]">
+            <div className="w-[60%] h-[50%] border-[#7B7B7B] border rounded-xl overflow-hidden">
               <input
                 type="text"
-                className="w-full h-full outline-none text-[1.5vw]"
+                className="w-full h-full outline-none text-[1.5vw] block px-[1vw]"
                 value={Hangul.assemble(inputContent)}
                 onChange={changeInputContent}
               />
             </div>
             <div
-              className="h-[70%] w-[15%] bg-[#E6E6E6] border-[#7B7B7B] border mx-3 flex items-center justify-center rounded-xl text-2xl font-bold cursor-pointer"
+              className="h-[70%] w-[15%] bg-[#E6E6E6] border-[#7B7B7B] border flex items-center justify-center rounded-xl text-[2vw] font-bold cursor-pointer"
               onClick={addChat}
             >
               {t("전송")}
@@ -431,13 +431,13 @@ const Chatting = ({ type, getChatroom }) => {
               />
             </div>
             <div
-              className="w-[25%] h-[80%] border-[#7B7B7B] border flex items-center justify-center text-[#7B7B7B] bg-[#C9CDD0] rounded-xl cursor-pointer"
+              className="w-[25%] h-[80%] border-[#7B7B7B] border flex items-center justify-center text-[#7B7B7B] bg-[#C9CDD0] rounded-xl text-[2vw] cursor-pointer"
               onClick={addChat}
             >
               {t("전송")}
             </div>
           </div>
-          <div className="w-full h-[85%] grid grid-cols-3 font-bold">
+          <div className="w-full h-[85%] grid grid-cols-3 font-bold text-[2vw]">
             <div
               className="w-full h-full border-[#7B7B7B] border flex items-center justify-center"
               onClick={() => addInputContent("ㅣ")}

@@ -15,13 +15,13 @@ const Display = () => {
         GBSW
       </div>
       <div className="w-full flex py-[1vw]">
-        <div className="w-[70%] h-[40vw] flex justify-center">
+        <div className="w-[75vw] h-[40vw] flex justify-center">
           <div className="w-[90%] bg-[#ffffff] rounded-2xl flex justify-center items-center shadow-xl">
-            <div className="w-[95%] h-[95%] bg-[#000000] rounded-2xl flex justify-center items-center">
+            <div className="w-[95%] h-[95%] bg-[#000000] rounded-2xl flex justify-center items-center p-[2vw]">
               <iframe
                 src={`/?type=${nowType}`}
                 frameborder="0"
-                className="w-[90%] h-[90%] bg-white"
+                className="w-full h-full bg-white"
               ></iframe>
             </div>
           </div>

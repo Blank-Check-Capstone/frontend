@@ -629,10 +629,9 @@ const App = () => {
           element={<ChatSelection chatrooms={chatrooms} />}
         />
         <Route path="/gifticon" element={<Gifticon />} />
-        <Route path="/display" element={<Display />} />
         <Route path="/dutchpay" element={<DutchPay />} />
         <Route
-          path="/"
+          path="/display"
           element={
             <OrderBoard
               langList={langList}
@@ -646,6 +645,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/" element={<Display />} />
       </Routes>
     </BrowserRouter>
   );

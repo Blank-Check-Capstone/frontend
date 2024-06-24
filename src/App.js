@@ -64,6 +64,8 @@ import miniCheesePlatter from "./assets/images/miniCheesePlatter.jfif";
 import sweetAndSourPork from "./assets/images/sweetAndSourPork.jfif";
 import palbochae from "./assets/images/palbochae.jpg";
 import chiliJapchae from "./assets/images/chiliJapchae.jpg";
+import spicyColdNoodles from "./assets/images/spicyColdNoodles.jpg";
+import shrimpRosePasta from "./assets/images/shrimpRosePasta.jpg";
 
 const chatrooms = [
   {
@@ -373,7 +375,7 @@ const App = () => {
               id: 2,
               name: t("쉬림프 로제 파스타"),
               price: 12000,
-              image: porkBelly,
+              image: shrimpRosePasta,
             },
             {
               id: 3,
@@ -490,18 +492,24 @@ const App = () => {
             },
             {
               id: 2,
+              name: t("비빔냉면"),
+              price: 5000,
+              image: spicyColdNoodles,
+            },
+            {
+              id: 3,
               name: t("된장찌개"),
               price: 5000,
               image: soybeanPasteJjigae,
             },
             {
-              id: 3,
+              id: 4,
               name: t("돼지껍데기"),
               price: 5000,
               image: porkRinds,
             },
             {
-              id: 4,
+              id: 5,
               name: t("공기밥 추가"),
               price: 1000,
               image: rice,

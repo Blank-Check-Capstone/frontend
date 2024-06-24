@@ -2,6 +2,7 @@ import { useState } from "react";
 import table from "../assets/images/table.png";
 import stand from "../assets/images/Stand.png";
 import wall from "../assets/images/wall.jpg";
+import kt from "../assets/images/KT.png";
 
 import porkbelly from "../assets/images/Porkbelly.png";
 import italy from "../assets/images/Italy.png";
@@ -11,8 +12,21 @@ const Display = () => {
 
   return (
     <div className="w-screen h-screen bg-[#eff0f5] overflow-hidden">
-      <div className="w-full h-[5vw] bg-[#ffffff] flex items-center pl-[1vw] text-[3vw] font-bold">
-        GBSW
+      <div className="w-full h-[5vw] bg-[#ffffff] flex items-center pl-[1vw] gap-3">
+        <img src={kt} className="h-[50%]" />
+        <div className="flex items-center text-[2vw] font-bold  justify-center">
+          하이오더
+        </div>
+        <div className="bg-gradient-to-r from-[#ed6100] via-[#cd8ab8] to-[#398ecf] h-[60%] border rounded-full flex items-center justify-center">
+          <div className="h-[90%] w-[95%] bg-[#ffffff] rounded-full flex items-center justify-center px-[1vw] text-[1.5vw] font-medium whitespace-nowrap">
+            매출 UP
+          </div>
+        </div>
+        <div className="bg-gradient-to-r from-[#ed6100] via-[#cd8ab8] to-[#398ecf] h-[60%] border rounded-full flex items-center justify-center">
+          <div className="h-[90%] w-[97%] bg-[#ffffff] rounded-full flex items-center justify-center px-[1vw] text-[1.5vw] font-medium whitespace-nowrap">
+            인건비 DOWN
+          </div>
+        </div>
       </div>
       <div className="w-full flex py-[1vw]">
         <div className="w-[75vw] h-[40vw] flex justify-center">

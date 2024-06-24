@@ -66,6 +66,10 @@ import palbochae from "./assets/images/palbochae.jpg";
 import chiliJapchae from "./assets/images/chiliJapchae.jpg";
 import spicyColdNoodles from "./assets/images/spicyColdNoodles.jpg";
 import shrimpRosePasta from "./assets/images/shrimpRosePasta.jpg";
+import grapefruitAde from "./assets/images/grapefruit_Ade.png";
+import whiteGrapeAde from "./assets/images/white_Grape_Ade.png";
+import lemonade from "./assets/images/lemonade.png";
+import chineseLiquor from "./assets/images/chinese_liquor.png";
 
 const chatrooms = [
   {
@@ -312,6 +316,12 @@ const App = () => {
               price: 5000,
               image: riceWine,
             },
+            {
+              id: 8,
+              name: t("고량주"),
+              price: 5000,
+              image: chineseLiquor,
+            },
           ],
         },
         {
@@ -436,6 +446,30 @@ const App = () => {
               name: t("환타"),
               price: 1000,
               image: fanta,
+            },
+          ],
+        },
+        {
+          id: 5,
+          title: t("에이드"),
+          menus: [
+            {
+              id: 1,
+              name: t("자몽에이드"),
+              price: 4000,
+              image: grapefruitAde,
+            },
+            {
+              id: 2,
+              name: t("청포도에이드"),
+              price: 4000,
+              image: whiteGrapeAde,
+            },
+            {
+              id: 3,
+              name: t("레몬에이드"),
+              price: 4000,
+              image: lemonade,
             },
           ],
         },

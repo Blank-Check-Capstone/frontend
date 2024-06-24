@@ -64,6 +64,12 @@ import miniCheesePlatter from "./assets/images/miniCheesePlatter.jfif";
 import sweetAndSourPork from "./assets/images/sweetAndSourPork.jfif";
 import palbochae from "./assets/images/palbochae.jpg";
 import chiliJapchae from "./assets/images/chiliJapchae.jpg";
+import spicyColdNoodles from "./assets/images/spicyColdNoodles.jpg";
+import shrimpRosePasta from "./assets/images/shrimpRosePasta.jpg";
+import grapefruitAde from "./assets/images/grapefruit_Ade.png";
+import whiteGrapeAde from "./assets/images/white_Grape_Ade.png";
+import lemonade from "./assets/images/lemonade.png";
+import chineseLiquor from "./assets/images/chinese_liquor.png";
 
 const chatrooms = [
   {
@@ -310,6 +316,12 @@ const App = () => {
               price: 5000,
               image: riceWine,
             },
+            {
+              id: 8,
+              name: t("고량주"),
+              price: 5000,
+              image: chineseLiquor,
+            },
           ],
         },
         {
@@ -373,7 +385,7 @@ const App = () => {
               id: 2,
               name: t("쉬림프 로제 파스타"),
               price: 12000,
-              image: porkBelly,
+              image: shrimpRosePasta,
             },
             {
               id: 3,
@@ -437,6 +449,30 @@ const App = () => {
             },
           ],
         },
+        {
+          id: 5,
+          title: t("에이드"),
+          menus: [
+            {
+              id: 1,
+              name: t("자몽에이드"),
+              price: 4000,
+              image: grapefruitAde,
+            },
+            {
+              id: 2,
+              name: t("청포도에이드"),
+              price: 4000,
+              image: whiteGrapeAde,
+            },
+            {
+              id: 3,
+              name: t("레몬에이드"),
+              price: 4000,
+              image: lemonade,
+            },
+          ],
+        },
       ],
     },
     {
@@ -490,18 +526,24 @@ const App = () => {
             },
             {
               id: 2,
+              name: t("비빔냉면"),
+              price: 5000,
+              image: spicyColdNoodles,
+            },
+            {
+              id: 3,
               name: t("된장찌개"),
               price: 5000,
               image: soybeanPasteJjigae,
             },
             {
-              id: 3,
+              id: 4,
               name: t("돼지껍데기"),
               price: 5000,
               image: porkRinds,
             },
             {
-              id: 4,
+              id: 5,
               name: t("공기밥 추가"),
               price: 1000,
               image: rice,

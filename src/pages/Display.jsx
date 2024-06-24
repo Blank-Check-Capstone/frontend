@@ -19,7 +19,7 @@ const Display = () => {
           <div className="w-[90%] bg-[#ffffff] rounded-2xl flex justify-center items-center shadow-xl">
             <div className="w-[95%] h-[95%] bg-[#000000] rounded-2xl flex justify-center items-center p-[2vw]">
               <iframe
-                src={`/?type=${nowType}`}
+                src={`/display?type=${nowType}`}
                 frameborder="0"
                 className="w-full h-full bg-white"
               ></iframe>

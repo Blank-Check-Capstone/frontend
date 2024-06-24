@@ -25,7 +25,8 @@
   "목살": "Grilled Pork Shoulder",
   "갈매기살": "Grilled Thin Skirt",
   "항정살": "Jowl Meat",
-  "물냉면": "Cold Buckwheat Noodles",
+  "물냉면": "Cold Noodles",
+  "비빔냉면": "Spicy Cold Noodles",
   "된장찌개": "Soybean Paste Jjigae",
   "돼지껍데기": "Grilled Pork Rinds",
   "공기밥 추가": "Extra Serving of Steamed Rice",
@@ -113,5 +114,10 @@
   "요리": "Food",
   "탕수육": "Sweet and sour pork",
   "팔보채": "Palbochae",
-  "고추잡채": "Chili japchae"
+  "고추잡채": "Chili japchae",
+  "고량주": "Chinese liquor",
+  "레몬에이드": "Lemonade",
+  "자몽에이드": "Grapefruit Ade",
+  "청포도에이드": "Green Grape Ade",
+  "에이드": "Ade"
 }

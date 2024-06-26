@@ -12,7 +12,7 @@ const Menus = forwardRef(
         <div className="w-full h-[5vw] bg-[#D9D9D9] flex items-center text-[2vw] pl-[2vw]">
           {categoryTitle}
         </div>
-        <div className="grid grid-cols-3 px-[2vw] auto-rows-[minmax(23vw,_auto)] justify-center items-center gap-8">
+        <div className="grid grid-cols-3 px-[2vw] auto-rows-[minmax(23vw,_auto)] justify-center items-center gap-[2vw]">
           {menus.map((menu) => (
             <Menu
               key={menu.id}

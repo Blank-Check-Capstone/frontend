@@ -54,7 +54,7 @@ const Display = () => {
                     alt="china"
                     className="w-full filter brightness-50"
                   />
-                  <div className="absolute inset-0 text-[#ffffff] font-bold text-[1vw] m-2">
+                  <div className="absolute inset-0 text-[#ffffff] font-bold text-[1vw] m-[0.7vw]">
                     중식당
                   </div>
                 </div>
@@ -64,7 +64,7 @@ const Display = () => {
                     alt="italy"
                     className="w-full filter brightness-50"
                   />
-                  <div className="absolute inset-0 text-[#ffffff] font-bold text-[1vw] m-2">
+                  <div className="absolute inset-0 text-[#ffffff] font-bold text-[1vw] m-[0.7vw]">
                     이탈리아 레스토랑
                   </div>
                 </div>
@@ -74,7 +74,7 @@ const Display = () => {
                     alt="porkbelly"
                     className="w-full filter brightness-50"
                   />
-                  <div className="absolute inset-0 text-[#ffffff] font-bold text-[1vw] m-2">
+                  <div className="absolute inset-0 text-[#ffffff] font-bold text-[1vw] m-[0.7vw]">
                     삼겹살집
                   </div>
                 </div>

@@ -102,7 +102,10 @@ const Chatting = ({ type, getChatroom }) => {
 
       if (
         value == "•" &&
-        (lastWord == "ㅣ" || lastWord == "ㅡ" || lastWord == "ㅜ")
+        (lastWord == "ㅣ" ||
+          lastWord == "ㅡ" ||
+          lastWord == "ㅜ" ||
+          lastWord == "ㅏ")
       ) {
         let tmp = value;
 
@@ -115,6 +118,9 @@ const Chatting = ({ type, getChatroom }) => {
             break;
           case "ㅜ":
             tmp = "ㅠ";
+            break;
+          case "ㅏ":
+            tmp = "ㅑ";
             break;
         }
 
@@ -352,7 +358,7 @@ const Chatting = ({ type, getChatroom }) => {
       <div className="w-full h-[90%] flex">
         <div className="h-full w-[75%]">
           <div className="h-[85%] w-full bg-[#FFE4E4] overflow-auto">
-            <div className="h-[13%] w-full bg-white bg-opacity-90 flex items-center text-[1.5vw] pl-[1.5vw] text-[#7F7F7F] my-5 leading-[2]">
+            <div className="h-[13%] w-full bg-white bg-opacity-90 flex items-center text-[1.5vw] pl-[1.5vw] text-[#7F7F7F] my-[2vw] leading-[2]">
               {t(
                 "1. 카카오톡ID 또는 개인 연락처를 물어보거나 알려주지 마세요."
               )}
@@ -389,9 +395,9 @@ const Chatting = ({ type, getChatroom }) => {
           </div>
 
           <div className="h-[15%] w-full bg-white flex items-center justify-between px-[1vw] gap-[1vw]">
-            <div className="h-[70%] w-[20%] bg-[#FFF500] border-[#7B7B7B] border flex items-center justify-center rounded-xl text-[2vw] font-bold">
+            <div className="h-[70%] w-[20%] bg-[#FFF500] border-[#7B7B7B] border flex items-center justify-center rounded-xl text-[2vw] font-bold gap-[1vw]">
               <svg
-                className="w-[2vw] h-[2vw] mx-2"
+                className="w-[2vw] h-[2vw]"
                 xmlns="http://www.w3.org/2000/svg"
                 id="Layer_1"
                 data-name="Layer 1"
@@ -420,11 +426,11 @@ const Chatting = ({ type, getChatroom }) => {
           </div>
         </div>
         <div className="h-full w-[25%] bg-white border-[#7B7B7B] border">
-          <div className="w-full h-[15%] border-[#7B7B7B] border flex items-center justify-center gap-3">
+          <div className="w-full h-[15%] border-[#7B7B7B] border flex items-center justify-between px-[1vw]">
             <div className="w-[65%] h-[80%] border-[#7B7B7B] border pl-[1vw] py-[1vw]">
               <input
                 type="text"
-                className="w-full h-full outline-none text-[1.5vw]"
+                className="w-full h-full outline-none text-[1.5vw] block"
                 value={Hangul.assemble(inputContent)}
                 onChange={changeInputContent}
                 disabled

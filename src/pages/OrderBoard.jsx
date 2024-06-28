@@ -62,7 +62,8 @@ const OrderBoard = ({
         y:
           window.innerHeight -
           e.currentTarget.offsetHeight * 0.8 -
-          e.currentTarget.offsetTop,
+          e.currentTarget.offsetTop +
+          categoryRefs.current["menu"].scrollTop,
         image: e.currentTarget.children[0].children[0].src,
       });
 

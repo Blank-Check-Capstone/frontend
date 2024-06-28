@@ -3,8 +3,6 @@ import Menus from "./Center/Menus";
 
 const Center = forwardRef(
   ({ categoryList, changeSelectedCategory, addChoiceMenu }, ref) => {
-    const menusRef = useRef(null);
-
     const onMenuScroll = (e) => {
       if (
         ref.current[ref.current.length - 1].getBoundingClientRect().top -
@@ -30,7 +28,9 @@ const Center = forwardRef(
       <div
         className="w-full h-[calc(100vh-16vw)] my-[8vw] flex flex-col gap-[2vw] bg-[#ececec] overflow-auto"
         onScroll={onMenuScroll}
-        ref={menusRef}
+        ref={(e) => {
+          ref.current["menu"] = e;
+        }}
       >
         {categoryList.map((category) => (
           <Menus

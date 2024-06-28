@@ -368,7 +368,7 @@ const Chatting = ({ type, getChatroom }) => {
               )}
             </div>
             <div className="w-full h-full flex flex-col gap-[1vw] px-[1vw]">
-              {chats.map((chat) => {
+              {chats.map((chat, i) => {
                 const isAmPm = chat.time.getHours() < 12 ? "AM" : "PM";
                 const hour =
                   chat.time.getHours() > 12
@@ -381,7 +381,7 @@ const Chatting = ({ type, getChatroom }) => {
                     : `${chat.time.getMinutes()}`;
 
                 return (
-                  <div className="flex w-full justify-end items-end">
+                  <div className="flex w-full justify-end items-end" key={i}>
                     <div className="flex-shrink-0 mr-[1vw] flex text-[1.5vw]">
                       {`${isAmPm} ${hour}:${min}`}
                     </div>

@@ -48,14 +48,14 @@ const OrderLog = ({ purchasedMenus, getMenuByCategoryIdAndMenuId }) => {
       </div>
       <div className="flex w-full h-full items-center flex-col py-[1vw]">
         <div className="w-full grid grid-cols-4 font-bold gap-[5vw]">
-          {purchasedMenus["menus"].map((menu) => {
+          {purchasedMenus["menus"].map((menu, i) => {
             const menuInfo = getMenuByCategoryIdAndMenuId(
               menu.categoryId,
               menu.menuId
             );
 
             return (
-              <div>
+              <div key={i}>
                 <img
                   src={menuInfo.image}
                   className="w-full aspect-square object-cover rounded-xl mb-2"

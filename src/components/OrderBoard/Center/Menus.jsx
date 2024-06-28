@@ -16,8 +16,8 @@ const Menus = forwardRef(
           {menus.map((menu) => (
             <Menu
               key={menu.id}
-              addChoiceMenu={() => {
-                addChoiceMenu(categoryId, menu.id);
+              addChoiceMenu={(e) => {
+                addChoiceMenu(e, categoryId, menu.id, true);
               }}
               name={menu.name}
               price={menu.price}

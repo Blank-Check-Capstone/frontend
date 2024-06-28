@@ -12,11 +12,14 @@ const SelectedSide = ({
   return (
     <div className="bg-white w-[30%] h-full flex flex-col">
       <div className="flex-1 overflow-auto">
-        {selectedCalls.map((selectedCall) => {
+        {selectedCalls.map((selectedCall, i) => {
           const findCall = getCallById(selectedCall.id);
 
           return (
-            <div className="w-full bg-white border-b-2 border-[#D9D9D9] flex flex-col gap-[2vw] p-[1vw]">
+            <div
+              key={i}
+              className="w-full bg-white border-b-2 border-[#D9D9D9] flex flex-col gap-[2vw] p-[1vw]"
+            >
               <div className="w-full bg-white flex justify-between items-center">
                 <div className="text-[2vw]">{findCall.name}</div>
                 <div

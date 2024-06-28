@@ -27,7 +27,7 @@ const Menu = ({ id, title, icon, selected, onClick }) => {
         {id == 1
           ? t(title)
               .split("\n")
-              .map((line) => <div>{line}</div>)
+              .map((line, i) => <div key={i}>{line}</div>)
           : title}
       </div>
     </div>

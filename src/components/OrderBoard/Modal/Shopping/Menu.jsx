@@ -25,7 +25,7 @@ const Menu = ({
             <p className="text-[1.8vw] font-medium">{menu.amount}</p>
             <div
               className="border-[#E2E2E2] rounded-3xl border hover: cursor-pointer"
-              onClick={() => addChoiceMenu(menu.categoryId, menu.menuId)}
+              onClick={() => addChoiceMenu(null, menu.categoryId, menu.menuId)}
             >
               <PlusIcon />
             </div>

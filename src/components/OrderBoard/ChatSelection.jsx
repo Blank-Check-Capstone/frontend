@@ -30,8 +30,11 @@ const ChatSelection = ({ chatrooms }) => {
       </div>
 
       <div className="w-full h-full grid grid-cols-4 auto-rows-[minmax(12vw,_auto)]">
-        {chatrooms.map((chatroom) => (
-          <div className="border-[#7B7B7B] border flex flex-col justify-between p-[1vw]">
+        {chatrooms.map((chatroom, i) => (
+          <div
+            key={i}
+            className="border-[#7B7B7B] border flex flex-col justify-between p-[1vw]"
+          >
             <div className="text-[#b1b1b1] text-[3.5vw] leading-[3.5vw] font-medium">
               {chatroom.name}
             </div>

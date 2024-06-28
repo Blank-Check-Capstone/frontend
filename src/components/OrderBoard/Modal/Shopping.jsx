@@ -48,8 +48,6 @@ const Shopping = ({
 
         <div className="w-full h-[55%] overflow-auto">
           {choiceMenus.map((menu) => {
-            console.log(menu);
-
             const menuInfo = getMenuByCategoryIdAndMenuId(
               menu.categoryId,
               menu.menuId

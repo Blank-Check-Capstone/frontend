@@ -12,6 +12,8 @@ import { t } from "i18next";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Payment from "../components/OrderBoard/Modal/Payment";
 import MessageBox from "../components/OrderBoard/Modal/MessageBox";
+import blackNoodles from "../assets/images/blackNooles.jpg";
+import OrderedMenu from "../components/OrderedMenu";
 
 const sideMenuList = [
   { id: 1, title: "메뉴주문", icon: MenuOrderIcon },
@@ -37,9 +39,43 @@ const OrderBoard = ({
     useState(false);
   const categoryRefs = useRef([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isShowSelectedMenuInfo, setIsShowSelectedMenuInfo] = useState({
+    show: false,
+    x: null,
+    y: null,
+    image: null,
+  });
   const navigate = useNavigate();
 
-  const addChoiceMenu = (categoryId, menuId) => {
+  let selectedMenuTimeOut = null;
+
+  const addChoiceMenu = (e, categoryId, menuId, isClick = false) => {
+    if (isClick) {
+      clearTimeout(selectedMenuTimeOut);
+
+      setIsShowSelectedMenuInfo({
+        show: true,
+        x:
+          window.innerWidth -
+          e.currentTarget.offsetWidth * 0.8 -
+          e.currentTarget.offsetLeft,
+        y:
+          window.innerHeight -
+          e.currentTarget.offsetHeight * 0.8 -
+          e.currentTarget.offsetTop,
+        image: e.currentTarget.children[0].children[0].src,
+      });
+
+      selectedMenuTimeOut = setTimeout(() => {
+        setIsShowSelectedMenuInfo({
+          show: false,
+          x: null,
+          y: null,
+          image: null,
+        });
+      }, 500);
+    }
+
     const hasMenu = choiceMenus.findIndex(
       (menu) => menu.categoryId == categoryId && menu.menuId == menuId
     );
@@ -239,6 +275,13 @@ const OrderBoard = ({
 
   return (
     <div className="flex w-full h-screen">
+      {isShowSelectedMenuInfo.show && (
+        <OrderedMenu
+          image={isShowSelectedMenuInfo.image}
+          x={isShowSelectedMenuInfo.x}
+          y={isShowSelectedMenuInfo.y}
+        />
+      )}
       {isShowNoChoiceMessageBox && (
         <MessageBox
           title={t("장바구니에 상품이 없습니다.")}
@@ -258,7 +301,11 @@ const OrderBoard = ({
       <div className="fixed flex flex-col top-0 w-[15vw] h-full bg-[#222222] z-0">
         <div className="w-[100%] h-[18vw] bg-[#000] flex flex-col gap-[1.2vw] items-center justify-center">
           <div className="w-[9.5vw] h-[9.5vw] max-w-40 max-h-40 rounded-[30%] bg-white flex items-center justify-center">
-            <p className="text-[3vw] font-bold leading-none">하이<br />오더</p>
+            <p className="text-[3vw] font-bold leading-none">
+              하이
+              <br />
+              오더
+            </p>
           </div>
           <Link to={"/admin"} className="text-white text-[2.5vw] font-semibold">
             1번
@@ -297,8 +344,8 @@ const OrderBoard = ({
               <div className="w-full text-center text-[1.8vw] break-words">
                 {t("직원호출")
                   .split("\n")
-                  .map((line) => (
-                    <div>{line}</div>
+                  .map((line, i) => (
+                    <div key={i}>{line}</div>
                   ))}
               </div>
             </div>

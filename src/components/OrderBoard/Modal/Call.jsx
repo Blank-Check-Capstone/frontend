@@ -131,7 +131,7 @@ const Call = ({ closeModal, openCallConfirmModal }) => {
         <div className="w-full h-[90%] flex">
           <div className="bg-[#D9D9D9] w-[70%] flex justify-center items-center">
             <div className="w-full grid grid-cols-3 auto-rows-[10vw] p-5">
-              {callMenus.map((callMenu) => {
+              {callMenus.map((callMenu, i) => {
                 const findCall = selectedCalls.find(
                   (_call) => _call.id == callMenu.id
                 );
@@ -139,6 +139,7 @@ const Call = ({ closeModal, openCallConfirmModal }) => {
                 if (findCall) {
                   return (
                     <div
+                      key={i}
                       className="relative w-full h-full bg-white border-2 border-[#27CACA] flex justify-center items-center p-[1vw] text-[2vw] text-[#27CACA]"
                       onClick={() => addSelectedCall(callMenu.id)}
                     >

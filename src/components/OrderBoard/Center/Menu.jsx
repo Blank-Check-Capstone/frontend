@@ -1,6 +1,6 @@
 import { t } from "i18next";
 
-const Menu = ({ id, name, price, image, addChoiceMenu }) => {
+const Menu = ({ name, price, image, addChoiceMenu }) => {
   return (
     <div
       className="bg-white p-[1vw] border border-gray-300 rounded-l"
